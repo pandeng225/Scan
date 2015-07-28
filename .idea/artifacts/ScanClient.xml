@@ -1,0 +1,22 @@
+<component name="ArtifactManager">
+  <artifact type="apk" build-on-make="true" name="ScanClient">
+    <output-path>$PROJECT_DIR$/out/artifacts/ScanClient</output-path>
+    <properties id="android-properties">
+      <options>
+        <option name="keyAlias" value="pandeng" />
+        <option name="keyPassword" value="dzg1MzE2MjI0" />
+        <option name="keyStorePassword" value="dzg1MzE2MjI0" />
+        <option name="keyStoreUrl" value="file://D:/Android/Key/myKeyStore.jks" />
+        <option name="proGuardCfgFiles">
+          <list>
+            <option value="file://%MODULE_SDK_HOME%/tools/proguard/proguard-android.txt" />
+          </list>
+        </option>
+        <option name="signingMode" value="DEBUG_WITH_CUSTOM_CERTIFICATE" />
+      </options>
+    </properties>
+    <root id="archive" name="ScanClient.apk">
+      <element id="android-final-package" facet="ScanClient/android/Android" />
+    </root>
+  </artifact>
+</component>

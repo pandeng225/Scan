@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/paperbackground"
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_height="match_parent">
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/activity_button_height"
+            android:id="@+id/myProfile"
+            android:text="@string/my_profile">
+
+        </Button>
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/activity_button_height"
+                android:id="@+id/startScan"
+                android:layout_marginTop="@dimen/activity_margin_double"
+                android:text="@string/start_scan">
+
+        </Button>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_height="@dimen/activity_button_height"
+            android:id="@+id/startBatchScan"
+            android:text="@string/start_batch_scan">
+
+
+    </Button>
+    <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_height="@dimen/activity_button_height"
+            android:id="@+id/history"
+            android:text="@string/history">
+        </Button>
+</LinearLayout>

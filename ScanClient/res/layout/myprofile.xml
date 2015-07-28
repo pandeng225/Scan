@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			 android:orientation="vertical"
+			 android:layout_width="match_parent"
+			 android:padding="@dimen/activity_horizontal_margin"
+			 android:background="@drawable/paperbackground"
+			 android:layout_height="match_parent">
+
+	<TableRow
+			android:orientation="horizontal"
+			android:padding="@dimen/activity_margin_half">
+
+		<TextView
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				style="@style/grayText"
+				android:text="@string/name"/>
+
+		<EditText
+				android:id="@+id/nameEdit"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="3"
+				style="@style/cornerEditGray"/>
+
+		<TextView
+				android:id="@+id/nameText"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="3"
+				style="@style/grayText"/>
+	</TableRow>
+
+	<TableRow
+			android:orientation="horizontal"
+			android:padding="@dimen/activity_margin_half">
+
+		<TextView
+
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				style="@style/grayText"
+				android:text="@string/department"/>
+
+		<EditText
+				android:id="@+id/departmentEdit"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="3"
+				style="@style/cornerEditGray"/>
+
+		<TextView
+				android:id="@+id/departmentText"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="3"
+				style="@style/grayText"/>
+	</TableRow>
+
+	<TableRow
+			android:orientation="horizontal"
+			android:padding="@dimen/activity_margin_half">
+
+		<TextView
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				style="@style/grayText"
+				android:text="@string/employeeid"/>
+
+		<EditText
+				android:id="@+id/employeeidEdit"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="3"
+				style="@style/cornerEditGray"/>
+
+		<TextView
+				android:id="@+id/employeeidText"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_weight="3"
+				style="@style/grayText"/>
+	</TableRow>
+	<TableRow
+			android:layout_height="wrap_content"
+			android:layout_width="match_parent">
+		<RelativeLayout android:layout_height="wrap_content"
+						android:layout_width="0dp"
+						android:layout_weight="1"
+				android:padding="@dimen/activity_horizontal_margin">
+			<Button
+					android:id="@+id/edit"
+					android:layout_width="wrap_content"
+					android:layout_height="@dimen/activity_button_height"
+					android:text="@string/edit"
+					android:textColor="@color/grgray"
+					android:background="@drawable/corner"
+					android:layout_marginRight="@dimen/activity_horizontal_margin"
+					android:layout_toLeftOf="@+id/submit"/>
+			<Button
+					android:id="@+id/submit"
+					android:layout_width="wrap_content"
+					android:text="@string/submit"
+					android:textColor="@color/grgray"
+					android:background="@drawable/corner"
+					android:layout_height="@dimen/activity_button_height"
+					android:layout_alignParentRight="true"/>
+		</RelativeLayout>
+	</TableRow>
+</TableLayout>
