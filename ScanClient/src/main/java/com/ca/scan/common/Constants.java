@@ -5,10 +5,45 @@ package com.ca.scan.common;
  */
 public class Constants {
     public static final String DB_NAME="local_db";
+    //CameraManager”√
+    private static final int MIN_FRAME_WIDTH = 240;
+    private static final int MIN_FRAME_HEIGHT = 240;
+    private static final int MAX_FRAME_WIDTH = 480;
+    private static final int MAX_FRAME_HEIGHT = 360;
+
+    public static int getMinFrameWidth() {
+        return MIN_FRAME_WIDTH;
+    }
+
+    public static int getMinFrameHeight() {
+        return MIN_FRAME_HEIGHT;
+    }
+
+    public static int getMaxFrameWidth() {
+        return MAX_FRAME_WIDTH;
+    }
+
+    public static int getMaxFrameHeight() {
+        return MAX_FRAME_HEIGHT;
+    }
+
     public   enum SubmitProgress{
         Creat("00"),Modify("01"),Modified("02");
         public final String value;
         SubmitProgress(String value) {
+            this.value = value;
+        }
+
+        @Override
+        public String toString() {
+            return this.value;
+        }
+    }
+
+    public   enum HistoryRequestType{
+        JustHistory("00"),FromHistory("01");
+        public final String value;
+        HistoryRequestType(String value) {
             this.value = value;
         }
 

@@ -11,14 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.InjectViews;
 import butterknife.OnClick;
 import com.ca.scan.R;
 import com.ca.scan.application.MyApplication;
-import com.ca.scan.common.Constants;
+import com.ca.scan.common.ButterKnifeAction;
+import com.ca.scan.common.Constants.SubmitProgress;
 import com.ca.scan.dao.Profile;
 import com.ca.scan.dao.ProfileDao;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by pandeng on 2015/7/27.
@@ -41,11 +44,11 @@ public class MyProfile extends Activity {
     Button submit;
     @InjectView(R.id.edit)
     Button edit;
-    //to-do
-//    @InjectViews({R.id.nameText, R.id.departmentText, R.id.employeeidText})
-//    List<TextView> textViews;
-//    @InjectViews({R.id.nameEdit, R.id.departmentEdit, R.id.employeeidEdit})
-//    List<EditText> editViews;
+
+    @InjectViews({R.id.nameText, R.id.departmentText, R.id.employeeidText})
+    List<TextView> textViews;
+    @InjectViews({R.id.nameEdit, R.id.departmentEdit, R.id.employeeidEdit})
+    List<EditText> editViews;
     Profile profile;
     String submitProgress;
     ProfileDao profileDao;
@@ -64,16 +67,10 @@ public class MyProfile extends Activity {
             departmentEdit.setText(profile.getDepartment());
             employeeidEdit.setText(profile.getEmployeeid());
             //各控件展现
-            nameText.setVisibility(View.VISIBLE);
-            departmentText.setVisibility(View.VISIBLE);
-            employeeidText.setVisibility(View.VISIBLE);
-//            ButterKnife.apply(textViews, Property.);
-
-            nameEdit.setVisibility(View.GONE);
-            departmentEdit.setVisibility(View.GONE);
-            employeeidEdit.setVisibility(View.GONE);
+            ButterKnife.apply(textViews, ButterKnifeAction.VISIBLE);
+            ButterKnife.apply(editViews, ButterKnifeAction.GONE);
             edit.setVisibility(View.VISIBLE);
-            submitProgress= Constants.SubmitProgress.Modified.value;
+            submitProgress= SubmitProgress.Modified.value;
         } else {
             //各控件展现
             nameEdit.setVisibility(View.VISIBLE);
@@ -83,7 +80,7 @@ public class MyProfile extends Activity {
             departmentText.setVisibility(View.GONE);
             employeeidText.setVisibility(View.GONE);
             edit.setVisibility(View.INVISIBLE);
-            submitProgress= Constants.SubmitProgress.Creat.value;
+            submitProgress= SubmitProgress.Creat.value;
         }
         profileDao=MyApplication.getDaoSession(mContext).getProfileDao();
     }
@@ -103,12 +100,12 @@ public class MyProfile extends Activity {
             nameText.setVisibility(View.GONE);
             departmentText.setVisibility(View.GONE);
             employeeidText.setVisibility(View.GONE);
-            submitProgress= Constants.SubmitProgress.Modify.toString();
+            submitProgress= SubmitProgress.Modify.toString();
             edit.setVisibility(View.INVISIBLE);
         }else if(view.getId()==R.id.submit){
             //完成按钮
             //第一次输入，直接跳入主菜单
-            if(submitProgress.equals(Constants.SubmitProgress.Creat.value)){
+            if(submitProgress.equals(SubmitProgress.Creat.value)){
                 Profile newProfile=new Profile();
                 newProfile.setName(nameEdit.getText().toString());
                 newProfile.setDepartment(departmentEdit.getText().toString());
@@ -120,7 +117,7 @@ public class MyProfile extends Activity {
                 }else{
                     Toast.makeText(mContext,R.string.insert_error,Toast.LENGTH_LONG).show();
                 }
-            }else if(submitProgress.equals(Constants.SubmitProgress.Modify.value)){
+            }else if(submitProgress.equals(SubmitProgress.Modify.value)){
                 Profile newProfile=new Profile();
                 newProfile.setId(profile.getId());
                 newProfile.setName(nameEdit.getText().toString());
@@ -129,12 +126,12 @@ public class MyProfile extends Activity {
                 newProfile.setDate(new Date());
                 if(profileDao.insertOrReplace(newProfile)>0){
                     edit.setVisibility(View.VISIBLE);
-                    submitProgress= Constants.SubmitProgress.Modified.toString();
+                    submitProgress= SubmitProgress.Modified.toString();
                     Toast.makeText(mContext,R.string.update_success,Toast.LENGTH_LONG).show();
                 }else{
                     Toast.makeText(mContext,R.string.update_error,Toast.LENGTH_LONG).show();
                 }
-            }else if(submitProgress.equals(Constants.SubmitProgress.Modified.value)){
+            }else if(submitProgress.equals(SubmitProgress.Modified.value)){
                 mContext.startActivity(intent);
                 MyProfile.this.finish();
             }

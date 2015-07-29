@@ -29,6 +29,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import com.ca.scan.R;
+import com.ca.scan.common.Constants;
 
 /**
  * This object wraps the Camera service object and expects to be the only one talking to it. The
@@ -40,10 +41,7 @@ public final class CameraManager {
 
   private static final String TAG = CameraManager.class.getSimpleName();
 
-  private static final int MIN_FRAME_WIDTH = 240;
-  private static final int MIN_FRAME_HEIGHT = 240;
-  private static final int MAX_FRAME_WIDTH = 480;
-  private static final int MAX_FRAME_HEIGHT = 360;
+
 
   private static CameraManager cameraManager;
 
@@ -224,16 +222,16 @@ public final class CameraManager {
         return null;
       }
       int width = screenResolution.x * 3 / 4;
-      if (width < MIN_FRAME_WIDTH) {
-        width = MIN_FRAME_WIDTH;
-      } else if (width > MAX_FRAME_WIDTH) {
-        width = MAX_FRAME_WIDTH;
+      if (width < Constants.getMinFrameWidth()) {
+        width = Constants.getMinFrameWidth();
+      } else if (width > Constants.getMaxFrameWidth()) {
+        width = Constants.getMaxFrameWidth();
       }
       int height = screenResolution.y * 3 / 4;
-      if (height < MIN_FRAME_HEIGHT) {
-        height = MIN_FRAME_HEIGHT;
-      } else if (height > MAX_FRAME_HEIGHT) {
-        height = MAX_FRAME_HEIGHT;
+      if (height < Constants.getMinFrameHeight()) {
+        height = Constants.getMinFrameHeight();
+      } else if (height > Constants.getMaxFrameHeight()) {
+        height = Constants.getMaxFrameHeight();
       }
       int leftOffset = (screenResolution.x - width) / 2;
       //»°æ∞øÚ…œŒª“∆

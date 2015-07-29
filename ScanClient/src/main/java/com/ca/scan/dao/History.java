@@ -13,6 +13,7 @@ public class History {
     private String department;
     private String employeeid;
     private String filename;
+    private String desc;
     private java.util.Date date;
 
     public History() {
@@ -22,12 +23,13 @@ public class History {
         this.id = id;
     }
 
-    public History(Long id, String name, String department, String employeeid, String filename, java.util.Date date) {
+    public History(Long id, String name, String department, String employeeid, String filename, String desc, java.util.Date date) {
         this.id = id;
         this.name = name;
         this.department = department;
         this.employeeid = employeeid;
         this.filename = filename;
+        this.desc = desc;
         this.date = date;
     }
 
@@ -73,6 +75,14 @@ public class History {
 
     public void setFilename(String filename) {
         this.filename = filename;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public java.util.Date getDate() {

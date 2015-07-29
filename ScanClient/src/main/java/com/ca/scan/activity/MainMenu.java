@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import butterknife.ButterKnife;
@@ -12,6 +13,7 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 import com.ca.scan.R;
 import com.ca.scan.application.MyApplication;
+import com.ca.scan.common.Constants;
 import com.ca.scan.dao.Profile;
 
 import java.util.List;
@@ -30,56 +32,53 @@ public class MainMenu extends Activity {
     Button myProfile;
     @InjectView(R.id.history)
     Button history;
-
+    Profile profile=null;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainmenu);
         ButterKnife.inject(this);
+        history.setVisibility(View.GONE);
+        List<Profile> profileList= MyApplication.getDaoSession(mContext).getProfileDao().loadAll();
+        profile=null;
+        if (profileList!=null&&profileList.size()>0){
+            profile=profileList.get(0);
+        }
 
     }
 
     @OnClick(R.id.startScan)
     public void startScan() {
-//        intent = new Intent(mContext, Capture.class);        //CaptureActivity是扫描的Activity类
-//        startActivityForResult(intent, 0);
+        intent = new Intent(mContext, Capture.class);        //CaptureActivity是扫描的Activity类
+        startActivityForResult(intent, 0);
 
 		/*
          *注意: 要以startActivityForResult方法转跳,(不明白查android API)
 		 *第一个参数为一个Intent对象,可以用来传递很多数值,
 		 *第二个参数为Int形的对象,这里为了方便,没有使用常量,而直接使用了0 当参数,建议用常量,可以用来区分是谁调用*/
-
-
-        intent = new Intent(mContext, Capture.class);        //CaptureActivity是扫描的Activity类
-        startActivity(intent);
     }
 
     @OnClick(R.id.startBatchScan)
     public void startBatchScan() {
-        intent = new Intent(mContext, BatchCapture.class);        //CaptureActivity是扫描的Activity类
+        intent = new Intent(mContext, History.class);
+        intent.putExtra("profile", profile);
+        intent.putExtra("historyRequestType", Constants.HistoryRequestType.FromHistory.value);
         startActivity(intent);
-
-		/*
-         *注意: 要以startActivityForResult方法转跳,(不明白查android API)
-		 *第一个参数为一个Intent对象,可以用来传递很多数值,
-		 *第二个参数为Int形的对象,这里为了方便,没有使用常量,而直接使用了0 当参数,建议用常量,可以用来区分是谁调用*/
-
     }
     @OnClick(R.id.myProfile)
     public void myProfile() {
-        List<Profile> profileList= MyApplication.getDaoSession(mContext).getProfileDao().loadAll();
-        Profile profile=null;
         intent=new Intent();
-        if (profileList!=null&&profileList.size()>0){
-            profile=profileList.get(0);
-            intent.putExtra("profile",profile);
-        }else{
-            intent.putExtra("profile",profile);
-        }
+        intent.putExtra("profile",profile);
         intent.setClass(mContext, MyProfile.class);
         startActivity(intent);
     }
-
+    @OnClick(R.id.history)
+    public void history() {
+        intent = new Intent(mContext, History.class);
+        intent.putExtra("profile",profile);
+        intent.putExtra("historyRequestType", Constants.HistoryRequestType.JustHistory.value);
+        startActivity(intent);
+    }
     /**
      * 当转跳的目标页面,结束以后,会回调这个方法
      * 第一个参数就是startActivityForResult(intent, 0) 中第二个int形参数
@@ -92,7 +91,7 @@ public class MainMenu extends Activity {
         if (resultCode == RESULT_OK) {        //此处就是用result来区分,是谁返回的数据
             Bundle bundle = data.getExtras();
             String scanResult = bundle.getString("result");            //这就获取了扫描的内容了
-            Toast.makeText(mContext, scanResult, Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, scanResult+mContext.getString(R.string.upload_success), Toast.LENGTH_LONG).show();
         }
     }
 }

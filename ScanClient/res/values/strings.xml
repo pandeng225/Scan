@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ScanClient</string>
-
+    <string name="app_name">扫描易</string>
     <!--开始-->
     <string name="welcome">欢&#160;迎&#160;使&#160;用</string>
     <!--主菜单-->
@@ -15,12 +14,19 @@
     <string name="employeeid">工号</string>
     <string name="edit">修改</string>
     <string name="submit">OK哒</string>
+    <!--历史页-->
+    <string name="add_file_name">新增文件说明</string>
+    <string name="history_desc">或者使用下列说明</string>
+    <!--扫描页-->
+    <string name="scaned_list">已扫入记录(为防止重复扫入，请间隔3S后再扫)</string>
     <!--异常处理-->
-
     <string name="insert_error">未成功录入，请再试一下下~</string>
     <string name="update_error">未成功更新，请再试一下下~</string>
     <string name="update_success">成功更新，请再点一下下退出~</string>
     <string name="scan_error">扫描出错</string>
     <string name="upload_success">上传成功</string>
     <string name="upload_error">上传失败</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+    <string name="please_enter">请输入</string>
 </resources>

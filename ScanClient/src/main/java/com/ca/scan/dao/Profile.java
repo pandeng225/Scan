@@ -7,7 +7,7 @@ import java.io.Serializable;
 /**
  * Entity mapped to table PROFILE.
  */
-public class Profile implements Serializable {
+public class Profile implements Serializable{
 
     private Long id;
     /** Not-null value. */

@@ -28,7 +28,8 @@ public class HistoryDao extends AbstractDao<History, Long> {
         public final static Property Department = new Property(2, String.class, "department", false, "DEPARTMENT");
         public final static Property Employeeid = new Property(3, String.class, "employeeid", false, "EMPLOYEEID");
         public final static Property Filename = new Property(4, String.class, "filename", false, "FILENAME");
-        public final static Property Date = new Property(5, java.util.Date.class, "date", false, "DATE");
+        public final static Property Desc = new Property(5, String.class, "desc", false, "DESC");
+        public final static Property Date = new Property(6, java.util.Date.class, "date", false, "DATE");
     };
 
 
@@ -49,7 +50,8 @@ public class HistoryDao extends AbstractDao<History, Long> {
                 "'DEPARTMENT' TEXT NOT NULL ," + // 2: department
                 "'EMPLOYEEID' TEXT," + // 3: employeeid
                 "'FILENAME' TEXT," + // 4: filename
-                "'DATE' INTEGER);"); // 5: date
+                "'DESC' TEXT," + // 5: desc
+                "'DATE' INTEGER);"); // 6: date
     }
 
     /** Drops the underlying database table. */
@@ -80,9 +82,14 @@ public class HistoryDao extends AbstractDao<History, Long> {
             stmt.bindString(5, filename);
         }
  
+        String desc = entity.getDesc();
+        if (desc != null) {
+            stmt.bindString(6, desc);
+        }
+ 
         java.util.Date date = entity.getDate();
         if (date != null) {
-            stmt.bindLong(6, date.getTime());
+            stmt.bindLong(7, date.getTime());
         }
     }
 
@@ -101,7 +108,8 @@ public class HistoryDao extends AbstractDao<History, Long> {
             cursor.getString(offset + 2), // department
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // employeeid
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // filename
-            cursor.isNull(offset + 5) ? null : new java.util.Date(cursor.getLong(offset + 5)) // date
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // desc
+            cursor.isNull(offset + 6) ? null : new java.util.Date(cursor.getLong(offset + 6)) // date
         );
         return entity;
     }
@@ -114,7 +122,8 @@ public class HistoryDao extends AbstractDao<History, Long> {
         entity.setDepartment(cursor.getString(offset + 2));
         entity.setEmployeeid(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setFilename(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-        entity.setDate(cursor.isNull(offset + 5) ? null : new java.util.Date(cursor.getLong(offset + 5)));
+        entity.setDesc(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setDate(cursor.isNull(offset + 6) ? null : new java.util.Date(cursor.getLong(offset + 6)));
      }
     
     /** @inheritdoc */
