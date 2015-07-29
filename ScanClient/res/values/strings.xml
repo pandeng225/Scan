@@ -17,8 +17,9 @@
     <!--历史页-->
     <string name="add_file_name">新增文件说明</string>
     <string name="history_desc">或者使用下列说明</string>
+    <string name="confirm">确认</string>
     <!--扫描页-->
-    <string name="scaned_list">已扫入记录(为防止重复扫入，请间隔3S后再扫)</string>
+    <string name="scaned_list">已扫入记录</string>
     <!--异常处理-->
     <string name="insert_error">未成功录入，请再试一下下~</string>
     <string name="update_error">未成功更新，请再试一下下~</string>
@@ -27,6 +28,7 @@
     <string name="upload_success">上传成功</string>
     <string name="upload_error">上传失败</string>
     <string name="cancel">取消</string>
-    <string name="confirm">确认</string>
+    <string name="delete">删除</string>
     <string name="please_enter">请输入</string>
+    <string name="quit">退出</string>
 </resources>

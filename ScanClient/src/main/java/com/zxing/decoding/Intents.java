@@ -92,7 +92,7 @@ public final class Intents {
     public static final String RESULT_FORMAT = "SCAN_RESULT_FORMAT";
 
     /**
-     * Setting this to false will not save scanned codes in the history.
+     * Setting this to false will not save scanned codes in the historyactivity.
      */
     public static final String SAVE_HISTORY = "SAVE_HISTORY";
 

@@ -26,8 +26,8 @@ import java.util.List;
 /**
  * Created by pandeng on 2015/7/27.
  */
-public class MyProfile extends Activity {
-    Context mContext = MyProfile.this;
+public class MyProfileActivity extends Activity {
+    Context mContext = MyProfileActivity.this;
     @InjectView(R.id.nameText)
     TextView nameText;
     @InjectView(R.id.nameEdit)
@@ -55,7 +55,7 @@ public class MyProfile extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.myprofile);
+        setContentView(R.layout.myprofileactivity);
         ButterKnife.inject(this);
         profile = (Profile) this.getIntent().getSerializableExtra("profile");
         if (profile != null) {
@@ -88,7 +88,7 @@ public class MyProfile extends Activity {
     @OnClick({R.id.submit,R.id.edit})
     void submitClicked(View view) {
         Intent intent=new Intent();
-        intent.setClass(mContext,MainMenu.class);
+        intent.setClass(mContext,MainMenuActivity.class);
         if(view.getId()==R.id.edit){
             //±à¼­°´Å¥
             nameEdit.setText(nameText.getText());
@@ -113,7 +113,7 @@ public class MyProfile extends Activity {
                 newProfile.setDate(new Date());
                 if(profileDao.insert(newProfile)>0){
                     mContext.startActivity(intent);
-                    MyProfile.this.finish();
+                    MyProfileActivity.this.finish();
                 }else{
                     Toast.makeText(mContext,R.string.insert_error,Toast.LENGTH_LONG).show();
                 }
@@ -133,7 +133,7 @@ public class MyProfile extends Activity {
                 }
             }else if(submitProgress.equals(SubmitProgress.Modified.value)){
                 mContext.startActivity(intent);
-                MyProfile.this.finish();
+                MyProfileActivity.this.finish();
             }
 
         }

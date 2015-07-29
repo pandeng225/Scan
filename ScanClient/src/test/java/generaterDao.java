@@ -29,7 +29,7 @@ public class generaterDao {
     }
 
     private static void addHistory(Schema schema) {
-        Entity History = schema.addEntity("History");
+        Entity History = schema.addEntity("HistoryActivity");
         History.addIdProperty();
         History.addStringProperty("name").notNull();
         History.addStringProperty("department").notNull();

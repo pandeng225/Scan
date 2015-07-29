@@ -21,8 +21,8 @@ import java.util.List;
 /**
  * Created by pandeng on 2015/7/23.
  */
-public class MainMenu extends Activity {
-    Context mContext = MainMenu.this;
+public class MainMenuActivity extends Activity {
+    Context mContext = MainMenuActivity.this;
     Intent intent=new Intent();
     @InjectView(R.id.startScan)
     Button startScan;
@@ -36,7 +36,7 @@ public class MainMenu extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainmenu);
+        setContentView(R.layout.mainmenuactivity);
         ButterKnife.inject(this);
         history.setVisibility(View.GONE);
         List<Profile> profileList= MyApplication.getDaoSession(mContext).getProfileDao().loadAll();
@@ -49,7 +49,7 @@ public class MainMenu extends Activity {
 
     @OnClick(R.id.startScan)
     public void startScan() {
-        intent = new Intent(mContext, Capture.class);        //CaptureActivity是扫描的Activity类
+        intent = new Intent(mContext, CaptureActivity.class);        //CaptureActivity是扫描的Activity类
         startActivityForResult(intent, 0);
 
 		/*
@@ -60,7 +60,7 @@ public class MainMenu extends Activity {
 
     @OnClick(R.id.startBatchScan)
     public void startBatchScan() {
-        intent = new Intent(mContext, History.class);
+        intent = new Intent(mContext, HistoryActivity.class);
         intent.putExtra("profile", profile);
         intent.putExtra("historyRequestType", Constants.HistoryRequestType.FromHistory.value);
         startActivity(intent);
@@ -69,12 +69,12 @@ public class MainMenu extends Activity {
     public void myProfile() {
         intent=new Intent();
         intent.putExtra("profile",profile);
-        intent.setClass(mContext, MyProfile.class);
+        intent.setClass(mContext, MyProfileActivity.class);
         startActivity(intent);
     }
     @OnClick(R.id.history)
     public void history() {
-        intent = new Intent(mContext, History.class);
+        intent = new Intent(mContext, HistoryActivity.class);
         intent.putExtra("profile",profile);
         intent.putExtra("historyRequestType", Constants.HistoryRequestType.JustHistory.value);
         startActivity(intent);

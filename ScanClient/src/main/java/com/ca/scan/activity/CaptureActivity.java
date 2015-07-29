@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Vector;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
@@ -14,21 +13,17 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
-import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Toast;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
 import butterknife.OnClick;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.ca.scan.R;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
@@ -36,14 +31,13 @@ import com.zxing.camera.CameraManager;
 import com.zxing.decoding.CaptureActivityHandler;
 import com.zxing.decoding.InactivityTimer;
 import com.zxing.view.ViewfinderView;
-import org.json.JSONObject;
 
 /**
  * Initial the camera
  *
  * @author Ryan.Tang
  */
-public class Capture extends Activity implements Callback {
+public class CaptureActivity extends Activity implements Callback {
     protected CaptureActivityHandler handler;
     protected ViewfinderView viewfinderView;
     protected boolean hasSurface;
@@ -54,19 +48,20 @@ public class Capture extends Activity implements Callback {
     protected boolean playBeep;
     protected static final float BEEP_VOLUME = 0.10f;
     protected boolean vibrate;
-    protected Button cancelScanButton;
+    @InjectView(R.id.cancelScanButton)
+    public Button cancelScanButton;
     protected RequestQueue mQueue;
-
+    @InjectView(R.id.preview_view)
+    public SurfaceView surfaceView ;
     /**
      * Called when the activity is first created.
      */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.capture);
+        setContentView(R.layout.captureactivity);
         CameraManager.init(getApplication());
         viewfinderView = (ViewfinderView) findViewById(R.id.viewfinder_view);
-        cancelScanButton = (Button) this.findViewById(R.id.btn_cancel_scan);
         hasSurface = false;
         inactivityTimer = new InactivityTimer(this);
 
@@ -75,18 +70,15 @@ public class Capture extends Activity implements Callback {
     @Override
     protected void onResume() {
         super.onResume();
+        ButterKnife.inject(this);
         init();
         //quit the scan view
-        cancelScanButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Capture.this.finish();
-            }
-        });
     }
 
-
+    @OnClick(R.id.cancelScanButton)
+    public void cancelScan(View v) {
+        super.finish();
+    }
     @Override
     protected void onPause() {
         super.onPause();
@@ -104,7 +96,6 @@ public class Capture extends Activity implements Callback {
     }
 
     protected void init(){
-        SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
         if (hasSurface) {
             initCamera(surfaceHolder);
@@ -137,7 +128,7 @@ public class Capture extends Activity implements Callback {
         String resultString = result.getText();
         //FIXME
         if (resultString.equals("")) {
-            Toast.makeText(Capture.this, "Scan failed!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(CaptureActivity.this, "Scan failed!", Toast.LENGTH_SHORT).show();
         }else {
 //			System.out.println("Result:"+resultString);
             Intent resultIntent = new Intent();
@@ -146,7 +137,7 @@ public class Capture extends Activity implements Callback {
             resultIntent.putExtras(bundle);
             this.setResult(RESULT_OK, resultIntent);
         }
-        Capture.this.finish();
+        CaptureActivity.this.finish();
     }
 
     private void initCamera(SurfaceHolder surfaceHolder) {

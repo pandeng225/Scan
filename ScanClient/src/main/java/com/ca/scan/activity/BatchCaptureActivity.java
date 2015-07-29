@@ -2,34 +2,34 @@ package com.ca.scan.activity;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.Point;
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.*;
-import android.widget.*;
+import android.view.Gravity;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.Toast;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
-import butterknife.InjectViews;
 import butterknife.OnClick;
 import com.ca.scan.R;
-import com.ca.scan.adapter.HistoryAdapter;
 import com.ca.scan.adapter.ScanedAdapter;
-import com.ca.scan.application.MyApplication;
-import com.ca.scan.common.ButterKnifeAction;
 import com.ca.scan.common.Constants;
-import com.ca.scan.dao.DescHistory;
-import com.ca.scan.dao.DescHistoryDao;
 import com.ca.scan.dao.Profile;
 import com.google.zxing.Result;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by pandeng on 2015/7/28.
  */
-public class BatchCapture extends Capture {
+public class BatchCaptureActivity extends CaptureActivity {
     @InjectView(R.id.showLayout)
     LinearLayout showLayout;
     @InjectView(R.id.scanedList)
@@ -42,7 +42,7 @@ public class BatchCapture extends Capture {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.batchcapture);
+        setContentView(R.layout.batchcaptureactivity);
         ButterKnife.inject(this);
         WindowManager manager = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics metrics = new DisplayMetrics();
@@ -61,13 +61,10 @@ public class BatchCapture extends Capture {
         showLayout.setLayoutParams(layoutParams);
     }
 
-    @OnClick(R.id.cancelScanButton)
-    public void cancelScan(View v) {
-        BatchCapture.this.finish();
-    }
+
     @OnClick(R.id.startUpload)
     public void startUpload(View v) {
-        Toast.makeText(BatchCapture.this, getString(R.string.upload_success), Toast.LENGTH_LONG).show();
+        Toast.makeText(BatchCaptureActivity.this, getString(R.string.upload_success), Toast.LENGTH_LONG).show();
     }
     protected void onResume() {
         super.onResume();
@@ -77,7 +74,7 @@ public class BatchCapture extends Capture {
             profile=null;
         }
         scanedStringList=new ArrayList<String>() {};
-        scanedAdapter=new ScanedAdapter(BatchCapture.this,scanedStringList);
+        scanedAdapter=new ScanedAdapter(BatchCaptureActivity.this,scanedStringList);
         scanedList.setAdapter(scanedAdapter);
     }
     @Override
@@ -98,8 +95,28 @@ public class BatchCapture extends Capture {
         playBeepSoundAndVibrate();
         String resultString = result.getText();
         if (resultString.equals("")) {
-            Toast.makeText(BatchCapture.this, R.string.scan_error, Toast.LENGTH_SHORT).show();
+            Toast.makeText(BatchCaptureActivity.this, R.string.scan_error, Toast.LENGTH_SHORT).show();
         } else {
+            HistoryActivity history= new HistoryActivity();
+//            historyactivity(newDesc);
+//            historyactivity.setEmployeeid(profile.getEmployeeid());
+//            historyactivity.setDepartment(profile.getDepartment());
+//            historyactivity.setName(profile.getName());
+//            if(descHistoryDao!=null){
+//            }else{
+//                descHistoryDao= MyApplication.getDaoSession(mContext).getDescHistoryDao();
+//            }
+//
+//            if(descHistoryDao.insert(descHistory)>0){
+//                scanedStringList.add(resultString);
+//                scanedAdapter.setScanedStringList(scanedStringList);
+//                scanedList.setAdapter(scanedAdapter);
+//                scanedAdapter.notifyDataSetChanged();
+//            }else{
+//                Toast.makeText(mContext,R.string.update_error,Toast.LENGTH_LONG).show();
+//            }
+
+
             scanedStringList.add(resultString);
             scanedList.setAdapter(scanedAdapter);
             scanedAdapter.notifyDataSetChanged();

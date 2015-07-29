@@ -19,7 +19,7 @@ public class HistoryDao extends AbstractDao<History, Long> {
     public static final String TABLENAME = "HISTORY";
 
     /**
-     * Properties of entity History.<br/>
+     * Properties of entity HistoryActivity.<br/>
      * Can be used for QueryBuilder and for referencing column names.
     */
     public static class Properties {

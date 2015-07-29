@@ -26,8 +26,8 @@ import java.util.List;
 /**
  * Created by pandeng on 2015/7/29.
  */
-public class History extends Activity {
-    Context mContext=History.this;
+public class HistoryActivity extends Activity {
+    Context mContext = HistoryActivity.this;
     @InjectView(R.id.fileNameAdd)
     Button fileNameAdd;
     @InjectView(R.id.desc)
@@ -37,66 +37,69 @@ public class History extends Activity {
     String historyRequestType;
     @InjectViews({R.id.fileNameAdd, R.id.desc})
     List<View> views;
-    Profile profile=null;
+    Profile profile = null;
     DescHistoryDao descHistoryDao;
     List<DescHistory> descHistoryList;
     HistoryAdapter historyAdapter;
     EditText editText;
     AlertDialog alertDialog;
-    String newDesc="";
+    String newDesc = "";
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.history);
-        editText=(EditText)LayoutInflater.from(mContext).inflate(R.layout.edittext,null);
+        setContentView(R.layout.historyactivity);
+        editText = (EditText) LayoutInflater.from(mContext).inflate(R.layout.edittext, null);
         ButterKnife.inject(this);
 
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();
-        try{
-            String HRT=this.getIntent().getStringExtra("historyRequestType");
-            if(HRT!=null)
-                historyRequestType=HRT;
-        }catch(Exception e){
-            historyRequestType= Constants.HistoryRequestType.JustHistory.value;
+        try {
+            String HRT = this.getIntent().getStringExtra("historyRequestType");
+            if (HRT != null)
+                historyRequestType = HRT;
+        } catch (Exception e) {
+            historyRequestType = Constants.HistoryRequestType.JustHistory.value;
         }
-        try{
+        try {
             profile = (Profile) this.getIntent().getSerializableExtra("profile");
-        }catch(Exception e){
-            profile=null;
+        } catch (Exception e) {
+            profile = null;
         }
-        if(historyRequestType.equals(Constants.HistoryRequestType.JustHistory.value)){
+        if (historyRequestType.equals(Constants.HistoryRequestType.JustHistory.value)) {
             ButterKnife.apply(views, ButterKnifeAction.GONE);
-        }else {
+        } else {
             ButterKnife.apply(views, ButterKnifeAction.VISIBLE);
         }
-        if(descHistoryDao!=null){
-        }else{
-            descHistoryDao=MyApplication.getDaoSession(mContext).getDescHistoryDao();
+        if (descHistoryDao != null) {
+        } else {
+            descHistoryDao = MyApplication.getDaoSession(mContext).getDescHistoryDao();
         }
-        descHistoryList= descHistoryDao.loadAll();
-        historyAdapter=new HistoryAdapter(mContext,descHistoryList,null);
+        descHistoryList = descHistoryDao.loadAll();
+        historyAdapter = new HistoryAdapter(mContext, descHistoryList, null);
         history.setAdapter(historyAdapter);
 
     }
+
     @OnClick(R.id.fileNameAdd)
-    public void fileNameAdd(){
-        if(alertDialog==null||alertDialog.isShowing()){
-            alertDialog=new AlertDialog.Builder(mContext).create();
+    public void fileNameAdd() {
+        if (alertDialog == null || alertDialog.isShowing()) {
+            alertDialog = new AlertDialog.Builder(mContext).create();
             alertDialog.setTitle(mContext.getString(R.string.please_enter));
             alertDialog.setView(editText);
             alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, mContext.getString(R.string.confirm), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
-                    newDesc=editText.getText().toString();
+                    newDesc = editText.getText().toString();
                     mHandler.obtainMessage(0).sendToTarget();
                     alertDialog.dismiss();
                 }
             });
-            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE,mContext.getString(R.string.cancel), new DialogInterface.OnClickListener() {
+            alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, mContext.getString(R.string.cancel), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     alertDialog.dismiss();
@@ -109,34 +112,34 @@ public class History extends Activity {
     }
 
 
-   @OnItemClick(R.id.history)
-   public void nextStep(AdapterView<?> adapterView, View view, int i, long l){
-        Intent intent=new Intent(mContext,BatchCapture.class);
-        descHistoryList.get(i);
+    @OnItemClick(R.id.history)
+    public void nextStep(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(mContext, BatchCaptureActivity.class);
+        intent.putExtra("Desc", descHistoryList.get(i).getDesc());
         this.startActivity(intent);
-   }
+    }
 
     Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
-                    DescHistory descHistory= new DescHistory();
+                    DescHistory descHistory = new DescHistory();
                     descHistory.setDesc(newDesc);
                     descHistory.setEmployeeid(profile.getEmployeeid());
                     descHistory.setDepartment(profile.getDepartment());
                     descHistory.setName(profile.getName());
-                    if(descHistoryDao!=null){
-                    }else{
-                        descHistoryDao=MyApplication.getDaoSession(mContext).getDescHistoryDao();
+                    if (descHistoryDao != null) {
+                    } else {
+                        descHistoryDao = MyApplication.getDaoSession(mContext).getDescHistoryDao();
                     }
 
-                    if(descHistoryDao.insert(descHistory)>0){
+                    if (descHistoryDao.insert(descHistory) > 0) {
                         descHistoryList.add(descHistory);
                         historyAdapter.setDescHistory(descHistoryList);
                         history.setAdapter(historyAdapter);
 //                        historyAdapter.notifyDataSetChanged();
-                    }else{
-                        Toast.makeText(mContext,R.string.update_error,Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(mContext, R.string.update_error, Toast.LENGTH_LONG).show();
                     }
                     break;
                 default:

@@ -28,20 +28,20 @@ import android.os.Message;
 import android.util.Log;
 
 import com.ca.scan.R;
+import com.ca.scan.activity.CaptureActivity;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.Result;
-import com.ca.scan.activity.Capture;
 import com.zxing.camera.CameraManager;
 import com.zxing.view.ViewfinderResultPointCallback;
 
 /**
- * This class handles all the messaging which comprises the state machine for capture.
+ * This class handles all the messaging which comprises the state machine for captureactivity.
  */
 public final class CaptureActivityHandler extends Handler {
 
   private static final String TAG = CaptureActivityHandler.class.getSimpleName();
 
-  private final Capture activity;
+  private final CaptureActivity activity;
   private final DecodeThread decodeThread;
   private State state;
 
@@ -51,14 +51,14 @@ public final class CaptureActivityHandler extends Handler {
     DONE
   }
 
-  public CaptureActivityHandler(Capture activity, Vector<BarcodeFormat> decodeFormats,
+  public CaptureActivityHandler(CaptureActivity activity, Vector<BarcodeFormat> decodeFormats,
       String characterSet) {
     this.activity = activity;
     decodeThread = new DecodeThread(activity, decodeFormats, characterSet,
         new ViewfinderResultPointCallback(activity.getViewfinderView()));
     decodeThread.start();
     state = State.SUCCESS;
-    // Start ourselves capturing previews and decoding.
+    // StartActivity ourselves capturing previews and decoding.
     CameraManager.get().startPreview();
     restartPreviewAndDecode();
   }
@@ -68,7 +68,7 @@ public final class CaptureActivityHandler extends Handler {
     switch (message.what) {
       case R.id.auto_focus:
         //Log.d(TAG, "Got auto-focus message");
-        // When one auto focus pass finishes, start another. This is the closest thing to
+        // When one auto focus pass finishes, startactivity another. This is the closest thing to
         // continuous AF. It does seem to hunt a bit, but I'm not sure what else to do.
         if (state == State.PREVIEW) {
           CameraManager.get().requestAutoFocus(this, R.id.auto_focus);
@@ -91,7 +91,7 @@ public final class CaptureActivityHandler extends Handler {
         /***********************************************************************/
         break;
       case R.id.decode_failed:
-        // We're decoding as fast as possible, so when one decode fails, start another.
+        // We're decoding as fast as possible, so when one decode fails, startactivity another.
         state = State.PREVIEW;
         CameraManager.get().requestPreviewFrame(decodeThread.getHandler(), R.id.decode);
         break;

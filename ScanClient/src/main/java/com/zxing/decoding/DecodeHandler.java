@@ -21,7 +21,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import com.ca.scan.R;
-import com.ca.scan.activity.Capture;
+import com.ca.scan.activity.CaptureActivity;
 import com.google.zxing.*;
 import com.google.zxing.common.HybridBinarizer;
 import com.zxing.camera.CameraManager;
@@ -33,10 +33,10 @@ final class DecodeHandler extends Handler {
 
   private static final String TAG = DecodeHandler.class.getSimpleName();
 
-  private final Capture activity;
+  private final CaptureActivity activity;
   private final MultiFormatReader multiFormatReader;
 
-  DecodeHandler(Capture activity, Hashtable<DecodeHintType, Object> hints) {
+  DecodeHandler(CaptureActivity activity, Hashtable<DecodeHintType, Object> hints) {
     multiFormatReader = new MultiFormatReader();
     multiFormatReader.setHints(hints);
     this.activity = activity;

@@ -21,13 +21,13 @@
 
 
         <Button
-            android:id="@+id/btn_cancel_scan"
+            android:id="@+id/cancelScanButton"
             android:layout_width="230dp"
             android:layout_height="@dimen/activity_button_height"
             android:layout_alignParentBottom="true"
             android:layout_centerInParent="true"
             android:layout_marginBottom="75dp"
-            android:text="取消"
+            android:text="@string/quit"
             android:textSize="15sp"
             android:textStyle="bold" />
 

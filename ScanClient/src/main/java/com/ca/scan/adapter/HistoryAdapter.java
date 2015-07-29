@@ -71,5 +71,6 @@ public class HistoryAdapter extends BaseAdapter {
 
     public void setDescHistory(List<DescHistory> descHistory) {
         DescHistory = descHistory;
+        this.notifyDataSetChanged();
     }
 }
