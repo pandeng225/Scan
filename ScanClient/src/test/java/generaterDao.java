@@ -14,8 +14,6 @@ public class generaterDao {
         addHistory(schema);
         addDescHistory(schema);
         new DaoGenerator().generateAll(schema, "D:\\WorkPlace\\Scan\\ScanClient\\src\\main\\java\\");
-
-
     }
 
 
@@ -29,14 +27,16 @@ public class generaterDao {
     }
 
     private static void addHistory(Schema schema) {
-        Entity History = schema.addEntity("HistoryActivity");
-        History.addIdProperty();
-        History.addStringProperty("name").notNull();
-        History.addStringProperty("department").notNull();
-        History.addStringProperty("employeeid");
-        History.addStringProperty("filename");
-        History.addStringProperty("desc");
-        History.addDateProperty("date");
+        Entity ScanHistory = schema.addEntity("ScanHistory");
+        ScanHistory.addIdProperty();
+        ScanHistory.addStringProperty("name").notNull();
+        ScanHistory.addStringProperty("department").notNull();
+        ScanHistory.addStringProperty("employeeid");
+        ScanHistory.addStringProperty("expressno").notNull();
+        ScanHistory.addStringProperty("filename");
+        ScanHistory.addStringProperty("ifupload");
+        ScanHistory.addStringProperty("desc");
+        ScanHistory.addDateProperty("date");
     }
 
     private static void addDescHistory(Schema schema) {

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Vector;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
@@ -38,6 +39,7 @@ import com.zxing.view.ViewfinderView;
  * @author Ryan.Tang
  */
 public class CaptureActivity extends Activity implements Callback {
+    protected Context mContext=CaptureActivity.this;
     protected CaptureActivityHandler handler;
     protected ViewfinderView viewfinderView;
     protected boolean hasSurface;

@@ -63,14 +63,14 @@ public class HistoryActivity extends Activity {
             if (HRT != null)
                 historyRequestType = HRT;
         } catch (Exception e) {
-            historyRequestType = Constants.HistoryRequestType.JustHistory.value;
+            historyRequestType = Constants.HistoryRequestType.DescHistory.value;
         }
         try {
             profile = (Profile) this.getIntent().getSerializableExtra("profile");
         } catch (Exception e) {
             profile = null;
         }
-        if (historyRequestType.equals(Constants.HistoryRequestType.JustHistory.value)) {
+        if (historyRequestType.equals(Constants.HistoryRequestType.ScanHistory.value)) {
             ButterKnife.apply(views, ButterKnifeAction.GONE);
         } else {
             ButterKnife.apply(views, ButterKnifeAction.VISIBLE);
@@ -80,7 +80,7 @@ public class HistoryActivity extends Activity {
             descHistoryDao = MyApplication.getDaoSession(mContext).getDescHistoryDao();
         }
         descHistoryList = descHistoryDao.loadAll();
-        historyAdapter = new HistoryAdapter(mContext, descHistoryList, null);
+        historyAdapter = new HistoryAdapter(mContext, descHistoryList, Constants.HistoryRequestType.DescHistory.value);
         history.setAdapter(historyAdapter);
 
     }
@@ -115,7 +115,8 @@ public class HistoryActivity extends Activity {
     @OnItemClick(R.id.history)
     public void nextStep(AdapterView<?> adapterView, View view, int i, long l) {
         Intent intent = new Intent(mContext, BatchCaptureActivity.class);
-        intent.putExtra("Desc", descHistoryList.get(i).getDesc());
+        intent.putExtra("desc", descHistoryList.get(i).getDesc());
+        intent.putExtra("profile", profile);
         this.startActivity(intent);
     }
 
@@ -135,8 +136,7 @@ public class HistoryActivity extends Activity {
 
                     if (descHistoryDao.insert(descHistory) > 0) {
                         descHistoryList.add(descHistory);
-                        historyAdapter.setDescHistory(descHistoryList);
-                        history.setAdapter(historyAdapter);
+                        historyAdapter.setHistories(descHistoryList);
 //                        historyAdapter.notifyDataSetChanged();
                     } else {
                         Toast.makeText(mContext, R.string.update_error, Toast.LENGTH_LONG).show();

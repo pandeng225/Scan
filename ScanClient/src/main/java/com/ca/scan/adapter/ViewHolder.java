@@ -15,6 +15,9 @@ public final class ViewHolder {
     @InjectView(R.id.title)
     TextView title;
     @Optional
+    @InjectView(R.id.uploaded)
+    TextView uploaded;
+    @Optional
     @InjectView(R.id.deleteButton)
     Button deleteButton;
     public ViewHolder(View view) {

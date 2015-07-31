@@ -41,7 +41,7 @@ public class Constants {
     }
 
     public   enum HistoryRequestType{
-        JustHistory("00"),FromHistory("01");
+        ScanHistory("00"),DescHistory("01");
         public final String value;
         HistoryRequestType(String value) {
             this.value = value;

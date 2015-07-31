@@ -62,7 +62,7 @@ public class MainMenuActivity extends Activity {
     public void startBatchScan() {
         intent = new Intent(mContext, HistoryActivity.class);
         intent.putExtra("profile", profile);
-        intent.putExtra("historyRequestType", Constants.HistoryRequestType.FromHistory.value);
+        intent.putExtra("historyRequestType", Constants.HistoryRequestType.DescHistory.value);
         startActivity(intent);
     }
     @OnClick(R.id.myProfile)
@@ -76,7 +76,7 @@ public class MainMenuActivity extends Activity {
     public void history() {
         intent = new Intent(mContext, HistoryActivity.class);
         intent.putExtra("profile",profile);
-        intent.putExtra("historyRequestType", Constants.HistoryRequestType.JustHistory.value);
+        intent.putExtra("historyRequestType", Constants.HistoryRequestType.ScanHistory.value);
         startActivity(intent);
     }
     /**
