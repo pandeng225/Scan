@@ -19,6 +19,7 @@
 			android:layout_width="@dimen/activity_uploaded_width"
 			android:layout_height="@dimen/activity_uploaded_height"
 			android:background="@drawable/uploaded"
+			android:layout_marginRight="@dimen/activity_margin_half"
 			android:layout_toLeftOf="@+id/deleteButton"
 			android:layout_centerVertical="true"/>
 

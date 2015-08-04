@@ -1,8 +1,5 @@
 package com.ca.scan.activity;
 
-import java.io.IOException;
-import java.util.Vector;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,7 +17,6 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -32,6 +28,9 @@ import com.zxing.camera.CameraManager;
 import com.zxing.decoding.CaptureActivityHandler;
 import com.zxing.decoding.InactivityTimer;
 import com.zxing.view.ViewfinderView;
+
+import java.io.IOException;
+import java.util.Vector;
 
 /**
  * Initial the camera
@@ -53,8 +52,6 @@ public class CaptureActivity extends Activity implements Callback {
     @InjectView(R.id.cancelScanButton)
     public Button cancelScanButton;
     protected RequestQueue mQueue;
-    @InjectView(R.id.preview_view)
-    public SurfaceView surfaceView ;
     /**
      * Called when the activity is first created.
      */
@@ -98,6 +95,7 @@ public class CaptureActivity extends Activity implements Callback {
     }
 
     protected void init(){
+        SurfaceView surfaceView = (SurfaceView) findViewById(R.id.preview_view);
         SurfaceHolder surfaceHolder = surfaceView.getHolder();
         if (hasSurface) {
             initCamera(surfaceHolder);

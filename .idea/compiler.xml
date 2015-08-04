@@ -17,18 +17,39 @@
       <profile default="true" name="Default" enabled="false">
         <processorPath useClasspath="true" />
       </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+      <profile default="false" name="Annotation profile for ScanClient" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
         <module name="ScanClient" />
-        <module name="ScanHttpclient" />
+      </profile>
+      <profile default="false" name="Annotation profile for ScanRest" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+      </profile>
+      <profile default="false" name="Annotation profile for ableman-admin" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ableman-admin" />
+      </profile>
+      <profile default="false" name="Annotation profile for ScanWeb" enabled="true">
+        <sourceOutputDir name="target\generated-sources\annotations" />
+        <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="ScanWeb" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ableman-admin" target="1.7" />
       <module name="ScanClient" target="1.7" />
-      <module name="ScanHttpclient" target="1.7" />
+      <module name="ScanRest" target="1.7" />
+      <module name="ScanWeb" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

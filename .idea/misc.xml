@@ -3,10 +3,15 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/ScanWeb" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/ScanClient/pom.xml" />
+        <option value="$PROJECT_DIR$/ScanHttpClient/pom.xml" />
+        <option value="$PROJECT_DIR$/ScanWeb/pom.xml" />
       </list>
     </option>
   </component>

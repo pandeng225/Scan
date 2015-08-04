@@ -26,7 +26,10 @@ import com.ca.scan.dao.ScanHistoryDao.Properties;
 import com.google.zxing.Result;
 import de.greenrobot.dao.query.QueryBuilder;
 
-import java.util.*;
+import java.util.Date;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by pandeng on 2015/7/28.
@@ -69,6 +72,10 @@ public class BatchCaptureActivity extends CaptureActivity {
     @OnClick(R.id.startUpload)
     public void startUpload(View v) {
         Toast.makeText(BatchCaptureActivity.this, getString(R.string.upload_success), Toast.LENGTH_LONG).show();
+    }
+    @OnClick(R.id.cancelScanButton)
+    public void cancelScan(View v) {
+        super.finish();
     }
 
     protected void onResume() {
@@ -128,8 +135,7 @@ public class BatchCaptureActivity extends CaptureActivity {
             if (scanHistoryDao.insert(scanHistory) > 0) {
                 scanHistories.add(scanHistory);
                 historyAdapter.setHistories(scanHistories);
-                scanedList.setAdapter(historyAdapter);
-                historyAdapter.notifyDataSetChanged();
+                scanedList.smoothScrollByOffset(this.getResources().getDimensionPixelOffset(R.dimen.activity_list_height)+this.getResources().getDimensionPixelOffset(R.dimen.activity_margin_half));
                 Timer timer = new Timer();
                 TimerTask task = new TimerTask() {
                     @Override

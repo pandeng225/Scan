@@ -20,6 +20,7 @@ public class ScanHistory {
     private java.util.Date date;
 
     public ScanHistory() {
+        ifupload="0";
     }
 
     public ScanHistory(Long id) {

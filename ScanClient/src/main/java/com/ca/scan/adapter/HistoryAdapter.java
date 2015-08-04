@@ -68,8 +68,9 @@ public class HistoryAdapter extends BaseAdapter {
             holder.uploaded.setVisibility(View.INVISIBLE);
             holder.deleteButton.setVisibility(View.INVISIBLE);
         }else{
-            holder.title.setText(((ScanHistory)histories.get(position)).getDesc());
-            if(((ScanHistory)histories.get(position)).getIfupload().equals("0")){
+            ScanHistory scanHistory=(ScanHistory)histories.get(position);
+            holder.title.setText(scanHistory.getExpressno());
+            if(scanHistory.getIfupload()!=null&&scanHistory.getIfupload().equals("0")){
                 holder.uploaded.setVisibility(View.INVISIBLE);
                 holder.deleteButton.setVisibility(View.VISIBLE);
             }else{
@@ -93,6 +94,7 @@ public class HistoryAdapter extends BaseAdapter {
 
     public void setHistories(List<?> histories) {
         this.histories = histories;
+        this.notifyDataSetChanged();
     }
 
 }
