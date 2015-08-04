@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ca.mapper.SysStaffAddrMapper" >
+  <resultMap id="BaseResultMap" type="com.ca.entity.SysStaffAddr" >
+    <result column="STAFF_ID" property="staffId" jdbcType="DECIMAL" />
+    <result column="ADDR_TYPE" property="addrType" jdbcType="CHAR" />
+    <result column="PROVINCE_CODE" property="provinceCode" jdbcType="CHAR" />
+    <result column="CITY_CODE" property="cityCode" jdbcType="CHAR" />
+    <result column="DISTRICT_CODE" property="districtCode" jdbcType="VARCHAR" />
+    <result column="POST_CODE" property="postCode" jdbcType="CHAR" />
+    <result column="POST_ADDR" property="postAddr" jdbcType="VARCHAR" />
+    <result column="LINKMAN" property="linkman" jdbcType="VARCHAR" />
+    <result column="LINK_PHONE" property="linkPhone" jdbcType="VARCHAR" />
+    <result column="VALUES1" property="values1" jdbcType="VARCHAR" />
+    <result column="VALUES2" property="values2" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ca.entity.SysStaffAddr" >
+    insert into SYS_D_STAFF_ADDR (STAFF_ID, ADDR_TYPE, PROVINCE_CODE, 
+      CITY_CODE, DISTRICT_CODE, POST_CODE, 
+      POST_ADDR, LINKMAN, LINK_PHONE, 
+      VALUES1, VALUES2)
+    values (#{staffId,jdbcType=DECIMAL}, #{addrType,jdbcType=CHAR}, #{provinceCode,jdbcType=CHAR}, 
+      #{cityCode,jdbcType=CHAR}, #{districtCode,jdbcType=VARCHAR}, #{postCode,jdbcType=CHAR}, 
+      #{postAddr,jdbcType=VARCHAR}, #{linkman,jdbcType=VARCHAR}, #{linkPhone,jdbcType=VARCHAR}, 
+      #{values1,jdbcType=VARCHAR}, #{values2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ca.entity.SysStaffAddr" >
+    insert into SYS_D_STAFF_ADDR
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="staffId != null" >
+        STAFF_ID,
+      </if>
+      <if test="addrType != null" >
+        ADDR_TYPE,
+      </if>
+      <if test="provinceCode != null" >
+        PROVINCE_CODE,
+      </if>
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="districtCode != null" >
+        DISTRICT_CODE,
+      </if>
+      <if test="postCode != null" >
+        POST_CODE,
+      </if>
+      <if test="postAddr != null" >
+        POST_ADDR,
+      </if>
+      <if test="linkman != null" >
+        LINKMAN,
+      </if>
+      <if test="linkPhone != null" >
+        LINK_PHONE,
+      </if>
+      <if test="values1 != null" >
+        VALUES1,
+      </if>
+      <if test="values2 != null" >
+        VALUES2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="staffId != null" >
+        #{staffId,jdbcType=DECIMAL},
+      </if>
+      <if test="addrType != null" >
+        #{addrType,jdbcType=CHAR},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=CHAR},
+      </if>
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=CHAR},
+      </if>
+      <if test="districtCode != null" >
+        #{districtCode,jdbcType=VARCHAR},
+      </if>
+      <if test="postCode != null" >
+        #{postCode,jdbcType=CHAR},
+      </if>
+      <if test="postAddr != null" >
+        #{postAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="linkPhone != null" >
+        #{linkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="values1 != null" >
+        #{values1,jdbcType=VARCHAR},
+      </if>
+      <if test="values2 != null" >
+        #{values2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="update" parameterType="com.ca.entity.SysStaffAddr" >
+    update SYS_D_STAFF_ADDR
+    set PROVINCE_CODE=#{provinceCode,jdbcType=CHAR}, 
+      CITY_CODE=#{cityCode,jdbcType=CHAR}, DISTRICT_CODE=#{districtCode,jdbcType=VARCHAR}, POST_CODE=#{postCode,jdbcType=CHAR}, 
+      POST_ADDR=#{postAddr,jdbcType=VARCHAR}, LINKMAN=#{linkman,jdbcType=VARCHAR}, LINK_PHONE=#{linkPhone,jdbcType=VARCHAR}, 
+      VALUES1=#{values1,jdbcType=VARCHAR}, VALUES2=#{values2,jdbcType=VARCHAR})    
+    where STAFF_ID=#{staffId,jdbcType=DECIMAL} and ADDR_TYPE=#{addrType,jdbcType=CHAR}
+  </update>
+    <update id="updateSelective" parameterType="com.ca.entity.SysStaffAddr" >
+    update SYS_D_STAFF_ADDR
+    <set>
+    	 <if test="provinceCode != null">
+  			PROVINCE_CODE=#{provinceCode,jdbcType=CHAR},
+  	   	 </if>
+  	   	 <if test="cityCode != null">
+  			CITY_CODE=#{cityCode,jdbcType=CHAR},
+  	   	 </if>
+  	   	 <if test="districtCode != null">
+  			DISTRICT_CODE=#{districtCode,jdbcType=VARCHAR},
+  	   	 </if>
+  	   	 <if test="postCode != null">
+  			POST_CODE=#{postCode,jdbcType=CHAR},
+  	   	 </if>
+  	   	 <if test="postAddr != null">
+  			POST_ADDR=#{postAddr,jdbcType=VARCHAR},
+  	   	 </if>
+  	   	 <if test="linkman != null">
+  			LINKMAN=#{linkman,jdbcType=VARCHAR},
+  	   	 </if>
+  	   	 <if test="linkPhone != null">
+  			LINK_PHONE=#{linkPhone,jdbcType=VARCHAR},
+  	   	 </if>
+  	   	 <if test="values1 != null">
+  			VALUES1=#{values1,jdbcType=VARCHAR},
+  	   	 </if>
+  	   	 <if test="values2 != null">
+  			VALUES2=#{values2,jdbcType=VARCHAR},
+  	   	 </if>
+    </set>
+    where 
+    	  <if test="staffId != null" >
+           STAFF_ID = #{staffId,jdbcType=DECIMAL}
+          </if>
+          <if test="addrType != null" >
+            AND ADDR_TYPE=#{addrType,jdbcType=CHAR}
+     	  </if>
+  </update>
+   
+  <select id="findOneAddr" parameterType="com.ca.entity.SysStaffAddr" resultType="java.util.Map">
+       SELECT SA.STAFF_ID, SA.ADDR_TYPE, SA.PROVINCE_CODE, WP.PROVINCE_NAME,
+                SA.CITY_CODE, WC.CITY_NAME, SA.DISTRICT_CODE, WD.DISTRICT_NAME,
+                SA.POST_CODE, SA.POST_ADDR, SA.LINKMAN, SA.LINK_PHONE,SF.CITY_CODE SF_CITY_CODE
+           FROM SYS_D_STAFF_ADDR SA, SYS_P_WEB_PROVINCE WP, SYS_P_WEB_CITY WC,
+                SYS_P_WEB_DISTRICT WD,SYS_D_SF_AREA SF
+          WHERE SA.PROVINCE_CODE = WP.ESS_PROVINCE_CODE
+            AND SA.CITY_CODE = WC.ESS_CITY_CODE
+            AND SA.DISTRICT_CODE = WD.DISTRICT_CODE
+            AND SF.CITY_NAME = WC.CITY_NAME
+          <if test="staffId != null" >
+           AND SA.STAFF_ID = #{staffId,jdbcType=DECIMAL}
+          </if>
+          <if test="addrType != null" >
+            AND SA.ADDR_TYPE=#{addrType,jdbcType=CHAR}
+          </if>
+  </select>
+  
+</mapper>

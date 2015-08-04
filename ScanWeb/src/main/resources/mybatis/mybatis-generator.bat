@@ -1,0 +1,2 @@
+java -jar D:\mavenRepository\org\mybatis\generator\mybatis-generator-core\1.3.2\mybatis-generator-core-1.3.2.jar -configfile D:\WorkPlace\ableman\10-code\101-Projects\ableman-admin\src\main\resources\mybatis\generatorConfig.xml
+pause;

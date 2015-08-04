@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ca.mapper.FuncRightMapper" >
+  <resultMap id="BaseResultMap" type="com.ca.entity.FuncRight" >
+    <id column="RIGHT_CODE" property="rightCode" jdbcType="VARCHAR" />
+    <result column="RIGHT_NAME" property="rightName" jdbcType="VARCHAR" />
+    <result column="RIGHT_DESC" property="rightDesc" jdbcType="VARCHAR" />
+    <result column="RIGHT_STATE" property="rightState" jdbcType="CHAR" />
+    <result column="UPDATE_STAFF" property="updateStaff" jdbcType="DECIMAL" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="VALUES1" property="values1" jdbcType="VARCHAR" />
+    <result column="VALUES2" property="values2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RIGHT_CODE, RIGHT_NAME, RIGHT_DESC, RIGHT_STATE, UPDATE_STAFF, UPDATE_TIME, VALUES1, 
+    VALUES2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_P_FUNCRIGHT
+    where RIGHT_CODE = #{rightCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from SYS_P_FUNCRIGHT
+    where RIGHT_CODE = #{rightCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ca.entity.FuncRight" >
+    insert into SYS_P_FUNCRIGHT (RIGHT_CODE, RIGHT_NAME, RIGHT_DESC, 
+      RIGHT_STATE, UPDATE_STAFF, UPDATE_TIME, 
+      VALUES1, VALUES2)
+    values (#{rightCode,jdbcType=VARCHAR}, #{rightName,jdbcType=VARCHAR}, #{rightDesc,jdbcType=VARCHAR}, 
+      #{rightState,jdbcType=CHAR}, #{updateStaff,jdbcType=DECIMAL}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{values1,jdbcType=VARCHAR}, #{values2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ca.entity.FuncRight" >
+    insert into SYS_P_FUNCRIGHT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rightCode != null" >
+        RIGHT_CODE,
+      </if>
+      <if test="rightName != null" >
+        RIGHT_NAME,
+      </if>
+      <if test="rightDesc != null" >
+        RIGHT_DESC,
+      </if>
+      <if test="rightState != null" >
+        RIGHT_STATE,
+      </if>
+      <if test="updateStaff != null" >
+        UPDATE_STAFF,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="values1 != null" >
+        VALUES1,
+      </if>
+      <if test="values2 != null" >
+        VALUES2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rightCode != null" >
+        #{rightCode,jdbcType=VARCHAR},
+      </if>
+      <if test="rightName != null" >
+        #{rightName,jdbcType=VARCHAR},
+      </if>
+      <if test="rightDesc != null" >
+        #{rightDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="rightState != null" >
+        #{rightState,jdbcType=CHAR},
+      </if>
+      <if test="updateStaff != null" >
+        #{updateStaff,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="values1 != null" >
+        #{values1,jdbcType=VARCHAR},
+      </if>
+      <if test="values2 != null" >
+        #{values2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ca.entity.FuncRight" >
+    update SYS_P_FUNCRIGHT
+    <set >
+      <if test="rightName != null" >
+        RIGHT_NAME = #{rightName,jdbcType=VARCHAR},
+      </if>
+      <if test="rightDesc != null" >
+        RIGHT_DESC = #{rightDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="rightState != null" >
+        RIGHT_STATE = #{rightState,jdbcType=CHAR},
+      </if>
+      <if test="updateStaff != null" >
+        UPDATE_STAFF = #{updateStaff,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="values1 != null" >
+        VALUES1 = #{values1,jdbcType=VARCHAR},
+      </if>
+      <if test="values2 != null" >
+        VALUES2 = #{values2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RIGHT_CODE = #{rightCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ca.entity.FuncRight" >
+    update SYS_P_FUNCRIGHT
+    set RIGHT_NAME = #{rightName,jdbcType=VARCHAR},
+      RIGHT_DESC = #{rightDesc,jdbcType=VARCHAR},
+      RIGHT_STATE = #{rightState,jdbcType=CHAR},
+      UPDATE_STAFF = #{updateStaff,jdbcType=DECIMAL},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      VALUES1 = #{values1,jdbcType=VARCHAR},
+      VALUES2 = #{values2,jdbcType=VARCHAR}
+    where RIGHT_CODE = #{rightCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

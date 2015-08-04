@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
+    <container-descriptor>
+        <prefer-web-inf-classes>false</prefer-web-inf-classes>
+        <prefer-application-packages>
+            <package-name>org.slf4j.*</package-name>
+            <package-name>ch.qos.logback.*</package-name>
+            <package-name>com.google.*</package-name>
+        </prefer-application-packages>
+    </container-descriptor>
+    <context-root>/</context-root>
+    <session-descriptor>
+        <timeout-secs>1800</timeout-secs>
+        <invalidation-interval-secs>60</invalidation-interval-secs>
+    </session-descriptor>
+</weblogic-web-app>

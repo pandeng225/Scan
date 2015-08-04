@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ca.mapper.RoleFuncRightMapper" >
+  <resultMap id="BaseResultMap" type="com.ca.entity.RoleFuncRight" >
+    <id column="ROLE_ID" property="roleId" jdbcType="DECIMAL" />
+    <id column="RIGHT_CODE" property="rightCode" jdbcType="VARCHAR" />
+    <result column="UPDATE_STAFF" property="updateStaff" jdbcType="DECIMAL" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="VALUES1" property="values1" jdbcType="VARCHAR" />
+    <result column="VALUES2" property="values2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ROLE_ID, RIGHT_CODE, UPDATE_STAFF, UPDATE_TIME, VALUES1, VALUES2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.ca.entity.RoleFuncRightKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_D_ROLE_FUNCRIGHT
+    where ROLE_ID = #{roleId,jdbcType=DECIMAL}
+      and RIGHT_CODE = #{rightCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.ca.entity.RoleFuncRightKey" >
+    delete from SYS_D_ROLE_FUNCRIGHT
+    where ROLE_ID = #{roleId,jdbcType=DECIMAL}
+      and RIGHT_CODE = #{rightCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ca.entity.RoleFuncRight" >
+    insert into SYS_D_ROLE_FUNCRIGHT (ROLE_ID, RIGHT_CODE, UPDATE_STAFF, 
+      UPDATE_TIME, VALUES1, VALUES2
+      )
+    values (#{roleId,jdbcType=DECIMAL}, #{rightCode,jdbcType=VARCHAR}, #{updateStaff,jdbcType=DECIMAL}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{values1,jdbcType=VARCHAR}, #{values2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ca.entity.RoleFuncRight" >
+    insert into SYS_D_ROLE_FUNCRIGHT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        ROLE_ID,
+      </if>
+      <if test="rightCode != null" >
+        RIGHT_CODE,
+      </if>
+      <if test="updateStaff != null" >
+        UPDATE_STAFF,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="values1 != null" >
+        VALUES1,
+      </if>
+      <if test="values2 != null" >
+        VALUES2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="roleId != null" >
+        #{roleId,jdbcType=DECIMAL},
+      </if>
+      <if test="rightCode != null" >
+        #{rightCode,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStaff != null" >
+        #{updateStaff,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="values1 != null" >
+        #{values1,jdbcType=VARCHAR},
+      </if>
+      <if test="values2 != null" >
+        #{values2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ca.entity.RoleFuncRight" >
+    update SYS_D_ROLE_FUNCRIGHT
+    <set >
+      <if test="updateStaff != null" >
+        UPDATE_STAFF = #{updateStaff,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="values1 != null" >
+        VALUES1 = #{values1,jdbcType=VARCHAR},
+      </if>
+      <if test="values2 != null" >
+        VALUES2 = #{values2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ROLE_ID = #{roleId,jdbcType=DECIMAL}
+      and RIGHT_CODE = #{rightCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ca.entity.RoleFuncRight" >
+    update SYS_D_ROLE_FUNCRIGHT
+    set UPDATE_STAFF = #{updateStaff,jdbcType=DECIMAL},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      VALUES1 = #{values1,jdbcType=VARCHAR},
+      VALUES2 = #{values2,jdbcType=VARCHAR}
+    where ROLE_ID = #{roleId,jdbcType=DECIMAL}
+      and RIGHT_CODE = #{rightCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

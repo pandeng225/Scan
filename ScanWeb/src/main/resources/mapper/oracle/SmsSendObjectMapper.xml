@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ca.mapper.SmsSendObjectMapper" >
+  <resultMap id="BaseResultMap" type="com.ca.entity.SmsSendObject" >
+    <id column="SEND_OBJECT_CODE" property="sendObjectCode" jdbcType="INTEGER" />
+    <id column="EPARCHY_CODE" property="eparchyCode" jdbcType="CHAR" />
+    <result column="SEND_OBJECT_DESC" property="sendObjectDesc" jdbcType="VARCHAR" />
+    <result column="SMS_CHANNEL_CODE" property="smsChannelCode" jdbcType="CHAR" />
+    <result column="SEND_OBJECT" property="sendObject" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="UPDATE_STAFF_ID" property="updateStaffId" jdbcType="CHAR" />
+    <result column="UPDATE_DEPART_ID" property="updateDepartId" jdbcType="CHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SEND_OBJECT_CODE, EPARCHY_CODE, SEND_OBJECT_DESC, SMS_CHANNEL_CODE, SEND_OBJECT, 
+    REMARK, UPDATE_STAFF_ID, UPDATE_DEPART_ID, UPDATE_TIME
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.ca.entity.SmsSendObjectKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from sms_d_sendobject
+    where SEND_OBJECT_CODE = #{sendObjectCode,jdbcType=INTEGER}
+      and EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.ca.entity.SmsSendObjectKey" >
+    delete from sms_d_sendobject
+    where SEND_OBJECT_CODE = #{sendObjectCode,jdbcType=INTEGER}
+      and EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ca.entity.SmsSendObject" >
+    insert into sms_d_sendobject (SEND_OBJECT_CODE, EPARCHY_CODE, SEND_OBJECT_DESC, 
+      SMS_CHANNEL_CODE, SEND_OBJECT, REMARK, 
+      UPDATE_STAFF_ID, UPDATE_DEPART_ID, UPDATE_TIME
+      )
+    values (#{sendObjectCode,jdbcType=INTEGER}, #{eparchyCode,jdbcType=CHAR}, #{sendObjectDesc,jdbcType=VARCHAR}, 
+      #{smsChannelCode,jdbcType=CHAR}, #{sendObject,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{updateStaffId,jdbcType=CHAR}, #{updateDepartId,jdbcType=CHAR}, #{updateTime,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ca.entity.SmsSendObject" >
+    insert into sms_d_sendobject
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sendObjectCode != null" >
+        SEND_OBJECT_CODE,
+      </if>
+      <if test="eparchyCode != null" >
+        EPARCHY_CODE,
+      </if>
+      <if test="sendObjectDesc != null" >
+        SEND_OBJECT_DESC,
+      </if>
+      <if test="smsChannelCode != null" >
+        SMS_CHANNEL_CODE,
+      </if>
+      <if test="sendObject != null" >
+        SEND_OBJECT,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID,
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sendObjectCode != null" >
+        #{sendObjectCode,jdbcType=INTEGER},
+      </if>
+      <if test="eparchyCode != null" >
+        #{eparchyCode,jdbcType=CHAR},
+      </if>
+      <if test="sendObjectDesc != null" >
+        #{sendObjectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="smsChannelCode != null" >
+        #{smsChannelCode,jdbcType=CHAR},
+      </if>
+      <if test="sendObject != null" >
+        #{sendObject,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        #{updateStaffId,jdbcType=CHAR},
+      </if>
+      <if test="updateDepartId != null" >
+        #{updateDepartId,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ca.entity.SmsSendObject" >
+    update sms_d_sendobject
+    <set >
+      <if test="sendObjectDesc != null" >
+        SEND_OBJECT_DESC = #{sendObjectDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="smsChannelCode != null" >
+        SMS_CHANNEL_CODE = #{smsChannelCode,jdbcType=CHAR},
+      </if>
+      <if test="sendObject != null" >
+        SEND_OBJECT = #{sendObject,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStaffId != null" >
+        UPDATE_STAFF_ID = #{updateStaffId,jdbcType=CHAR},
+      </if>
+      <if test="updateDepartId != null" >
+        UPDATE_DEPART_ID = #{updateDepartId,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=DATE},
+      </if>
+    </set>
+    where SEND_OBJECT_CODE = #{sendObjectCode,jdbcType=INTEGER}
+      and EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ca.entity.SmsSendObject" >
+    update sms_d_sendobject
+    set SEND_OBJECT_DESC = #{sendObjectDesc,jdbcType=VARCHAR},
+      SMS_CHANNEL_CODE = #{smsChannelCode,jdbcType=CHAR},
+      SEND_OBJECT = #{sendObject,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      UPDATE_STAFF_ID = #{updateStaffId,jdbcType=CHAR},
+      UPDATE_DEPART_ID = #{updateDepartId,jdbcType=CHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=DATE}
+    where SEND_OBJECT_CODE = #{sendObjectCode,jdbcType=INTEGER}
+      and EPARCHY_CODE = #{eparchyCode,jdbcType=CHAR}
+  </update>
+</mapper>

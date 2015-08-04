@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ca.mapper.SysDecoraterMapper" >
+  <resultMap id="BaseResultMap" type="com.ca.entity.SysDecorater" >
+    <result column="TYPE_ID" property="typeId" jdbcType="VARCHAR" />
+    <result column="DATA_KEY" property="dataKey" jdbcType="VARCHAR" />
+    <result column="DATA_TITLE" property="dataTitle" jdbcType="VARCHAR" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="ORDER_SEQ" property="orderSeq" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="STAFF_ID" property="staffId" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ca.entity.SysDecorater" >
+    insert into SYS_D_DECORATER (TYPE_ID, DATA_KEY, DATA_TITLE, 
+      CONTENT, ORDER_SEQ, STATUS, 
+      UPDATE_TIME, STAFF_ID)
+    values (#{typeId,jdbcType=VARCHAR}, #{dataKey,jdbcType=VARCHAR}, #{dataTitle,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{orderSeq,jdbcType=DECIMAL}, #{status,jdbcType=CHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{staffId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ca.entity.SysDecorater" >
+    insert into SYS_D_DECORATER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="typeId != null" >
+        TYPE_ID,
+      </if>
+      <if test="dataKey != null" >
+        DATA_KEY,
+      </if>
+      <if test="dataTitle != null" >
+        DATA_TITLE,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="orderSeq != null" >
+        ORDER_SEQ,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="staffId != null" >
+        STAFF_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="typeId != null" >
+        #{typeId,jdbcType=VARCHAR},
+      </if>
+      <if test="dataKey != null" >
+        #{dataKey,jdbcType=VARCHAR},
+      </if>
+      <if test="dataTitle != null" >
+        #{dataTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSeq != null" >
+        #{orderSeq,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staffId != null" >
+        #{staffId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+    <select id="findAllDecoraterByTypeId" parameterType="java.lang.String" resultType="java.util.Map">
+        SELECT A.*,B.STAFF_NAME FROM SYS_D_DECORATER A,SYS_D_STAFF B
+        WHERE
+        A.STAFF_ID = B.STAFF_ID
+        AND STATUS = '1'
+        AND TYPE_ID = #{typeId}
+        ORDER BY ORDER_SEQ
+    </select>
+
+    <delete id="delete" parameterType="com.ca.entity.SysDecorater">
+        DELETE FROM SYS_D_DECORATER
+        <where>
+            <if test="dataKey!=null and dataKey != ''">
+                AND DATA_KEY = #{dataKey}
+            </if>
+            <if test="typeId != null and typeId != ''">
+                AND TYPE_ID = #{typeId}
+            </if>
+            <if test="status != null and status !=''">
+                AND STATUS = #{status}
+            </if>
+        </where>
+    </delete>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        INSERT INTO SYS_D_DECORATER
+        (TYPE_ID,DATA_KEY,DATA_TITLE,CONTENT,ORDER_SEQ,STATUS,UPDATE_TIME,STAFF_ID)
+        <foreach collection="list" index="index" item="item" separator="union all">
+            (
+            SELECT #{item.typeId},#{item.dataKey},#{item.dataTitle},
+            #{item.content},#{item.orderSeq},#{item.status},
+            sysdate,#{item.staffId}
+            FROM DUAL
+            )
+        </foreach>
+    </insert>
+
+</mapper>

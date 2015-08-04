@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ca.mapper.SysNoticeMapper" >
+  <resultMap id="BaseResultMap" type="com.ca.entity.SysNotice" >
+    <id column="NOTICE_ID" property="noticeId" jdbcType="DECIMAL" />
+    <result column="NOTICE_TARGET" property="noticeTarget" jdbcType="CHAR" />
+    <result column="NOTICE_TYPE_ID" property="noticeTypeId" jdbcType="CHAR" />
+    <result column="DATA_TITLE" property="dataTitle" jdbcType="VARCHAR" />
+    <result column="CONTENT" property="content" jdbcType="VARCHAR" />
+    <result column="ORDER_SEQ" property="orderSeq" jdbcType="DECIMAL" />
+    <result column="STATUS" property="status" jdbcType="CHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="STAFF_ID" property="staffId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    NOTICE_ID, NOTICE_TARGET, NOTICE_TYPE_ID, DATA_TITLE, CONTENT, ORDER_SEQ, STATUS, 
+    UPDATE_TIME, STAFF_ID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_D_NOTICE
+    where NOTICE_ID = #{noticeId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from SYS_D_NOTICE
+    where NOTICE_ID = #{noticeId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ca.entity.SysNotice" >
+    insert into SYS_D_NOTICE (NOTICE_ID, NOTICE_TARGET, NOTICE_TYPE_ID, 
+      DATA_TITLE, CONTENT, ORDER_SEQ, 
+      STATUS, UPDATE_TIME, STAFF_ID
+      )
+    values (#{noticeId}, #{noticeTarget,jdbcType=CHAR}, #{noticeTypeId,jdbcType=CHAR},
+      #{dataTitle,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{orderSeq,jdbcType=DECIMAL}, 
+      '1', SYSDATE, #{staffId,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ca.entity.SysNotice" >
+    insert into SYS_D_NOTICE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+        NOTICE_ID,
+      <if test="noticeTarget != null" >
+        NOTICE_TARGET,
+      </if>
+      <if test="noticeTypeId != null" >
+        NOTICE_TYPE_ID,
+      </if>
+      <if test="dataTitle != null" >
+        DATA_TITLE,
+      </if>
+      <if test="content != null" >
+        CONTENT,
+      </if>
+      <if test="orderSeq != null" >
+        ORDER_SEQ,
+      </if>
+        STATUS,
+        UPDATE_TIME,
+      <if test="staffId != null" >
+        STAFF_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+        #{noticeId},
+      <if test="noticeTarget != null" >
+        #{noticeTarget,jdbcType=CHAR},
+      </if>
+      <if test="noticeTypeId != null" >
+        #{noticeTypeId,jdbcType=CHAR},
+      </if>
+      <if test="dataTitle != null" >
+        #{dataTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSeq != null" >
+        #{orderSeq,jdbcType=DECIMAL},
+      </if>
+      '1',
+      SYSDATE,
+      <if test="staffId != null" >
+        #{staffId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ca.entity.SysNotice" >
+    update SYS_D_NOTICE
+    <set >
+      <if test="noticeTarget != null" >
+        NOTICE_TARGET = #{noticeTarget,jdbcType=CHAR},
+      </if>
+      <if test="noticeTypeId != null" >
+        NOTICE_TYPE_ID = #{noticeTypeId,jdbcType=CHAR},
+      </if>
+      <if test="dataTitle != null" >
+        DATA_TITLE = #{dataTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        CONTENT = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="orderSeq != null" >
+        ORDER_SEQ = #{orderSeq,jdbcType=DECIMAL},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=CHAR},
+      </if>
+        UPDATE_TIME = SYSDATE,
+      <if test="staffId != null" >
+        STAFF_ID = #{staffId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where NOTICE_ID = #{noticeId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ca.entity.SysNotice" >
+    update SYS_D_NOTICE
+    set NOTICE_TARGET = #{noticeTarget,jdbcType=CHAR},
+      NOTICE_TYPE_ID = #{noticeTypeId,jdbcType=CHAR},
+      DATA_TITLE = #{dataTitle,jdbcType=VARCHAR},
+      CONTENT = #{content,jdbcType=VARCHAR},
+      ORDER_SEQ = #{orderSeq,jdbcType=DECIMAL},
+      STATUS = #{status,jdbcType=CHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      STAFF_ID = #{staffId,jdbcType=VARCHAR}
+    where NOTICE_ID = #{noticeId,jdbcType=DECIMAL}
+  </update>
+
+    <select id="findAllNotice" parameterType="com.ca.entity.SysNotice" resultType="java.util.Map">
+        SELECT A.*,B.STAFF_NAME, F_STA_GETVALUE('NOTICE_TYPE_ID',A.NOTICE_TYPE_ID) NOTICE_TYPE_VALUE,
+        F_STA_GETVALUE('NOTICE_TARGET',A.NOTICE_TARGET) NOTICE_TARGET_VALUE
+        FROM SYS_D_NOTICE A, SYS_D_STAFF B
+        WHERE A.STAFF_ID = B.STAFF_ID AND STATUS = '1'
+        <if test="noticeTarget != null and noticeTarget != ''">
+            AND NOTICE_TARGET = #{noticeTarget}
+        </if>
+        <if test="noticeTypeId != null and noticeTypeId !=''">
+            AND NOTICE_TYPE_ID = #{noticeTypeId}
+        </if>
+        <if test="dataTitle != null and dataTitle != ''">
+            AND DATA_TITLE like '%'||#{dataTitle}||'%'
+        </if>
+        ORDER BY ORDER_SEQ
+    </select>
+
+</mapper>

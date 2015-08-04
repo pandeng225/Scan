@@ -1,0 +1,593 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ca.mapper.StaffMapper" >
+  <resultMap id="BaseResultMap" type="com.ca.entity.Staff" >
+    <id column="STAFF_ID" property="staffId" jdbcType="DECIMAL" />
+    <result column="STAFF_CODE" property="staffCode" jdbcType="VARCHAR" />
+    <result column="MERCHANT_ID" property="merchantId" jdbcType="DECIMAL" />
+    <result column="STAFF_NAME" property="staffName" jdbcType="VARCHAR" />
+    <result column="PASSWD" property="passwd" jdbcType="VARCHAR" />
+    <result column="STAFF_STATUS" property="staffStatus" jdbcType="CHAR" />
+    <result column="LINK_PHONE" property="linkPhone" jdbcType="VARCHAR" />
+    <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+    <result column="PROVINCE_CODE" property="provinceCode" jdbcType="VARCHAR" />
+    <result column="ESS_STAFF_ID" property="essStaffId" jdbcType="VARCHAR" />
+    <result column="CHANNEL_CODE" property="channelCode" jdbcType="VARCHAR" />
+    <result column="UPDATE_STAFF" property="updateStaff" jdbcType="DECIMAL" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="VALUES1" property="values1" jdbcType="VARCHAR" />
+    <result column="VALUES2" property="values2" jdbcType="VARCHAR" />
+    <result column="CHANNEL_TYPE" property="channelType" jdbcType="VARCHAR" />
+    <result column="CHANNEL_DESC" property="channelDesc" jdbcType="VARCHAR" />
+    <result column="INIT_PASSWORD_TAG" property="initPasswordTag" jdbcType="CHAR" />
+    <result column="SYS_CODE" property="sysCode" jdbcType="VARCHAR" />
+    <result column="STAFF_BELONG_DESC" property="staffBelongDesc" jdbcType="VARCHAR" />
+    <result column="AREA_CODE" property="areaCode" jdbcType="VARCHAR" />
+    <result column="STAFF_TYPE" property="staffType" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    STAFF_ID, STAFF_CODE, MERCHANT_ID, STAFF_NAME, PASSWD, STAFF_STATUS, LINK_PHONE, 
+    EMAIL, PROVINCE_CODE, ESS_STAFF_ID, CHANNEL_CODE, UPDATE_STAFF, UPDATE_TIME, VALUES1, 
+    VALUES2, CHANNEL_TYPE, CHANNEL_DESC, INIT_PASSWORD_TAG, SYS_CODE, STAFF_BELONG_DESC, 
+    AREA_CODE, STAFF_TYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from SYS_D_STAFF
+    where STAFF_ID = #{staffId,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from SYS_D_STAFF
+    where STAFF_ID = #{staffId,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.ca.entity.Staff" >
+    insert into SYS_D_STAFF (STAFF_ID, STAFF_CODE, MERCHANT_ID, 
+      STAFF_NAME, PASSWD, STAFF_STATUS, 
+      LINK_PHONE, EMAIL, PROVINCE_CODE, 
+      ESS_STAFF_ID, CHANNEL_CODE, UPDATE_STAFF, 
+      UPDATE_TIME, VALUES1, VALUES2, 
+      CHANNEL_TYPE, CHANNEL_DESC, INIT_PASSWORD_TAG, 
+      SYS_CODE, STAFF_BELONG_DESC, AREA_CODE, 
+      STAFF_TYPE)
+    values (#{staffId,jdbcType=DECIMAL}, #{staffCode,jdbcType=VARCHAR}, #{merchantId,jdbcType=DECIMAL}, 
+      #{staffName,jdbcType=VARCHAR}, #{passwd,jdbcType=VARCHAR}, #{staffStatus,jdbcType=CHAR}, 
+      #{linkPhone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR}, 
+      #{essStaffId,jdbcType=VARCHAR}, #{channelCode,jdbcType=VARCHAR}, #{updateStaff,jdbcType=DECIMAL}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{values1,jdbcType=VARCHAR}, #{values2,jdbcType=VARCHAR}, 
+      #{channelType,jdbcType=VARCHAR}, #{channelDesc,jdbcType=VARCHAR}, #{initPasswordTag,jdbcType=CHAR}, 
+      #{sysCode,jdbcType=VARCHAR}, #{staffBelongDesc,jdbcType=VARCHAR}, #{areaCode,jdbcType=VARCHAR}, 
+      #{staffType,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ca.entity.Staff" >
+    insert into SYS_D_STAFF
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="staffId != null" >
+        STAFF_ID,
+      </if>
+      <if test="staffCode != null" >
+        STAFF_CODE,
+      </if>
+      <if test="merchantId != null" >
+        MERCHANT_ID,
+      </if>
+      <if test="staffName != null" >
+        STAFF_NAME,
+      </if>
+      <if test="passwd != null" >
+        PASSWD,
+      </if>
+      <if test="staffStatus != null" >
+        STAFF_STATUS,
+      </if>
+      <if test="linkPhone != null" >
+        LINK_PHONE,
+      </if>
+      <if test="email != null" >
+        EMAIL,
+      </if>
+      <if test="provinceCode != null" >
+        PROVINCE_CODE,
+      </if>
+      <if test="essStaffId != null" >
+        ESS_STAFF_ID,
+      </if>
+      <if test="channelCode != null" >
+        CHANNEL_CODE,
+      </if>
+      <if test="updateStaff != null" >
+        UPDATE_STAFF,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="values1 != null" >
+        VALUES1,
+      </if>
+      <if test="values2 != null" >
+        VALUES2,
+      </if>
+      <if test="channelType != null" >
+        CHANNEL_TYPE,
+      </if>
+      <if test="channelDesc != null" >
+        CHANNEL_DESC,
+      </if>
+      <if test="initPasswordTag != null" >
+        INIT_PASSWORD_TAG,
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE,
+      </if>
+      <if test="staffBelongDesc != null" >
+        STAFF_BELONG_DESC,
+      </if>
+      <if test="areaCode != null" >
+        AREA_CODE,
+      </if>
+      <if test="staffType != null" >
+        STAFF_TYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="staffId != null" >
+        #{staffId,jdbcType=DECIMAL},
+      </if>
+      <if test="staffCode != null" >
+        #{staffCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantId != null" >
+        #{merchantId,jdbcType=DECIMAL},
+      </if>
+      <if test="staffName != null" >
+        #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null" >
+        #{passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="staffStatus != null" >
+        #{staffStatus,jdbcType=CHAR},
+      </if>
+      <if test="linkPhone != null" >
+        #{linkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="essStaffId != null" >
+        #{essStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelCode != null" >
+        #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStaff != null" >
+        #{updateStaff,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="values1 != null" >
+        #{values1,jdbcType=VARCHAR},
+      </if>
+      <if test="values2 != null" >
+        #{values2,jdbcType=VARCHAR},
+      </if>
+      <if test="channelType != null" >
+        #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="channelDesc != null" >
+        #{channelDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="initPasswordTag != null" >
+        #{initPasswordTag,jdbcType=CHAR},
+      </if>
+      <if test="sysCode != null" >
+        #{sysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffBelongDesc != null" >
+        #{staffBelongDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffType != null" >
+        #{staffType,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ca.entity.Staff" >
+    update SYS_D_STAFF
+    <set >
+      <if test="staffCode != null" >
+        STAFF_CODE = #{staffCode,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantId != null" >
+        MERCHANT_ID = #{merchantId,jdbcType=DECIMAL},
+      </if>
+      <if test="staffName != null" >
+        STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null" >
+        PASSWD = #{passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="staffStatus != null" >
+        STAFF_STATUS = #{staffStatus,jdbcType=CHAR},
+      </if>
+      <if test="linkPhone != null" >
+        LINK_PHONE = #{linkPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        EMAIL = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        PROVINCE_CODE = #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="essStaffId != null" >
+        ESS_STAFF_ID = #{essStaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="channelCode != null" >
+        CHANNEL_CODE = #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="updateStaff != null" >
+        UPDATE_STAFF = #{updateStaff,jdbcType=DECIMAL},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="values1 != null" >
+        VALUES1 = #{values1,jdbcType=VARCHAR},
+      </if>
+      <if test="values2 != null" >
+        VALUES2 = #{values2,jdbcType=VARCHAR},
+      </if>
+      <if test="channelType != null" >
+        CHANNEL_TYPE = #{channelType,jdbcType=VARCHAR},
+      </if>
+      <if test="channelDesc != null" >
+        CHANNEL_DESC = #{channelDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="initPasswordTag != null" >
+        INIT_PASSWORD_TAG = #{initPasswordTag,jdbcType=CHAR},
+      </if>
+      <if test="sysCode != null" >
+        SYS_CODE = #{sysCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffBelongDesc != null" >
+        STAFF_BELONG_DESC = #{staffBelongDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="areaCode != null" >
+        AREA_CODE = #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="staffType != null" >
+        STAFF_TYPE = #{staffType,jdbcType=CHAR},
+      </if>
+    </set>
+    where STAFF_ID = #{staffId,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ca.entity.Staff" >
+    update SYS_D_STAFF
+    set STAFF_CODE = #{staffCode,jdbcType=VARCHAR},
+      MERCHANT_ID = #{merchantId,jdbcType=DECIMAL},
+      STAFF_NAME = #{staffName,jdbcType=VARCHAR},
+      PASSWD = #{passwd,jdbcType=VARCHAR},
+      STAFF_STATUS = #{staffStatus,jdbcType=CHAR},
+      LINK_PHONE = #{linkPhone,jdbcType=VARCHAR},
+      EMAIL = #{email,jdbcType=VARCHAR},
+      PROVINCE_CODE = #{provinceCode,jdbcType=VARCHAR},
+      ESS_STAFF_ID = #{essStaffId,jdbcType=VARCHAR},
+      CHANNEL_CODE = #{channelCode,jdbcType=VARCHAR},
+      UPDATE_STAFF = #{updateStaff,jdbcType=DECIMAL},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      VALUES1 = #{values1,jdbcType=VARCHAR},
+      VALUES2 = #{values2,jdbcType=VARCHAR},
+      CHANNEL_TYPE = #{channelType,jdbcType=VARCHAR},
+      CHANNEL_DESC = #{channelDesc,jdbcType=VARCHAR},
+      INIT_PASSWORD_TAG = #{initPasswordTag,jdbcType=CHAR},
+      SYS_CODE = #{sysCode,jdbcType=VARCHAR},
+      STAFF_BELONG_DESC = #{staffBelongDesc,jdbcType=VARCHAR},
+      AREA_CODE = #{areaCode,jdbcType=VARCHAR},
+      STAFF_TYPE = #{staffType,jdbcType=CHAR}
+    where STAFF_ID = #{staffId,jdbcType=DECIMAL}
+  </update>
+
+    <select id="findAdminMenu" parameterType="java.lang.String" resultType="java.util.HashMap">
+        SELECT A.STAFF_ID, A.STAFF_CODE, M.MENU_ID, M.MENU_CODE, M.PARENT_MENU_ID,
+        M.RIGHT_CODE, M.MENU_NAME MENU_NAME, M.MENU_URL,
+        M.MENU_SORT, M.TARGET_ATTR, M.AUTHKEY_TAG,
+        M.PROJECT_CODE,M.PROJECT_TYPE
+        FROM SYS_P_MENU M,
+        (SELECT ME.MENU_ID, SR.STAFF_ID,MS.STAFF_CODE
+        FROM SYS_D_STAFF_ROLE     SR,
+        SYS_D_ROLE_FUNCRIGHT RF,
+        SYS_P_FUNCRIGHT      FU,
+        SYS_P_MENU           ME,
+        SYS_D_STAFF          MS
+        WHERE SR.STAFF_ID = #{staffId}
+        AND SR.ROLE_ID = RF.ROLE_ID
+        AND RF.RIGHT_CODE = FU.RIGHT_CODE
+        AND RF.RIGHT_CODE = ME.RIGHT_CODE
+        AND SR.STAFF_ID = MS.STAFF_ID
+        AND FU.RIGHT_STATE = '1'
+        GROUP BY ME.MENU_ID, SR.STAFF_ID,MS.STAFF_CODE
+        UNION
+        SELECT ME.PARENT_MENU_ID, SR.STAFF_ID,MS.STAFF_CODE
+        FROM SYS_D_STAFF_ROLE     SR,
+        SYS_D_ROLE_FUNCRIGHT RF,
+        SYS_P_FUNCRIGHT      FU,
+        SYS_P_MENU           ME,
+        SYS_D_STAFF          MS
+        WHERE SR.STAFF_ID = #{staffId}
+        AND SR.ROLE_ID = RF.ROLE_ID
+        AND RF.RIGHT_CODE = FU.RIGHT_CODE
+        AND RF.RIGHT_CODE = ME.RIGHT_CODE
+        AND SR.STAFF_ID = MS.STAFF_ID
+        AND FU.RIGHT_STATE = '1'
+        GROUP BY ME.PARENT_MENU_ID, SR.STAFF_ID,MS.STAFF_CODE
+        UNION
+        SELECT ME.MENU_ID, SFU.STAFF_ID,MS.STAFF_CODE
+        FROM SYS_D_STAFF_FUNCRIGHT SFU,
+        SYS_P_FUNCRIGHT       FU,
+        SYS_P_MENU            ME,
+        SYS_D_STAFF           MS
+        WHERE SFU.STAFF_ID = #{staffId}
+        AND SFU.RIGHT_CODE = FU.RIGHT_CODE
+        AND FU.RIGHT_CODE= ME.RIGHT_CODE
+        AND SFU.STAFF_ID = MS.STAFF_ID
+        AND FU.RIGHT_STATE='1'
+        GROUP BY ME.MENU_ID, SFU.STAFF_ID,MS.STAFF_CODE
+        UNION
+        SELECT ME.PARENT_MENU_ID, SFU.STAFF_ID,MS.STAFF_CODE
+        FROM SYS_D_STAFF_FUNCRIGHT SFU,
+        SYS_P_FUNCRIGHT            FU,
+        SYS_P_MENU                 ME,
+        SYS_D_STAFF                MS
+        WHERE SFU.STAFF_ID = #{staffId}
+        AND SFU.RIGHT_CODE = FU.RIGHT_CODE
+        AND FU.RIGHT_CODE = ME.RIGHT_CODE
+        AND SFU.STAFF_ID = MS.STAFF_ID
+        AND FU.RIGHT_STATE = '1'
+        GROUP BY ME.PARENT_MENU_ID, SFU.STAFF_ID,MS.STAFF_CODE ) A
+        WHERE M.MENU_ID = A.MENU_ID
+        ORDER BY M.MENU_SORT,M.MENU_ID ASC
+    </select>
+
+    <select id="selectByStaffCode" resultMap="BaseResultMap" parameterType="java.lang.String"  timeout="500">
+        select * from SYS_D_STAFF where STAFF_CODE = #{staffCode} and STAFF_STATUS = '1'
+    </select>
+
+    <select id="findAllStaffInitInfo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT S.STAFF_ID STAFFID,
+        S.STAFF_CODE STAFFCODE,
+        S.STAFF_NAME STAFFNAME,
+        S.LINK_PHONE LINKPHONE,
+        S.EMAIL EMAIL,
+        S.AREA_CODE AREACODE,
+        DECODE(S.AREA_CODE,'34','省份',(SELECT C.CITY_NAME FROM SYS_P_CITY C WHERE C.CITY_CODE=S.AREA_CODE)) CITYNAME,
+        S.PROVINCE_CODE PROVINCECODE,
+        P.PROVINCE_NAME PROVINCENAME,
+        TO_CHAR(REPLACE((SELECT WM_CONCAT(G.STFGRP_NAME)
+        FROM SYS_D_STFGR_MBR SG, SYS_D_STFGRP G
+        WHERE SG.STAFF_ID = S.STAFF_ID
+        AND SG.STFGRP_ID = G.STFGRP_ID
+        AND G.STFGRP_STATE = '1'),'.''，')) GROUPNAMELIST,
+        TO_CHAR(REPLACE(WM_CONCAT(R.ROLE_NAME),'.''，')) ROLENAMELIST,
+        TO_CHAR(REPLACE(WM_CONCAT(R.ROLE_NAME),',','，')) ROLENAMESTR
+        FROM   SYS_D_STAFF S,
+        SYS_D_STAFF_ROLE SR,
+        SYS_D_FUNCROLE R,
+        SYS_P_PROVINCE P
+        WHERE  S.STAFF_ID = SR.STAFF_ID(+)
+        AND    SR.ROLE_ID = R.ROLE_ID(+)
+        AND    S.STAFF_STATUS = '1'
+        AND    R.ROLE_STATE (+)= '1'
+        <if test="staffCode != null and staffCode !=''">
+            AND    S.STAFF_CODE like '%'||#{staffCode}||'%'
+        </if>
+        <if test="staffName != null and staffName != '' ">
+            AND    S.STAFF_NAME LIKE '%'||#{staffName}||'%'
+        </if>
+        <if test="roleName != null and roleName != ''">
+            AND  EXISTS (SELECT 1
+            FROM   SYS_D_STAFF_ROLE SR,
+            SYS_D_FUNCROLE R
+            WHERE  SR.ROLE_ID = R.ROLE_ID
+            AND    R.ROLE_NAME LIKE '%'||#{roleName}||'%'
+            AND    SR.STAFF_ID = S.STAFF_ID )
+        </if>
+        AND    S.PROVINCE_CODE = P.PROVINCE_CODE(+)
+        GROUP BY (S.STAFF_ID,
+        S.STAFF_CODE,
+        S.STAFF_NAME,
+        S.LINK_PHONE,
+        S.EMAIL,
+        S.PROVINCE_CODE,
+        P.PROVINCE_NAME,
+        S.AREA_CODE)
+    </select>
+
+    <!-- 查询默认角色列表 -->
+    <select id="queryRoleInfoList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT  R.ROLE_ID ROLEID,
+        R.ROLE_NAME ROLENAME,
+        R.ROLE_DESC ROLEDESC,
+        NULL SELECTROLEID
+        FROM    SYS_D_FUNCROLE R
+        WHERE   R.ROLE_STATE = '1'
+    </select>
+
+    <!-- 生成员工登陆号 -->
+    <select id="getStaffCode" parameterType="java.util.HashMap" resultType="java.lang.String">
+        SELECT P.PROV_SIMPLE||F_SYS_GETSEQID('SEQ_MERCONF_ID', 6)
+        FROM SYS_P_PROVINCE P
+    </select>
+
+    <!-- 判断员工登陆号是否存在 -->
+    <select id="queryStaffCode" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM SYS_D_STAFF T
+        WHERE T.STAFF_CODE = #{staffCode}
+    </select>
+
+    <!-- 查询省市-->
+    <select id="queryAllCityList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT AREA_CODE,AREA_NAME FROM
+        (
+        SELECT C.CITY_CODE     AREA_CODE,
+        C.CITY_NAME     AREA_NAME
+        FROM SYS_P_CITY C
+        WHERE C.PROVINCE_CODE = '85'
+        <if test="cityCode!=null and cityCode!='' " >
+          AND  C.CITY_CODE = #{cityCode}
+        </if>
+        UNION ALL
+        SELECT T.PROVINCE_CODE AREA_CODE,
+        T.PROVINCE_NAME AREA_NAME
+        FROM SYS_P_PROVINCE T
+        )
+        ORDER BY TO_NUMBER(AREA_CODE)
+    </select>
+
+    <!-- 生成员工标识 -->
+    <select id="creatStaffId"  resultType="java.lang.String">
+        SELECT F_SYS_GETSEQID('SEQ_MERCONF_ID',8) FROM DUAL
+    </select>
+
+    <!-- 新增员工信息 -->
+    <insert id="addStaffInfo" parameterType="java.util.HashMap">
+        <![CDATA[
+            INSERT INTO SYS_D_STAFF(STAFF_ID,STAFF_CODE,MERCHANT_ID,STAFF_NAME,PASSWD,STAFF_STATUS,LINK_PHONE,EMAIL,
+                PROVINCE_CODE,UPDATE_STAFF,UPDATE_TIME,AREA_CODE)
+            VALUES
+            (#{staffID},#{staffCode},'8500000',#{staffName},#{passWord},'1',#{linkPhone},#{email},
+                '85',#{nowStaffId},SYSDATE,#{areaCode})
+        ]]>
+    </insert>
+
+    <!-- 新增员工角色关系 -->
+    <insert id="addStaffRoleR" parameterType="java.util.HashMap">
+        <![CDATA[
+            INSERT INTO SYS_D_STAFF_ROLE(STAFF_ID,ROLE_ID,UPDATE_STAFF,UPDATE_TIME)
+            VALUES                     (#{staffID},#{roleValue},#{nowStaffId},SYSDATE)
+        ]]>
+    </insert>
+
+    <!-- 新增员工分组关系 -->
+    <insert id="addStaffGroupR" parameterType="java.util.HashMap">
+        <![CDATA[
+            INSERT INTO SYS_D_STFGR_MBR(STFGRP_ID,STAFF_ID,UPDATE_STAFF,UPDATE_TIME)
+            VALUES                    (#{groupValue},#{staffID},#{nowStaffId},SYSDATE)
+        ]]>
+    </insert>
+
+    <!-- 新增员工业务区域关系 -->
+    <insert id="addStaffBusiRes" parameterType="java.util.HashMap">
+        INSERT INTO SYS_D_STAFF_BUSIAREA_RES(STAFF_ID,BUSIAREA_CODE,BUSIAREA_NAME,BUSIAREA_TYPE,UPDATE_STAFF,UPDATE_TIME)
+        VALUES
+        (#{staffID},#{busiareaCode},#{busiareaName},#{busiareaType},#{nowStaffId},SYSDATE)
+    </insert>
+
+
+    <!-- 查询员工角色列表 -->
+    <select id="queryRoleListByStaffID" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <![CDATA[
+        SELECT R.ROLE_ID ROLEID,
+               R.ROLE_NAME ROLENAME,
+               R.ROLE_DESC ROLEDESC,
+               SR.ROLE_ID SELECTROLEID
+        FROM   SYS_D_FUNCROLE R,
+               SYS_D_STAFF_ROLE SR
+        WHERE  R.ROLE_STATE = '1'
+        AND    R.ROLE_ID = SR.ROLE_ID(+)
+        AND    SR.STAFF_ID(+) = #{staffID}
+      ]]>
+    </select>
+
+    <!-- 查询员工组列表 -->
+    <select id="queryGroupListByStaffID" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT DISTINCT
+        G.STFGRP_ID STFGRPID,
+        G.STFGRP_NAME STFGRPNAME,
+        G.STFGRP_DESC STFGRPDESC,
+        SG.STFGRP_ID SELECTSTFGRPID
+        FROM   SYS_D_STFGRP  G,
+        SYS_D_ROLE_GROUP RG,
+        SYS_D_STFGR_MBR SG
+        WHERE  RG.STFGRP_ID = G.STFGRP_ID
+        AND    G.STFGRP_STATE = '1'
+        <if test="p.roleList!=null">
+        AND RG.ROLE_ID IN
+        <foreach collection="p.roleList" index="index" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+        </if>
+        AND    G.STFGRP_ID = SG.STFGRP_ID(+)
+        AND    SG.STAFF_ID(+) = #{p.staffID}
+    </select>
+
+    <!-- 查询员工业务区域关系 -->
+    <select id="queryStaffBusiRes" parameterType="java.util.HashMap"  resultType="java.util.HashMap">
+        SELECT T.STAFF_ID,
+        T.BUSIAREA_CODE,
+        T.BUSIAREA_NAME,
+        T.BUSIAREA_CODE || ':' || T.BUSIAREA_NAME BUSIAREA_SPLICE
+        FROM SYS_D_STAFF_BUSIAREA_RES T
+        WHERE T.STAFF_ID = #{staffID}
+    </select>
+
+    <!-- 编辑员工 -->
+    <update id="updateStaffInfo" parameterType="java.util.HashMap">
+        UPDATE SYS_D_STAFF S
+        SET    S.STAFF_NAME = #{editStaffName},
+        S.LINK_PHONE = #{linkPhone},
+        S.EMAIL = #{email},
+        S.AREA_CODE = #{areaCode},
+        S.UPDATE_STAFF = #{nowStaffId},
+        S.UPDATE_TIME = SYSDATE
+        WHERE  S.STAFF_ID = #{staffID}
+    </update>
+
+    <!-- 删除员工角色关系 -->
+    <delete id="deleteStaffRoleR" parameterType="java.util.HashMap">
+        <![CDATA[
+           DELETE FROM  SYS_D_STAFF_ROLE SR WHERE SR.STAFF_ID = #{staffID}
+        ]]>
+    </delete>
+
+    <!-- 删除员工分组关系 -->
+    <delete id="deleteStaffGroupR" parameterType="java.util.HashMap">
+        <![CDATA[
+           DELETE FROM  SYS_D_STFGR_MBR SG WHERE SG.STAFF_ID = #{staffID}
+        ]]>
+    </delete>
+
+    <!-- 删除员工业务区域关系 -->
+    <delete id="deleteStaffBusiRes" parameterType="java.util.HashMap">
+        <![CDATA[
+           DELETE FROM  SYS_D_STAFF_BUSIAREA_RES  WHERE STAFF_ID = #{staffID}
+        ]]>
+    </delete>
+
+    <!-- 删除员工 -->
+    <update id="deleteStaffByID" parameterType="java.util.HashMap">
+        <![CDATA[
+           UPDATE SYS_D_STAFF S
+           SET    S.STAFF_STATUS = '0'
+           WHERE  S.STAFF_ID = #{staffID}
+        ]]>
+    </update>
+
+    <select id="checkOldPassWd" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT COUNT(*) AMOUNT
+        FROM   SYS_D_STAFF
+        WHERE STAFF_ID = #{staffID} AND PASSWD = #{oldPassword}
+    </select>
+
+
+    <update id="modifyPassword" parameterType="java.util.HashMap">
+        UPDATE SYS_D_STAFF SET PASSWD = #{newPassword}, INIT_PASSWORD_TAG = '0'
+            WHERE STAFF_ID = #{staffID} AND PASSWD = #{oldPassword}
+    </update>
+</mapper>

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- 开启controller注解支持 -->
+	<context:component-scan base-package="com.ca.web"
+		use-default-filters="false">
+		<context:include-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation"
+			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+	 <bean id="messageSource"  
+	    class="org.springframework.context.support.ReloadableResourceBundleMessageSource"  
+	    p:fallbackToSystemLocale="true" p:useCodeAsDefaultMessage="false"  
+	    p:defaultEncoding="UTF-8">  
+	    <description>Base message source to handle internationalization </description>  
+	    <property name="basenames">  
+	        <list>  
+	            <!-- main resources -->
+                <value>classpath:message/main</value>
+	        </list>  
+	    </property>  
+	</bean> 
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<!-- 将StringHttpMessageCOnverter的默认编码设为UTF-8 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+			</bean>
+			
+			<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter">
+	            <property name="supportedMediaTypes">
+	                <list>
+	                    <value>image/jpeg</value>
+	                    <value>image/png</value>
+	                    <value>Application/pdf</value>
+	                </list>
+	            </property>
+	        </bean>
+
+            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" >
+                <property name="supportedMediaTypes" value="*/*" />
+            </bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<mvc:default-servlet-handler />
+	<!-- CSRF -->
+	<bean name="requestDataValueProcessor" class="com.ca.security.csrf.CSRFRequestDataValueProcessor"/>
+	<mvc:interceptors>
+		<bean class="com.ca.security.csrf.CSRFHandlerInterceptor"/>
+	</mvc:interceptors>
+	 
+	<!-- Freemarker配置 -->
+	<!-- org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer -->
+	<bean id="freemarkerConfig"
+		class="com.ca.shiro.freemarker.ShiroTagFreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="template_update_delay">0</prop>
+				<prop key="default_encoding">UTF-8</prop>
+				<prop key="number_format">0.##########</prop>
+				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+				<prop key="classic_compatible">true</prop>
+				<prop key="template_exception_handler">ignore</prop>
+			</props>
+		</property>
+		<property name="freemarkerVariables">  
+            <map>  
+                <entry key="xml_escape" value-ref="fmXmlEscape" />  
+                <entry key="html_escape" value-ref="fmHtmlEscape" />  
+                <entry key="e" value-ref="commonTag" />  
+            </map>  
+        </property>  
+	</bean>
+	
+	<bean id="commonTag" class="com.ca.utils.ftl.CommonTag" >
+	<property name="hostRes" value="${host.res}"></property>
+	<property name="hostRoot" value="${host.root}"></property>
+	<property name="hostFile" value="${host.file}"></property>
+	<property name="domain" value="${admin.cookie.domain}"></property>
+	<property name="hostAdmRes" value="${host.admres}"></property>
+	<property name="hostImage" value="${host.hostImage}"></property>
+     <property name="ecsRoot" value="${ecs.root}"></property>
+     <property name="ecsMall" value="${ecs.mall}"></property>
+     <property name="ecsHome" value="${ecs.home}"></property>
+     <property name="ecsAdminRoot" value="${ecs.admin.root}"></property>
+     <property name="ecsOrder" value="${ecs.order}"></property>
+     <property name="ecsNum" value="${ecs.num}"></property>
+     <property name="ecsS" value="${ecs.s}"></property>
+    </bean>
+	
+	<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" /> 
+	<bean id="fmHtmlEscape" class="freemarker.template.utility.HtmlEscape" />
+	
+	<context:property-placeholder
+		ignore-unresolvable="true" location="classpath*:/spring/application.properties" />
+
+	<!--视图解释器 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+		<property name="suffix" value=".ftl" />
+		<property name="requestContextAttribute" value="rc"></property>
+		<property name="contentType" value="text/html;charset=UTF-8"></property>
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" >
+                    <property name="supportedMediaTypes" value="*/*" />
+                </bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+		p:maxUploadSize="104857600" p:maxInMemorySize="4096"
+		p:defaultEncoding="UTF-8" />
+
+<!-- json配置 -->
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="contentNegotiationManager">
+			<bean
+				class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean"
+				p:favorPathExtension="true" p:favorParameter="false"
+				p:parameterName="format" p:ignoreAcceptHeader="true"
+				p:defaultContentType="text/html">
+                <property name="mediaTypes">
+                    <map>
+                        <entry key="json" value="application/json" />
+                        <entry key="xml" value="application/xml" />
+                        <entry key="xls" value="application/vnd.ms-excel" />
+                        <entry key="xlsx" value="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+                    </map>
+                </property>
+			</bean>
+		</property>
+		<property name="defaultViews">
+			<list>
+                <ref bean="mappingJacksonJsonView" />
+                <ref bean="marshallingView" />
+			</list>
+		</property>
+	</bean>
+	<bean id="marshallingView"
+		class="org.springframework.web.servlet.view.xml.MarshallingView">
+		<property name="marshaller">
+			<bean class="org.springframework.oxm.xstream.XStreamMarshaller" />
+		</property>
+	</bean>
+	<bean id="mappingJacksonJsonView"
+		class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+
+	<aop:config proxy-target-class="true"></aop:config>
+	<bean
+		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />
+	</bean>
+
+	<!-- 控制器异常处理 -->
+	<bean id="exceptionHandlerExceptionResolver"
+		class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver">
+	</bean>
+
+</beans>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ca.mapper.SysWebCityMapper" >
+  <resultMap id="BaseResultMap" type="com.ca.entity.SysWebCity" >
+    <result column="CITY_CODE" property="cityCode" jdbcType="VARCHAR" />
+    <result column="CITY_NAME" property="cityName" jdbcType="VARCHAR" />
+    <result column="PROVINCE_CODE" property="provinceCode" jdbcType="VARCHAR" />
+    <result column="ESS_PROVINCE_CODE" property="essProvinceCode" jdbcType="VARCHAR" />
+    <result column="ESS_CITY_CODE" property="essCityCode" jdbcType="VARCHAR" />
+    <result column="ORDER_NUMBER" property="orderNumber" jdbcType="DECIMAL" />
+    <result column="VALUES1" property="values1" jdbcType="VARCHAR" />
+    <result column="VALUES2" property="values2" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ca.entity.SysWebCity" >
+    insert into SYS_P_WEB_CITY (CITY_CODE, CITY_NAME, PROVINCE_CODE, 
+      ESS_PROVINCE_CODE, ESS_CITY_CODE, ORDER_NUMBER, 
+      VALUES1, VALUES2)
+    values (#{cityCode,jdbcType=VARCHAR}, #{cityName,jdbcType=VARCHAR}, #{provinceCode,jdbcType=VARCHAR}, 
+      #{essProvinceCode,jdbcType=VARCHAR}, #{essCityCode,jdbcType=VARCHAR}, #{orderNumber,jdbcType=DECIMAL}, 
+      #{values1,jdbcType=VARCHAR}, #{values2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ca.entity.SysWebCity" >
+    insert into SYS_P_WEB_CITY
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cityCode != null" >
+        CITY_CODE,
+      </if>
+      <if test="cityName != null" >
+        CITY_NAME,
+      </if>
+      <if test="provinceCode != null" >
+        PROVINCE_CODE,
+      </if>
+      <if test="essProvinceCode != null" >
+        ESS_PROVINCE_CODE,
+      </if>
+      <if test="essCityCode != null" >
+        ESS_CITY_CODE,
+      </if>
+      <if test="orderNumber != null" >
+        ORDER_NUMBER,
+      </if>
+      <if test="values1 != null" >
+        VALUES1,
+      </if>
+      <if test="values2 != null" >
+        VALUES2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cityCode != null" >
+        #{cityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="essProvinceCode != null" >
+        #{essProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="essCityCode != null" >
+        #{essCityCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="values1 != null" >
+        #{values1,jdbcType=VARCHAR},
+      </if>
+      <if test="values2 != null" >
+        #{values2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+   <select id="queryAllCity" parameterType="java.util.HashMap" resultType="map">
+		select a.city_code, a.city_name, a.province_code,a.ess_city_code
+		  from sys_p_web_city a
+		<where>
+			<if test="provinceCode != null">
+				ess_province_code = #{provinceCode,jdbcType=VARCHAR}
+			</if>
+			<if test="cityCode != null">
+				and ess_city_code = #{cityCode,jdbcType=VARCHAR}
+			</if>
+		</where>
+		order by order_number
+   </select>
+</mapper>

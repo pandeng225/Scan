@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ca.mapper.SysWebProvinceMapper" >
+  <resultMap id="BaseResultMap" type="com.ca.entity.SysWebProvince" >
+    <result column="PROVINCE_CODE" property="provinceCode" jdbcType="VARCHAR" />
+    <result column="PROVINCE_NAME" property="provinceName" jdbcType="VARCHAR" />
+    <result column="ESS_PROVINCE_CODE" property="essProvinceCode" jdbcType="VARCHAR" />
+    <result column="ORDER_NUMBER" property="orderNumber" jdbcType="DECIMAL" />
+    <result column="VALUES1" property="values1" jdbcType="VARCHAR" />
+    <result column="VALUES2" property="values2" jdbcType="VARCHAR" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ca.entity.SysWebProvince" >
+    insert into SYS_P_WEB_PROVINCE (PROVINCE_CODE, PROVINCE_NAME, ESS_PROVINCE_CODE, 
+      ORDER_NUMBER, VALUES1, VALUES2
+      )
+    values (#{provinceCode,jdbcType=VARCHAR}, #{provinceName,jdbcType=VARCHAR}, #{essProvinceCode,jdbcType=VARCHAR}, 
+      #{orderNumber,jdbcType=DECIMAL}, #{values1,jdbcType=VARCHAR}, #{values2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ca.entity.SysWebProvince" >
+    insert into SYS_P_WEB_PROVINCE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="provinceCode != null" >
+        PROVINCE_CODE,
+      </if>
+      <if test="provinceName != null" >
+        PROVINCE_NAME,
+      </if>
+      <if test="essProvinceCode != null" >
+        ESS_PROVINCE_CODE,
+      </if>
+      <if test="orderNumber != null" >
+        ORDER_NUMBER,
+      </if>
+      <if test="values1 != null" >
+        VALUES1,
+      </if>
+      <if test="values2 != null" >
+        VALUES2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="provinceCode != null" >
+        #{provinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="provinceName != null" >
+        #{provinceName,jdbcType=VARCHAR},
+      </if>
+      <if test="essProvinceCode != null" >
+        #{essProvinceCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=DECIMAL},
+      </if>
+      <if test="values1 != null" >
+        #{values1,jdbcType=VARCHAR},
+      </if>
+      <if test="values2 != null" >
+        #{values2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+   <select id="queryAllProvince" parameterType="java.util.HashMap" resultType="map">
+		select province_code, province_name,ess_province_code
+		from sys_p_web_province
+		<where>
+			<if test="provinceCode != null">
+				ess_province_code = #{provinceCode,jdbcType=VARCHAR}
+			</if>
+			<if test="provinceName != null">
+				and province_name = #{provinceName,jdbcType=VARCHAR}
+			</if>
+		</where>
+		order by order_number
+   </select>
+ 
+</mapper>

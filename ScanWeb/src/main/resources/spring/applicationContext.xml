@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+
+
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd"
+	   default-lazy-init="true" default-autowire="byName">
+
+	<description>Spring公共配置 </description>
+
+	<!-- 扫描注解Bean -->
+    <context:component-scan base-package="com.ca">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+	
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:/mybatis/mybatis-configuration.xml" />
+        <property name="mapperLocations" value="classpath*:/mapper/oracle/**/*.xml"></property>
+        
+        <property name="plugins">
+            <list>
+                <ref bean="pageConfig"/>
+            </list>
+        </property>
+    </bean>
+    
+    <bean id="pageConfig" class="com.ca.utils.pagination.PaginationInterceptor">
+        <property name="properties">
+            <props>
+                <prop key="dbms">ORACLE</prop>
+                <prop key="sqlRegex">.*findAll.*</prop>
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+	<!-- 使用annotation定义事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager"
+		proxy-target-class="true" />
+
+	 <!-- mybatis -->
+    <mybatis:scan base-package="com.ca.mapper" />
+	
+	<context:property-placeholder
+		ignore-unresolvable="true" location="classpath*:/spring/application.properties" />
+
+
+
+	<!-- 数据源配置, 使用c3p0数据库连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+
+		<property name="driverClass" value="${nl.driver}"></property>
+		<property name="jdbcUrl" value="${nl.url}"></property>
+		<property name="user" value="${nl.username}"></property>
+		<property name="password" value="${nl.password}"></property>
+		<property name="initialPoolSize" value="${nl.initialPoolSize}"></property>
+		<property name="minPoolSize" value="${nl.minPoolSize}"></property>
+		<property name="maxPoolSize" value="${nl.maxPoolSize}"></property>
+		<property name="maxIdleTime" value="${nl.maxIdleTime}"></property>
+		<property name="acquireIncrement" value="${nl.acquireIncrement}"></property>
+		<property name="checkoutTimeout" value="${nl.checkoutTimeout}"></property>
+	</bean>
+
+	<bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory" >  
+	       <property name="port" value="${redis.port}" />
+	       <property name="hostName" value="${redis.host}" />
+	       <property name="usePool" value="true" />
+	</bean>
+	<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">
+		<property name="connectionFactory" ref="jedisConnectionFactory"/>
+	</bean>
+</beans>
