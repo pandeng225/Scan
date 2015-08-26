@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ca.mapper.ScanRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.ca.entity.ScanRecord" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="EMPLOYEEID" property="employeeid" jdbcType="INTEGER" />
+    <result column="DEPARTMENT" property="department" jdbcType="VARCHAR" />
+    <result column="EMPLOYEENAME" property="employeename" jdbcType="VARCHAR" />
+    <result column="EXPRESSNO" property="expressno" jdbcType="VARCHAR" />
+    <result column="EXPRESSCOMPANY" property="expresscompany" jdbcType="VARCHAR" />
+    <result column="EXPRESSCOMPANYID" property="expresscompanyid" jdbcType="INTEGER" />
+    <result column="SCANTIME" property="scantime" jdbcType="TIMESTAMP" />
+    <result column="INFO" property="info" jdbcType="VARCHAR" />
+    <result column="VALUE1" property="value1" jdbcType="VARCHAR" />
+    <result column="VALUE2" property="value2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, EMPLOYEEID, DEPARTMENT, EMPLOYEENAME, EXPRESSNO, EXPRESSCOMPANY, EXPRESSCOMPANYID, 
+    SCANTIME, INFO, VALUE1, VALUE2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from scan_d_record
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from scan_d_record
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ca.entity.ScanRecord" >
+    insert into scan_d_record (ID, EMPLOYEEID, DEPARTMENT, 
+      EMPLOYEENAME, EXPRESSNO, EXPRESSCOMPANY, 
+      EXPRESSCOMPANYID, SCANTIME, INFO, 
+      VALUE1, VALUE2)
+    values (#{id,jdbcType=INTEGER}, #{employeeid,jdbcType=INTEGER}, #{department,jdbcType=VARCHAR}, 
+      #{employeename,jdbcType=VARCHAR}, #{expressno,jdbcType=VARCHAR}, #{expresscompany,jdbcType=VARCHAR}, 
+      #{expresscompanyid,jdbcType=INTEGER}, #{scantime,jdbcType=TIMESTAMP}, #{info,jdbcType=VARCHAR}, 
+      #{value1,jdbcType=VARCHAR}, #{value2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ca.entity.ScanRecord" >
+    insert into scan_d_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="employeeid != null" >
+        EMPLOYEEID,
+      </if>
+      <if test="department != null" >
+        DEPARTMENT,
+      </if>
+      <if test="employeename != null" >
+        EMPLOYEENAME,
+      </if>
+      <if test="expressno != null" >
+        EXPRESSNO,
+      </if>
+      <if test="expresscompany != null" >
+        EXPRESSCOMPANY,
+      </if>
+      <if test="expresscompanyid != null" >
+        EXPRESSCOMPANYID,
+      </if>
+      <if test="scantime != null" >
+        SCANTIME,
+      </if>
+      <if test="info != null" >
+        INFO,
+      </if>
+      <if test="value1 != null" >
+        VALUE1,
+      </if>
+      <if test="value2 != null" >
+        VALUE2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="employeeid != null" >
+        #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="department != null" >
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="employeename != null" >
+        #{employeename,jdbcType=VARCHAR},
+      </if>
+      <if test="expressno != null" >
+        #{expressno,jdbcType=VARCHAR},
+      </if>
+      <if test="expresscompany != null" >
+        #{expresscompany,jdbcType=VARCHAR},
+      </if>
+      <if test="expresscompanyid != null" >
+        #{expresscompanyid,jdbcType=INTEGER},
+      </if>
+      <if test="scantime != null" >
+        #{scantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="info != null" >
+        #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="value1 != null" >
+        #{value1,jdbcType=VARCHAR},
+      </if>
+      <if test="value2 != null" >
+        #{value2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ca.entity.ScanRecord" >
+    update scan_d_record
+    <set >
+      <if test="employeeid != null" >
+        EMPLOYEEID = #{employeeid,jdbcType=INTEGER},
+      </if>
+      <if test="department != null" >
+        DEPARTMENT = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="employeename != null" >
+        EMPLOYEENAME = #{employeename,jdbcType=VARCHAR},
+      </if>
+      <if test="expressno != null" >
+        EXPRESSNO = #{expressno,jdbcType=VARCHAR},
+      </if>
+      <if test="expresscompany != null" >
+        EXPRESSCOMPANY = #{expresscompany,jdbcType=VARCHAR},
+      </if>
+      <if test="expresscompanyid != null" >
+        EXPRESSCOMPANYID = #{expresscompanyid,jdbcType=INTEGER},
+      </if>
+      <if test="scantime != null" >
+        SCANTIME = #{scantime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="info != null" >
+        INFO = #{info,jdbcType=VARCHAR},
+      </if>
+      <if test="value1 != null" >
+        VALUE1 = #{value1,jdbcType=VARCHAR},
+      </if>
+      <if test="value2 != null" >
+        VALUE2 = #{value2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ca.entity.ScanRecord" >
+    update scan_d_record
+    set EMPLOYEEID = #{employeeid,jdbcType=INTEGER},
+      DEPARTMENT = #{department,jdbcType=VARCHAR},
+      EMPLOYEENAME = #{employeename,jdbcType=VARCHAR},
+      EXPRESSNO = #{expressno,jdbcType=VARCHAR},
+      EXPRESSCOMPANY = #{expresscompany,jdbcType=VARCHAR},
+      EXPRESSCOMPANYID = #{expresscompanyid,jdbcType=INTEGER},
+      SCANTIME = #{scantime,jdbcType=TIMESTAMP},
+      INFO = #{info,jdbcType=VARCHAR},
+      VALUE1 = #{value1,jdbcType=VARCHAR},
+      VALUE2 = #{value2,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
