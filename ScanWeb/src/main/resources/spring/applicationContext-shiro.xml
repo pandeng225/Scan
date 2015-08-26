@@ -18,16 +18,6 @@
 		<property name="adminCookieKey" value="${admin.cookie.key}" />
 		<property name="adminCookieEnable" value="${admin.cookie.enable}" />
 		<property name="adminName" value="${admin.name}" />
-
-		<property name="userlogininfoCookieDomain" value="${userlogininfo.cookie.domain}" />
-		<property name="userlogininfoCookieMaxAge" value="${userlogininfo.cookie.maxAge}" />
-		<property name="userlogininfoCookieKey" value="${userlogininfo3DES.key}" />
-		<property name="userlogininfo3DESCookieName" value="${userlogininfo3DES.cookie.name}" />
-		<property name="userlogininfoMD5CookieName" value="${userlogininfoMD5.cookie.name}" />
-		<property name="userlogininfoMD5SSalt" value="${userlogininfoMD5.s.salt}" />
-		<property name="userlogininfoMD5ESalt" value="${userlogininfoMD5.e.salt}" />
-		<property name="userlogininfoCookieName" value="${userlogininfo.cookie.name}" />
-		
 		
 		<property name="agentCookieName" value="${agent.cookie.name}" />
 		<property name="agentCookieDomain" value="${agent.cookie.domain}" />

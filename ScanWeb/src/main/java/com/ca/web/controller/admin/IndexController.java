@@ -18,7 +18,6 @@ public class IndexController {
         ShiroRealm.AdminShiroUser user = (ShiroRealm.AdminShiroUser)SecurityUtils.getSubject().getPrincipal();
         model.addAttribute("user", user);
         return "admin/index";
-//        return "test/showMarginAccount";
     }
 	
 }

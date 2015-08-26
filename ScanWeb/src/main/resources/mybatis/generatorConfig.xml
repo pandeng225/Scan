@@ -90,23 +90,8 @@
                 是否生成 example类 &ndash;&gt;
         </table>
     -->
-    <table tableName="sms_d_sendobject"
-           domainObjectName="SmsSendObject" enableCountByExample="false"
-           enableSelectByExample="false" enableUpdateByExample="false"
-           enableDeleteByExample="false" >
-    </table>
-		<table tableName="sms_d_sendtime"
-			   domainObjectName="SmsSendTime" enableCountByExample="false"
-			   enableSelectByExample="false" enableUpdateByExample="false"
-			   enableDeleteByExample="false" >
-		</table>
-		<table tableName="sms_l_interface"
-			   domainObjectName="SmsInterface" enableCountByExample="false"
-			   enableSelectByExample="false" enableUpdateByExample="false"
-			   enableDeleteByExample="false" >
-		</table>
-		<table tableName="sms_l_interface_history"
-			   domainObjectName="SmsInterfaceHistory" enableCountByExample="false"
+		<table tableName="scan_d_record"
+			   domainObjectName="ScanRecord" enableCountByExample="false"
 			   enableSelectByExample="false" enableUpdateByExample="false"
 			   enableDeleteByExample="false" >
 		</table>

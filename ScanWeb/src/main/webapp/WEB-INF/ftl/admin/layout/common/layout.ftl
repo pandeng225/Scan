@@ -1,4 +1,4 @@
-<#macro layout title="联通商城_商户管理" content="keyword1,keyword2,keyword3" needfoot="1">
+<#macro layout title="记录管理" content="keyword1,keyword2,keyword3" needfoot="1">
 <#assign form=JspTaglibs["http://www.springframework.org/tags/form"]>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
