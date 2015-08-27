@@ -1,6 +1,5 @@
 <#include "/admin/layout/common/layout.ftl">
 <@layout title="扫描记录查询">
-<style>
 <div class="rightBar">
     <div class="breadcrumbW">
         <div class="breadcrumb">
@@ -30,7 +29,7 @@
                 <li>
                 </li>
                 <li style="text-align: right">
-                    <a  class="cBlue" style="cursor: pointer;margin-right: 10px" href="${rc.contextPath}/admin/am/scan/batchOut" >导出记录</a>
+                    <a  class="cBlue" style="cursor: pointer;margin-right: 10px" href="${rc.contextPath}/admin/am/scan/add" >导出记录</a>
                     <input type="submit" value="查 询" id="submit" style="margin-right: 30px" class="shortBtn  mrgL60"/>
                 </li>
 
@@ -59,8 +58,7 @@
                         <#list pager.rows as record>
                         <tr>
                             <td class="tFourth">${record.ID}</td>
-                            <td class="tFourth">${record.NAME} </td>
-                            <td class="tFourth">${record.EPARCHY_CODE}</td>
+                            <td class="tFourth">${record.EMPLOYEENAME} </td>
                             <td class="tFourth">${record.DEPARTMENT}</td>
                             <td class="tFourth">${record.EXPRESSNO}</td>
                             <td class="tFourth">${record.EXPRESSCOMPANY}</td>

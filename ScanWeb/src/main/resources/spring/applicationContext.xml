@@ -32,7 +32,7 @@
     <bean id="pageConfig" class="com.ca.utils.pagination.PaginationInterceptor">
         <property name="properties">
             <props>
-                <prop key="dbms">ORACLE</prop>
+                <prop key="dbms">MYSQL</prop>
                 <prop key="sqlRegex">.*findAll.*</prop>
             </props>
         </property>

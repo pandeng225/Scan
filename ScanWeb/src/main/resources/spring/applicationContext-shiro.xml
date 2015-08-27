@@ -112,7 +112,7 @@
                 /admin/am/register/** = anon
                 /admin/am/checkUserName = anon
                 /admin/am/loginCaptcha.jpg = anon
-				/admin/am/sms/**=anon
+				/admin/am/scan/**=anon
                 /** = adminc
             </value>
 		</property>

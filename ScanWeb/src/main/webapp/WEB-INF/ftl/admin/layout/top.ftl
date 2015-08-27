@@ -11,5 +11,5 @@
     <#if staffInfo.staffBelongDesc != null && staffInfo.staffBelongDesc != ''>${staffInfo.staffBelongDesc}</#if>
     </#if>
     </label>
-    <a href="/admin/am/index" class="returnToHome fontC36cS12">返回工作台</a>
+    <a href="/admin/am/index" class="returnToHome fontC36cS12"></a>
 </div>

@@ -161,4 +161,52 @@
       VALUE2 = #{value2,jdbcType=VARCHAR}
     where ID = #{id,jdbcType=INTEGER}
   </update>
+  <select id="findAllRecord" parameterType="com.ca.entity.ScanRecord" resultType="map">
+    SELECT
+    <include refid="Base_Column_List" />
+    FROM scan_d_record
+    WHERE 1 = 1
+    <if test="employeeid != null and employeeid != ''" >
+      AND EMPLOYEEID = #{employeeid,jdbcType=INTEGER}
+    </if>
+    <if test="department != null and employeeid != ''" >
+      AND DEPARTMENT = #{department,jdbcType=VARCHAR}
+    </if>
+    <if test="employeename != null and employeename != ''" >
+      AND EMPLOYEENAME = #{employeename,jdbcType=VARCHAR}
+    </if>
+    <if test="expressno != null and expressno != ''" >
+      AND EXPRESSNO = #{expressno,jdbcType=VARCHAR}
+    </if>
+    <if test="expresscompany != null and expresscompany != ''" >
+      AND EXPRESSCOMPANY = #{expresscompany,jdbcType=VARCHAR}
+    </if>
+    <if test="expresscompanyid != null and EXPRESSCOMPANYID != ''" >
+      AND  EXPRESSCOMPANYID = #{expresscompanyid,jdbcType=INTEGER}
+    </if>
+    <if test="scantime != null and scantime != ''" >
+      SCANTIME = #{scantime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="info != null and info != ''" >
+      AND INFO = #{info,jdbcType=VARCHAR}
+    </if>
+
+  </select>
+  <insert id="insertBatchSelective" parameterType="java.util.Map">
+    insert into scan_d_record (
+    EMPLOYEEID, DEPARTMENT, EMPLOYEENAME, EXPRESSNO, EXPRESSCOMPANY, EXPRESSCOMPANYID,
+     INFO
+    )
+    <foreach collection="ScanRecords" index="index" item="item" open="" separator="union all" close="">
+      select
+      #{item.employeeid,jdbcType=INTEGER} EMPLOYEEID,
+      #{item.department,jdbcType=VARCHAR} DEPARTMENT,
+      #{item.employeename,jdbcType=VARCHAR} EMPLOYEENAME,
+      #{item.expressno,jdbcType=VARCHAR} EXPRESSNO,
+      #{item.expresscompany,jdbcType=VARCHAR} EXPRESSCOMPANY,
+      #{item.expresscompanyid,jdbcType=INTEGER} EXPRESSCOMPANYID,
+      #{item.INFO,jdbcType=VARCHAR} INFO
+       from dual
+    </foreach>
+  </insert>
 </mapper>
