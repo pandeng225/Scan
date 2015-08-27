@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by pandeng on 2015/7/20.
@@ -28,7 +29,9 @@ public class ScanService {
     }
 
     public int add(List<ScanRecord> params) {
-        return scanRecordMapper.insertBatchSelective(params);
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("ScanRecords",params);
+        return scanRecordMapper.insertBatchSelective(map);
     }
 
     public List<ScanRecord> selectRecords(ScanRecord params) {

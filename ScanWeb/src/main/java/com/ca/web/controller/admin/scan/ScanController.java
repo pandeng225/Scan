@@ -69,12 +69,25 @@ public class ScanController {
     @ResponseBody
     @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String add(String recordList,String listSize) {
+        int insertNum=0,trueNum=0;
+        HashMap<String,Object> resultMap=new HashMap<>();
+        resultMap.put("result",false);
+        if(listSize!=null&&listSize!=""){
+            trueNum=Integer.valueOf(listSize);
+            if(Integer.valueOf(listSize)>0){
+                List<ScanRecord> scanRecords= JSONObject.parseArray(recordList,ScanRecord.class);
+                insertNum=scanService.add(scanRecords);
+            }
+            if(insertNum<trueNum){
+                resultMap.put("message","部分未插入");
+            }
+            resultMap.put("result",true);
+            resultMap.put("message","成功");
+        }else{
+            resultMap.put("message","错误的列表数");
+        }
 
-        ScanRecord scanRecord=new ScanRecord();
-        ArrayList<ScanRecord> scanRecords=new ArrayList<>();
-        scanRecords.add(scanRecord);
-        scanService.add(scanRecords);
-        return "";
+        return JSONObject.toJSONString(resultMap);
     }
     @ResponseBody
     @RequestMapping(value = "/batchOut", method = RequestMethod.GET)

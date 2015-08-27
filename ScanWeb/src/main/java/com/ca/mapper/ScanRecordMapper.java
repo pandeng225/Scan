@@ -4,6 +4,7 @@ import com.ca.entity.ScanRecord;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ScanRecordMapper {
     int deleteByPrimaryKey(Integer id);
@@ -20,7 +21,7 @@ public interface ScanRecordMapper {
 
     List<ScanRecord> findAllRecord(ScanRecord params, RowBounds rowBounds);
 
-    int insertBatchSelective(List<ScanRecord> params);
+    int insertBatchSelective(Map<String, Object> map);
 
     List<ScanRecord> selectRecords(ScanRecord params);
 }

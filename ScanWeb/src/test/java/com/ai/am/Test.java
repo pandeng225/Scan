@@ -1,17 +1,43 @@
 package com.ai.am;
 
-public class Test {
+import com.ca.entity.ScanRecord;
+import com.ca.service.admin.scan.ScanService;
+import com.ca.web.controller.admin.scan.ScanController;
+import org.apache.shiro.authc.Account;
+import org.junit.BeforeClass;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		char[] a={0x4b,0x88,0x04,0x00,0xc1,0x85,0x14,0x93,0x4d,0x60,0x03,0x13};
-		
-		for(char b:a){
-		System.out.println(b);
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class Test {
+	private  static ScanController service;
+
+	@BeforeClass
+	public static void init() {
+		ApplicationContext
+				context = new ClassPathXmlApplicationContext("spring/applicationContext.xml");
+		service=(ScanController)context.getBean("ScanController");
+	}
+
+	@org.junit.Test
+	public void testGetAcccountById() {
+
+		List<ScanRecord> scanRecords=new ArrayList<ScanRecord>();
+		for(int i=0;i<5;i++){
+			ScanRecord scanRecord=new ScanRecord();
+			scanRecord.setEmployeename("测试"+i);
+			scanRecord.setDepartment("测试" + i);
+			scanRecord.setExpressno(String.valueOf(i));
+			scanRecord.setScantime(new Date());
+			scanRecords.add(scanRecord);
 		}
+		service.add("","");
+//		System.out.println(re);
 	}
 
 }
