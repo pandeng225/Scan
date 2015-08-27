@@ -1,0 +1,32 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td{margin:0;padding:0;font-family:"微软雅黑",Arial, Helvetica, sans-serif;font-size:12px;font-weight:normal;color:#333;}
+ol,ul{list-style:none;}
+.box{position:relative;width:680px;margin:10px;line-height:22px;}
+.logoImg{position:absolute;right:0;top:10px;width:150px;height:32px;background:url(../images/outnote_expdelivery_logoTwo.png) no-repeat #fff;}
+.sec{padding:2px 5px;border-top:1px solid #a9a9a9;overflow:hidden;zoom:1;}
+.sec p{float:left;}
+.sec label{float:left;width:60px;text-align:right;}
+.sec span{display:block;padding:0 5px 0 0;margin-left:60px;}
+.sec dt{float:left;width:60px;text-align:left;font-weight:800;}
+.sec dd{margin-left:60px;}
+.sec dd:after{display:block;width:0;height:0;content:"";clear:both;font-size:0;}
+.company{width:230px;}
+.orderNo{width:170px;}
+.wFull{width:100%;}
+/*两列右侧长 begin*/
+.twoLeft{width:170px;}
+.twoRightLong{width:440px;}
+/*两列右侧长 end*/
+/*两列左侧长 begin*/
+.twoLeftLong{width:350px;}
+.twoRight{width:260px;}
+/*两列左侧长 end*/
+/*三列 begin*/
+.threeLeft{width:170px;}
+.threeMid{width:180px;}
+.threeRight{width:260px;}
+/*三列 end*/
+.custCommit{float:left;width:320px;margin-right:10px;border-right:1px dashed #a9a9a9;}
+.custCommit p{width:50%;}
+.custCommit span{width:45px;height:18px;border-bottom:1px solid #a9a9a9;}
+.custSign{position:relative;float:left;width:320px;}
+.custSign p.signDate{position:absolute;right:20px;top:20px;width:130px;}

@@ -1,0 +1,15 @@
+span.error {
+  background:url("images/unchecked.gif") no-repeat 0px 0px;
+  padding-left: 16px;
+  margin-left: 1em;
+  padding-bottom: 2px;
+  font-size:9pt;
+  font-family:微软雅黑;
+  color: #EA5200;
+}
+
+ span.success{
+  background:url("images/success.gif") no-repeat 0px 0px;
+  padding-left:16px;
+  margin-left:1em;
+ }

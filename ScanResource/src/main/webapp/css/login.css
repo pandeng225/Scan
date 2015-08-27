@@ -1,0 +1,76 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0; padding:0;} 
+html,body{ height:100%;}
+body{font:87.5% normal normal "Arial", Gadget, sans-serif "microsoft yahei"; color:#545454; background-color:#e5e5e5; text-align:center;  min-width:900px;}
+.logobox{ padding-left:6%; padding-top:3%; text-align:left;}
+.logo{ width:500px; height:60px; background:url(../images/logo.png) no-repeat left top;}
+.logo span{ display:none;}
+
+.login-cont{ width:505px; height:270px; padding-top:130px; padding-left:125px; background:url(../images/login_bg.png) no-repeat left top; margin:0 auto; text-align:left;}
+.login-cont .f-line{ margin-top:12px;}
+.f-line label{ display:inline-block; width:80px;}
+.f-line .l-txt,.f-line .m-txt,.f-line .m-sel{ display:inline-block; width:240px; height:27px; font-size:100%; border:1px solid #d3d3d3;}
+.f-line .m-txt{ width:150px;}
+.f-line .checkcode{ display:inline-block; vertical-align:middle;margin-left:5px;}
+.login-cont .sel-fun{ padding-left:65px;}
+.login-cont .sel-fun .sec{ margin-left:20px;}
+.login-cont .sel-fun span{ margin-left:3px; vertical-align:middle;}
+.login-cont .sel-fun span img{ display:inline; vertical-align:middle;}
+.login-cont .sel-fun input{ vertical-align:middle;}
+.login-cont .btn-area{margin-top:20px; padding-left:65px;}
+.login-cont .btn-area .btn,.signup-cont form .btn-area .btn{ display:inline-block; padding:4px 30px; text-align:center; background-color:#ed7213; color:#fff; font-size:110%; font-family:"microsoft yahei"; border:0; cursor:pointer;margin-left: 15px;}
+.signup{ margin-left:10px; color:#0033ff; text-align:left; }
+.signup:hover{ color:#ff6600;}
+.l-space{ margin-left:20px;}
+
+.signup-cont{ border:1px solid #e2e2e2; background-color:#f7f7f7; width:88%; margin:0 auto; text-align:left; margin-top:20px;}
+.signup-cont form{ padding-bottom:40px;}
+.signup-cont .f-line{ margin-top:10px;}
+.signup-cont .f-line td{ width:455px;padding: 6px;}
+.signup-cont .f-line label{ width:150px; text-align:right;}
+.signup-cont .f-line .m-txt,.signup-cont .f-line .m-sel{ width:150px;margin-left:10px;}
+.signup-cont .f-line .l-txt{ width:55%;}
+.signup-cont form .btn-area{ padding-left:15%; margin-top:10px;margin-left:10px;}
+.signup-cont form .btn-area .g-btn{ background-color:#b3b3b3;}
+.signup-cont .subtitle{font-size:16px; font-weight:bold; color:#e26e18; padding-left:20px; height:35px; line-height:35px; background-color:#f2f2f2; text-align:left;}
+.star{ color:#F33; margin-right:3px;}
+
+.footer{ padding:1em 0; margin-top:2em; width:100%; background:url(../images/footer_bg.gif) repeat-x left top;}
+.footer p{ font-size:12px; color:#999; line-height:18px;}
+
+
+.form{position:absolute;}
+  
+#capslock{
+    display: none;
+    position: absolute;
+    top:23px;
+    left:65px;
+    z-index: 11;
+    width: 220px;
+    background-color: #fffdee;
+    height:30px;
+    line-height: 30px;
+    border:1px solid #edd288;
+    color:#f60;
+    padding:0 10px;
+    font-size:80%;
+}
+#capslock i{
+    background:url(../images/temp/login-all-bg.png) -35px -239px no-repeat;
+    display: inline-block;
+    height: 30px;
+    width:20px;
+    margin-right: 10px;
+    vertical-align: middle;
+
+}
+#capslock s{
+    position: absolute;
+    background:url(../images/temp/login-all-bg.png) 0 -246px no-repeat;
+    height: 12px;
+    width:18px;
+    bottom:-10px;
+    left:38px;
+}

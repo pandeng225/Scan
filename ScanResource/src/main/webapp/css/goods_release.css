@@ -1,0 +1,122 @@
+.w75{width:75px;}
+.w90{width:90px;}
+.w100{width:100px;}
+.w120{width:120px;}
+.w150{width:150px;}
+
+.goodsTabShow{padding-top:15px;}
+.sList .helpInfo{float:left;}
+.sList li{height:auto;}
+.sList li.speStyle{margin-left:260px;padding-left:70px;width:130px;}
+.sList li.twoStyle{width:210px;padding-left:60px;}
+.sList li.twoStyleTip{margin-left:600px;width:185px;}
+/*提示*/
+.prompt {background:#fdf9e6;border:1px solid #e6e6e6;height:23px;padding:2px 10px;line-height:23px;margin-top:10px;}
+.prompt span,.prompt a{float:left;}
+.prompt a:hover {text-decoration:none;}
+.prompt span.helpInfo{float:right;}
+.prompt label{float:left;line-height:23px;margin-right:20px;}
+.prompt label.promptIcon{display:block;width:11px;height:14px;margin:5px 5px 0 0;background:url(../images/order_detail_process/fillout_order_info.png) -76px -2px no-repeat;}
+
+/*切换*/
+.goodsTab {border-bottom:1px solid #a8cee2;height:31px;margin:10px 0;}
+.goodsTab .goodsOn {float:left;width:101px;margin:0 5px;background:url(../images/prodconf_sel_cata/goodsTab.gif)  0 -32px no-repeat;height:32px;}
+.goodsTab .goodsOn h2 {font-weight:bold;}
+.goodsTab ul li {float:left;width:101px;margin:0 5px;background:url(../images/prodconf_sel_cata/goodsTab.gif) no-repeat;height:31px;cursor:pointer;}
+.goodsTab ul li h2 {line-height:32px;padding:0 15px;font-weight:normal;}
+/**/
+.goodsList{height:31px;line-height:31px;margin-bottom:10px;border:1px solid #e6f0f5;border-width:1px 1px 0;}
+.goodsTabelList{margin-top:1px;}
+.goodsTabelList th{height:30px;padding:0 11px;text-align:center;background:#e6f0f5;}
+.goodsTabelList td{border:1px solid #e6f0f5}
+.tableBody{border-bottom:1px solid #e6f0f5;margin-bottom:10px;}
+.tableBody td {border:1px solid #e6f0f5;padding:10px;text-align:center;}
+.tableBodyList{}
+.tableBodyList .tdSpe {text-align:center;}
+.tableBc {background:#F7FCFD;}
+.tableBody .tdSpe{border-right:none;}
+.tableBody .imgBox {float:left;}
+.tableBody .textBox{float:left;width:170px;padding-top:5px;padding-left:10px;text-align:left;}
+.tableBody .chfTextBox{float:left;width:140px;padding-top:5px;padding-left:10px;text-align:left;}
+.tdOne{width:10px;}
+.tdTwo{width:240px;cursor:pointer;}
+.tdThree{width:57px;}
+.tdFour{width:50px;}
+.tdFive{width:55px;}
+.tdSix{width:73px;cursor:pointer;}
+.tdSeven{width:73px;}
+
+.chfTdTwo{width:210px;}
+.chfTdThree{width:57px;}
+.chfTdFour{width:80px;}
+.chfTdFive{width:100px;}
+.chfTdSix{width:73px;}
+.chfTdSeven{width:73px;}
+
+.tabSixThOne{width:228px;}
+.tabSixTdOne{width:230px;}
+.tabSixTdTwo{width:178px;}
+.tabSixTdThree{width:78px;}
+.tabSixTdFour{width:58px;}
+.tabSixTdFive{width:58px;}
+.tabSixTdSix{width:74px;}
+/*分页*/
+.tPageBox{height:31px;margin-bottom:10px;border:1px solid #e6f0f5;border-width:1px 1px 0;}
+.tPage{height:30px;line-height:30px;margin-top:1px;background:#e6f0f5;}
+/*上下架弹出层*/
+.list{margin-top:10px;overflow:hidden;zoom:1;}
+.leftList{float:left;padding-left:21px;}
+.leftTable{width:200px;height:250px;overflow:hidden;border:1px solid #ddd;background:#fff;border-radius:5px;}
+.borderBottom{width:180px;margin:0 auto;border-bottom:1px solid #ccc;height:30px;}
+.borderBottom span{color:#518092;font-weight:600;line-height:30px;float:left;}
+.borderBottom label{float:right;line-height:30px;}
+.borderBottom input{float:right;margin:9px 5px 0 0;*margin-top:4px;}
+.rightTable{width:200px;height:250px;overflow:hidden;border:1px solid #ddd;background:#fff;border-radius:5px;}
+.listMiddle{width:51px;float:left;position:absolute;left:235px;top:200px;}
+.rightList{float:right;padding-right:21px;}
+.leftTable tr{height:23px;}
+.rightTable tr{height:23px;}
+.leftTable tr.bgGray td,.rightTable tr.bgGray td{background:#eee;}
+.widthOne{width:23px;padding-top:5px;text-align:center;vertical-align:top;}
+.widthThree{text-align:left;}
+.listMiddle .shortBtn{margin-bottom:35px;}
+.leftTableScr{overflow-y:auto;overflow-x:hidden;height:190px;width:180px;padding:10px;}
+.rightTableScr{overflow-y:auto;overflow-x:hidden;height:190px;width:180px;padding:10px;}
+
+
+.sTl,.buleTitle{ color: #336699;font-weight: bold;height: 25px;line-height: 25px;margin: 10px 0; padding-left: 10px;}
+.manageTableBody{width:808px;margin:10px 0;text-align:center; position:relative;border:1px solid #e6f0f5;}
+.manageTableBody td{border-bottom:1px solid #e6f0f5;line-height:31px;border-collapse:collapse;}
+.manageTableBody td.oneTD{padding:5px 10px;}
+.manageTableBody td.oneTD .imgBox,.manageTableBody td.tdChooseOne .imgBox{float:left;}
+.manageTableBody td.oneTD .chfTextBox{float:left;margin-top:15px;}
+.tdChooseOne{width:240px;padding-left:10px;text-align:left;}
+.tdFTwo{width:80px;text-align:left;padding-left:40px;}
+.tdFThree{width:80px;text-align:left;padding-left:20px;}
+.thFThree{width:100px;}
+.thFFour{width:150px;}
+.tdFFour{width:130px;text-align:left;padding-left:20px;}
+.thFFive{width:180px;padding-left:10px;}
+.tdFFive{width:150px;padding-left:40px; text-align:left;}
+.chooseAllWord{cursor:pointer;margin-right:45px;}
+.onchooseAll{cursor:pointer;margin-right:345px;}
+.saveArea {margin: 30px 0;overflow: auto;text-align: center;width: 810px;}
+.saveArea a {margin: 0 30px;}
+.sTable{width:808px;}
+.sTable th {height: 23px;line-height: 23px;text-align: right;width:100px;vertical-align:top;}
+.chooseNum{margin-top:-1px;}
+.chooseNum li {float: left;margin-right: 30px;}
+.chooseCompany{margin-top:-5px;}
+.chooseCompany li{height:35px;line-height:35px;}
+.textW70{width:70px;}
+.transforBtn,.tabTransfor{width:100%;border-bottom:2px solid #b3d1e2;height:31px;}
+.transforBtn li,.tabTransfor li{float:left;width:93px;height:31px;background:url(../images/tabsNews.png) -96px 0 no-repeat;cursor:pointer;color:#666;margin-right:5px;margin-top:px;text-align:center;line-height:31px;}
+.transforBtn li.choosed,.tabTransfor li.choosed{background:url(../images/tabsNews.png) no-repeat;color:#275f82;margin-top:2px;}
+.w420{width:420px;}
+.tangleTips{width:16px;height:16px;float:left;margin-top:4px;display:inline-block; cursor:pointer;}
+.tangleDown{background:url(../images/layer/mangerTangle.gif) no-repeat;}
+.tangleUp{background:url(../images/layer/mangerTangle.gif) 0 -18px no-repeat;}
+.chooseMagShow{float:left;margin-top:2px;padding-left:10px;}
+.bandingClient{width:100%;background:#f6f5f5;}
+.bandingClient table th{border-bottom:1px solid #fff;width:100px;text-align:right;}
+.bandingClient table td{border-bottom:1px solid #fff;text-align:left;}

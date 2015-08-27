@@ -1,0 +1,101 @@
+/**
+ 
+促销公告页面CSS
+ 
+**/
+
+/**错误提示**/
+.error{float:left;height:21px;width:auto;overflow:auto;border:1px solid #ff8080;margin-left:80px;padding:3px 10px 0 25px;background:url(../images/order_detail_process/cancel.gif) 3px 3px #ffeaea no-repeat;color:#c00;}
+.marginLeft{margin-left:90px;}
+.marginLeftTwo{margin-left:10px;}
+.marginTopBottom{margin:10px 0;display: inline-block;}
+.nowrapw214{width: 214px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.nowrapw166{width: 166px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+.tc{text-align:center;}
+/**错误 end**/
+/**input 长度**/
+.inputWidthOne{width:165px;height:24px;line-height:24px;padding:0 2px;border:1px solid #bbbbbb;}
+.selectWidthOne{width:165px;height:24px;line-height:24px;padding:2px;border:1px solid #bbbbbb;*+float:left;*+margin-top:4px;}
+/**input 长度 end**/
+
+/**促销公告列表页**/
+.queryActivity{width:810px;margin:10px 0;}
+.queryActivity th{width:70px;text-align:right;}
+.queryActivity td{width:188px;}
+.queryActivity th,.queryActivity td{padding:5px 0;}
+
+.Wdate{width:70px;height:23px;padding:0 2px;border:1px solid #BBBBBB;margin-right:5px;line-height:23px;}
+
+.activityListHead,.activityPaging{width:808px;line-height:31px;height:31px;margin-bottom:10px;border:#e6f0f5 solid 1px; background:url(../images/order_query/blue_table_bc.gif) repeat-x;}
+.activityListHead{text-align:center;}
+.activityListBody{width:808px;border:1px solid #e6f0f5;text-align:center;margin-bottom:10px;}
+.activityListBody td{padding:10px 0;border-bottom:1px solid #e6f0f5;}
+.createActivity{width:808px;height:23px;}
+.createActivity .shortBlueSubmitBtn{float:right;}
+
+/**促销公告列表页 end**/
+
+/**促销公告创建修改页**/
+.promotionInfor{overflow-x:hidden;overflow-y: hidden;}
+.promotionInfor h2{clear: both;color: #336699;font-size: 12px;font-weight: bold;height: 23px;line-height: 23px;margin: 10px 0;padding: 0 9px;}
+.promotionCondition{width:810px;height:30px;margin-bottom:6px;}
+.promotionCondition dt{float:left;width:80px;height:30px;padding-right:10px;text-align:right;line-height:30px;}
+.promotionCondition dd{float:left;height:30px;line-height:30px;}
+.inputWidth{width:400px;height:24px;line-height:24px;margin-top:2px;float:left;}
+.promotionCondition dd label{margin-left:5px;line-height:30px;}
+
+.promotionExplain{width:740px;height:420px;background:#eee;margin-left:32px;overflow:hidden;}
+
+.activityCon .label{margin-right: 10px;float:left;margin-left:0px;}
+.activityCon .label input{float: left;margin:8px 4px 0 0;*+margin-top:4px;}
+.activityLink .linkSpan{float: left;margin-right:10px;line-height: 30px;}
+.none{display:none;}
+.mainbBodyer{min-height:440px;}
+.padding01{padding:0 8px;}
+/**促销公告创建修改页 end**/
+
+/**促销公告详情页**/
+.viewBody{}
+.viewBody h4{font-size:14px;font-weight:600;text-align:center;margin:20px 0;}
+.viewBody p{margin:0 auto;line-height:35px;padding: 0 30px;}
+.viewBody p.indent{text-indent:2em;}
+.viewBody p.textAlignRight{text-align:right;}
+.timeNameInfor{border-bottom:1px solid #e3e3e3;line-height:25px;height:25px;margin-bottom:10px;}
+.newlyBuildTime{float:left;margin:0 40px 0 30px;}
+.newlyBuildPeople{float:left;}
+.toUpdateTime{float:right;margin-right:40px;}
+/**促销公告详情页 end**/
+.submitBtn{text-align:center;padding-top:20px;}
+.returnBtn{text-align:center;border-top:1px solid #e3e3e3;padding-top:40px;}
+.submitBtn .shortBlueSubmitBtn{margin-left:40px;}
+/****/
+
+.navigation{ width:auto;}
+/**删除弹出层**/
+.releaseTipsChange{position:absolute;left:300px;top:135px;background:#fcfcfc;border:1px solid #cccccc;padding:20px;z-index:10000002;width:300px;}
+.releaseTipsChange p{height:40px;text-align:center;color:#333;line-height:23px;margin:15px 0}
+.releaseTipsChange .change {background:url(../images/prodconf_sel_cata/successIcon.gif) 100px -30px no-repeat;height:31px;padding-left:30px;font-size:14px;color:#ff9933;font-weight:bold;line-height:31px;text-align:center;border-bottom:1px solid #ddd;margin-bottom:10px;}
+.thickdiv{position:fixed;top:0;left:0;z-index:10000001;width:100%;height:100%;background:#000;border:0;filter:alpha(opacity=15);opacity:0.15;}
+
+
+.releaseTips{width:238px;border:1px solid #cccccc;padding:20px 20px 10px;background:#fcfcfc;position:absolute;left:300px;top:135px;z-index: 10000002;}
+.releaseTips .success{height:31px;margin:0 auto 10px auto;padding-left:30px;font-size:14px;color:#ff9933;font-weight:bold;line-height:31px;text-align:center;background:url(../images/successIcon.gif) 70px -60px no-repeat;}
+.releaseTips p {text-align:center;color:#999999;line-height:23px;margin:15px 0}
+.releaseTips p.topLine{border-top:1px solid #e4e4e4;padding-top:10px;margin-top:5px;}
+
+/**/
+.activityListBody .activityName{ padding-left:10px; text-align:left;}
+.activityListBody .activityName .icon_up{margin:0px 8px 0 0;width:26px;height:16px;float:left;color: Gray;cursor:pointer;text-align:center;border: 1px solid #fff;}
+.activityListBody .activityName .icon_up:hover{color: #36c;}
+.activityListBody .activityName .icon_up_img i.icon{z-index: 2;margin-top:-4px;background:#fff url(../images/icon_up.png) no-repeat 4px 4px;width: 24px;height:20px;position: relative;float:left;border:1px solid #fff; border-bottom: 0;}
+.activityListBody .activityName .icon_xia{position:relative;z-index: 3;}
+.activityListBody .activityName .icon_xia i.icon{position: absolute;top:0 ;left:0px;height:22px;border:1px solid #ccc;border-bottom: 0; }
+.activityListBody .activityName .icon_xia .xia_down{ display: block; position: absolute;z-index:1; right:0px; top:18px;padding:4px 8px 2px;border:1px solid #ccc;width:50px;background:#fff;}
+.xia_down{display:none;}
+.promotionCondition .set_up{ margin-right:20px;}
+.promotionCondition .set_up input{float:left;margin-top:8px;*+margin-top:4px;}
+
+.noborder td{border-bottom:0 none;}
+.tr-link td{padding: 0px 0 10px;}
+.tr-link .tdlink{padding-left:10px;text-align:left;}
+.tr-link .copyinput{position:relative;width: 500px;height: 20px;margin: -4px 0;margin-right:10px;}

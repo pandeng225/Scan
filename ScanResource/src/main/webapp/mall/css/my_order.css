@@ -1,0 +1,58 @@
+/* ------------------------public--------------------- */
+.new_container { position: relative; }
+.top_line { height: 36px; background: #f86207 }
+.navList { position: absolute; top: -36px; }
+.list_area { display: none; }
+.navList h1 { cursor: pointer; background: #d75100 }
+.navList h1 span { /* background: url('../images/dir_d.png') no-repeat; width: 14px; height: 7px;  */display: inline-block; margin-left: 54px; }
+/* .navList h1 span.active { background: url('../images/dir_t.png') }
+*/
+#content { width: 80%; }
+/* ------------------------per_info--------------------- */
+.per_info { float: left; width: 218px; border: 1px solid #eee; margin-top: 15px; padding-bottom: 30px; }
+.per_account { padding-right: 60px; height: 100px; }
+.per_img_area { line-height: 100px; float: right; }
+.per_img_area img { -webkit-transition: all .5s ease; -ms-transition: all .5s ease; -o-transition: all .5s ease; -moz-transition: all .5s ease; }
+.per_img_area img:hover { -moz-transform: rotate(360deg); -webkit-transform: rotate(360deg); -o-transform: rotate(360deg); -ms-transform: rotate(360deg); transform: rotate(360deg); }
+.per_account h1 { font-size: 14px; font-weight: bold; float: right; padding-top: 34px; text-align: right; padding-left: 10px; }
+.per_account h1 span { /*font-family: '新宋体';*/ font-size: 12px; font-weight: normal }
+.per_info dt { border-top: 1px dotted #eee; font-size: 14px; font-weight: bold; line-height: 30px; }
+.per_info dd a { color: #999999; /*font-family: '新宋体';*/ line-height: 20px; }
+.per_info dd.active a { color: #ff6600 }
+.per_info dd a:hover { text-decoration: none;color:red; }
+.per_info dt,
+.per_info dd { text-align: right; padding-right: 60px; }
+/* ------------------------order_list_area--------------------- */
+.order_list_area { float: left; margin-left: 15px; margin-top: 15px; width: 77%; }
+.order_list_area h1 { height: 40px; padding-left: 10px; background: #eee; line-height: 40px; font-size: 16px; }
+.order_query { padding: 12px 0 12px 0; }
+.order_query div.input-gp { float: left; margin-right: 8px; }
+/* .order_query .order_num,
+.order_time_start,
+.order_time_end { width: 140px; height: 20px; border: 1px solid #eee; padding: 4px; vertical-align: middle }
+*/
+/* .order_status { height: 30px; border-color: #eee; padding: 4px 0 4px 10px; width: 148px; vertical-align: middle }
+*/
+/* .order_time_set { padding: 0 28px 0 28px }
+*/
+/* .order_query_btn { width: 60px; background: #52a0e5; cursor: pointer; display: inline-block; height: 28px; vertical-align: middle; line-height: 28px; color: #fff; text-align: center; margin-left: 10px; }
+*/
+#order_list_table thead { background: #EAEAEA; font-size: 14px;}
+#order_list_table th {text-align: center; }
+#order_list_table td { text-align: center;/* height: 40px;*/ border-bottom: 1px dotted #eee }
+
+/* .order_list_table { width: 100%; }
+*/
+/* .order_list_table th { background: #eee }
+*/
+/* .order_list_mark { color: #dd0000 }
+*/
+/* .order_list_table th,
+.order_list_table td { text-align: center; height: 40px; border-bottom: 1px dotted #eee }
+*/
+/* .order_list_action { color: #2272c8 }
+*/
+
+/* ------------------------pagination--------------------- */
+/* .pagination { float: right; clear: both; padding: 30px 0 30px 0 }
+*/

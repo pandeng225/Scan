@@ -1,0 +1,247 @@
+/************收货及交易详情**************/
+
+.detailsTitle{width:950px;overflow:auto;margin:10px auto;font-size:14px;font-weight:600;}
+.detailsBoxName{width:948px;height:29px;margin:0 auto;border:1px solid #e4e4e4;background:#f5f5f5;}
+.detailsBoxName div{text-align:center;float:left;height:29px;line-height:29px;}
+.detailsBoxName .commodityName{width:621px;}
+.detailsBoxName .orderInfor{width:327px;}
+.detailsBox{width:948px;overflow:hidden;margin:0 auto;border:1px solid #e4e4e4;border-top:0px;}
+.detailsBox .commodityNameContent{float:left;width:580px;padding:20px;border-right:1px solid #e4e4e4;}
+.detailsBox .commodityNameContent td{vertical-align: top;}
+.detailsBox .orderInforContent{float:left;width:287px;padding:20px;}
+.commodName{width:280px;line-height:24px;}
+.commodName dl{}
+.commodName dt{width:38px;float:left;}
+.commodName dd{width:140px;float:left;}
+.commodContent{width:300px;}
+.commodContent dl{float:left;width:195px;margin-left:0px;_margin-left:0px;}
+.commodContent dt{float:left;line-height:24px;width:50px;text-align:right;}
+.commodContent dd{float:left;width:145px;line-height:24px;word-wrap:break-word;word-break:break-all;}
+.money{font-weight:600;text-align:right;}
+.money label{color:#c00;font-weight:600;}
+.line{height:1px;margin:20px 0;border-top:1px solid #e4e4e4;font-size:1px;}
+.orderInforContent dl{width:287px;overflow:hidden;}
+.orderInforContent dl dt,.orderInforContent dl dd{float:left;line-height:24px;}
+.orderInforContent dl dt{width:60px;}
+.orderInforContent dl dd{width:227px;}
+
+/************收货及交易详情 end**************/
+
+.separationLine{height:1px;margin:20px 0;border-top:1px solid #bfbfbf;font-size:1px;}
+
+/*************发货/退货信息*************/
+
+.shippingInfor,.returnInfor{width:930px;overflow:hidden;padding-left:20px;margin:0 auto 10px auto;}
+.infor{float:left;}
+.edit{float:right;}
+.shippingInforEdit{width:910px;overflow:auto;padding:15px 20px;margin:0 auto 10px auto;background:#f7fcfd;}
+.shippingInforEdit dl{margin-bottom:10px;display: inline-block;}
+.shippingInforEdit dl dt,.shippingInforEdit dl dd{height:25px;float:left;}
+.shippingInforEdit dl dt{width:66px;height:21px;padding-top:4px;white-space: nowrap;}
+.shippingInforEdit dl dd{width:840px;}
+.shippingInforEdit dl dd label,.shippingInforEdit dl dd span{float:left;margin-top:4px;}
+
+.selectW130H21{width:130px;height:25px;padding:2px;}
+.inputW416H23{width:416px;height:23px;line-height:23px;}
+.inputW127H23{width:127px;height:23px;line-height:23px;}
+
+/*************发货/退货信息 end*************/
+/**/
+.error{display:none;}
+.error em{overflow:hidden;vertical-align:top;display:inline-block;border: 1px solid #FF8080;padding: 3px 10px 3px 25px; margin-left:10px;background: url(../images/order_detail_process/cancel.gif) 3px 3px #FFEAEA no-repeat;color: #C00;}
+
+/***********物流信息************/
+
+.logisticsInfor{width:950px;height:32px;margin:0 auto 0 auto;background:url(../images/logisticsBg.gif) repeat-x;}
+.logisticsInfor li{float:left;width:101px;height:25px;margin-bottom:-1px;padding-top:7px;text-align:center;background:url(../images/logisticsMode.gif) no-repeat;margin-right:10px;cursor:pointer;}
+.logisticsInfor li.currentMode{background:url(../images/logisticsModeCurrent.gif) no-repeat;font-weight:600;}
+.thirdPartyLogistics,.bicycleDistribution,.thirdClientSelf{width:908px;overflow:hidden;padding:20px;margin:0 auto 10px;border:1px solid #a8cee2;border-top:0;}
+.thirdPartyLogistics{}
+.bicycleDistribution{}
+.inforTop{width:908px;overflow:hidden;margin-bottom:10px;}
+.inforTop input,.inforTop span{float:left;}
+.inforTop select,.inforTop label{margin-right:10px;float:left;}
+.inforTop .fl{padding-top:4px;*+padding-top:4px;}
+.displayAll{margin:6px 3px 0 0;*margin:2px 1px 0 0;}
+.inforTop span{margin:4px 10px 0 0;}
+.inforTop .marginRight30{margin-right:30px;}
+.inputW40H21{width:40px;height:21px;line-height:21px;margin-right:3px;}
+.logisticsSearch{width:51px;height:20px;background:url(../images/logisticsSelcetBtn.gif) no-repeat;border:0;cursor:pointer;margin-top:3px;}
+.logisticsTable{background:#ececec;}
+.logisticsHeader td{background:#f5f5f5;text-align:center;padding:10px 0;}
+.logisticsList td{background:#fff;padding:10px 15px;}
+.logisticsList td label{display:block;}
+.selectCompany{margin:0 0 0 4px;}
+.logisticsSelect{width:51px;height:20px;margin:0 0 0 5px;color:#fff;border:0;cursor:pointer;background:url(../images/order_query/allocate_button.png) left -66px no-repeat;}
+.nameList{width:908px;overflow:hidden;}
+.nameList li{float:left;width:290px;}
+.marginRight19{margin-right:19px;_margin-right:16px;}
+.nameListHeader{width:290px;overflow:hidden;margin:0 1px 10px;}
+.nameListHeader dt,.nameListHeader dd{float:left;text-align:center;font-weight:600;}
+.nameListTable{width:290px;overflow:hidden;border-bottom:1px solid #ececec;}
+.nameListTable dt,.nameListTable dd{float:left;white-space: nowrap;height:27px;padding-top:10px;border:1px solid #ececec;margin-bottom:-1px;overflow:hidden;}
+.nameListTable dt{padding:0px 10px 0 10px;height:37px;overflow: hidden;white-space: nowrap;}
+.nameListTable dd{text-align:center;}
+.nameListTable dd.borderLR0{border-left:0;border-right:0;}
+.nameListTable dt input{float: left;margin-top: 10px;}
+.nameListTable dt span{display: table-cell;vertical-align: middle;width:60px;height: 37px;word-break: break-all;break-wrap:break-word;*padding-top: 12px;*float: left;overflow:hidden;}
+.width66{width:66px;overflow:hidden;}
+.width86{width:86px;}
+.width130{width:130px;}
+.width76{width:76px;overflow:hidden;}
+.width120{width:120px;}
+.width70{width:70px;}
+.selectchecked{margin-right:2px;*margin-right:0px;}
+.paging{margin:15px auto 0;}
+.confirmConsignor{display:none;}
+.confirmConsignor span{display:block;margin-bottom:10px;}
+.confirmBtu{}
+.rePrintFace{float:left;margin:2px 0 0 10px;}
+.preview{float:left;margin:2px 0 0 10px;}
+
+.thirdClientSelf dl{margin-bottom: 10px;width:100%;display:inline-block;line-height: 20px;}
+.thirdClientSelf dl dt{float:left;width:64px;text-align: right;}
+.thirdClientSelf dl dd{float:left;width:840px;}
+.thirdClientSelf dl dd span.cRed{font-weight: bold;margin-right:4px;}
+.thirdClientSelf dl dd label{margin-right: 20px;float: left;}
+.thirdClientSelf dl dd input{float:left;margin: 2px 6px 0 0;*+margin-top:0px;}
+/*发货编辑*/
+.deliveryTable {margin-left:16px;}
+.deliveryTable tr {height:30px;line-height:30px;}
+.deliveryTable tr td.width63{width:63px;}
+/***********物流信息 end***********/
+
+/***申请退单***/
+.applyOrderBox{overflow:hidden;margin:20px 0;text-align:center;}
+
+/*申请退单弹出层*/
+.rejectionLayer{z-index:10000002;width:277px;overflow:hidden;}
+.rejectionLayer .top{width:277px;height:37px;background:url(../images/popUpLayer/rejectionLayerT.png) no-repeat;}
+.rejectionLayer .top .rejectionClose{float:right;width:16px;height:16px;margin:8px 8px 0 0;padding:0;cursor:pointer;}
+.rejectionLayer .middle{width:277px;overflow:hidden;padding-bottom:5px;background:url(../images/popUpLayer/rejectionLayerM.png) repeat-y;}
+.rejectionLayer .bottom{width:277px;height:7px;font-size:7px;line-height:7px;background:url(../images/popUpLayer/rejectionLayerB.png) no-repeat;}
+.rejectionLayer .middle dl{width:241px;overflow:hidden;padding:5px 10px;margin-left:5px;}
+.rejectionLayer .middle dl dt,.middle dl dd{float:left;}
+.rejectionLayer .middle textarea{width:175px;height:95px;color:#999;resize:none;}
+.rejectionLayer .middle select{width:179px;width:177px\9;padding:2px;}
+.rejectionLayer .middle .shortBtn{float:right;margin:5px 23px 0 0;}
+.thickdiv{position:fixed;top:0;left:0;z-index:10000000;width:100%;height:100%;background:#000;border:0;filter:alpha(opacity=15);opacity:0.15;}
+/*申请退单弹出层 end*/
+/*开户 打印票据*/
+.detailLayer,.layer{ position: absolute;width:400px;top:45%;left:40%; z-index: 10000002;}
+.layerTop .topl_01{height:35px;width:9px;float: left;background:url(../images/popUpLayer/topl_1.png) no-repeat 0px;}
+.layerTop .topc_01{height:35px;background:url(../images/popUpLayer/topc_1.png) repeat-x 0px 0px;margin: 0px;overflow: hidden;}
+.layerTop .topr_01{height:35px;width:9px;float: right;background:url(../images/popUpLayer/topr_1.png) no-repeat 0px;}
+.layerTop .topc_01 label{float: left;font-weight: bold;line-height: 34px;padding:4px;}  
+.layerTop .topc_01 .close{background:url(../images/popUpLayer/close.png) no-repeat 0px; cursor: pointer;display: block;float: right; height: 16px; 
+margin: 12px 4px 0 0; width: 16px;}
+
+.layerBottom .btml_1{width:9px;height:9px;float:left;background:url(../images/popUpLayer/btml_1.png) no-repeat 0px;}
+.layerBottom .btmc_1{margin:0 9px;height:9px;background:url(../images/popUpLayer/btmc_1.png) repeat-x 0px;}
+.layerBottom .btmr_1{width:9px;height:9px;float:right;background:url(../images/popUpLayer/btmr_1.png) no-repeat 0px;}
+.layerCon{display:inline-block;width:100%;}
+.layerCon .centerr_1{width:9px;background:url(../images/popUpLayer/centerr_1.png) repeat-y 0px;position:absolute;top:35px;bottom:9px;right:0px;}
+.layerCon .centerl_1{width:9px;background:url(../images/popUpLayer/centerl_1.png) repeat-y 0px;position:absolute;top:35px;bottom:9px;left:0px;}
+.layerCon .centerc_1{margin: 0 9px;padding:10px;background:#fff;overflow:hidden;}
+.layerCon .btn{text-align: center;}
+.layerCon .btn input{}
+.previewOne {background: url(../images/prodconf_sel_cata/zip.gif) no-repeat;width: 15px;height: 15px;
+float: left;cursor: pointer;margin-top:4px;
+}
+.orderPrintList{margin:0 auto 10px;overflow:hidden;width: 250px;}
+.orderPrintList ul{width:100px;float:left;position: relative;margin: 0 10px;}
+.orderPrintList ul li{text-align: center;float:left;width:100%;}
+.orderPrintList ul li .shortBlueBtn{float:left;margin-right:6px;}
+.orderPrintList ul .btn{overflow:hidden;padding-left:18px;margin:10px 0 0;}
+.orderPrintList ul li.orderBg01{width:74px;height:64px; background: url(../images/order_query/orderPrintBg.png) no-repeat 0px 0;margin-left:8px;}
+.orderPrintList ul li.right{width:50px;height:64px; background: url(../images/order_query/orderPrintBg.png) no-repeat -88px 0;position: absolute;left:55px;top:10px;}
+.orderPrintList ul li.atE{width:30px;height:64px; background: url(../images/order_query/orderPrintBg.png) no-repeat -223px 0px;position: absolute;left:60px;top:8px;}
+.orderPrintList ul li.orderBgEms{background-position:-144px 0 ;}
+.printError {overflow: hidden;margin: 0 auto; padding-top:10px;}
+.printError  .error{background: url("../images/order_detail_process/cancel.gif") no-repeat 3px 3px #FFEAEA;position:relative;
+    border: 1px solid #FF8080;  color: #CC0000; display: inline-block; padding: 3px 10px 3px 25px;
+}
+.printError  .error .errorTop{background:url("../images/order_detail_process/arrow.png") no-repeat -2px -31px;  height: 12px;
+    position: absolute; top: -9px; width: 14px;}
+.errorOrder{margin:0 0 0 30px;}
+.errorOrder .errorTop{left:36px;}
+.errorEMS {float:right;margin-right: 20px;}
+.errorEMS .errorTop{right:66px;}
+
+/**footer**/
+.footer{width:980px;overflow:auto;padding:10px 0;text-align:center;border-top:0px solid #dde4e9;margin:0 auto;}
+
+
+/*开户 打印票据*/
+.ticketPri{width:374px;position:absolute;top:750px;left:400px;height:210px;z-index:100001;}
+.ticketPri_c{overflow:hidden;position:absolute;left: 0;width:374px;bottom:0;}
+.ticketPri .top {background:url(../images/prodconf_sel_cata/pop_top.png) 0 0 no-repeat;width:374px;height:41px;}
+.ticketPri .top h2 {float:left;line-height:23px;font-weight:bold;margin:5px 10px;width:343px;padding-left:10px;}
+.ticketPri .middle {background:url(../images/prodconf_sel_cata/pop_middle.png) 0 0 repeat-y;width:374px;overflow:hidden;padding-bottom:15px;}
+.ticketPri .middle .right {float:right;text-align:right;padding-left:0;}
+.ticketPri .middle .right a {color:#3366cc;text-decoration:underline;}
+.ticketPri .middle .right .noPrint {color:#999;cursor:default;}
+.ticketPri .middle .right em {margin:0 5px;color:#ddd;text-decoration:none;}
+.ticketPri .middle .ticketError {color:#c20;padding-bottom:10px;width:195px;padding-left:15px;}
+.ticketPri .middle ul {padding:4px 18px 5px 10px;overflow:hidden;}
+.ticketPri .middle ul li  {float:left;width:85px;margin: 0 10px 0 17px;}
+.ticketPri .middle ul li .printBtn{margin:12px 5px 0 10px;float:left;}
+.printChoice{position:absolute;left:10px;top:20px;}
+.ticketPri .middle ul li .preview{margin:20px 0 0;background:url(../images/prodconf_sel_cata/zip.gif) no-repeat;width:15px;height:15px;display:block;float:left;cursor:pointer;}
+.popPrint{background:url(../images/prodconf_sel_cata/print_bg.png) no-repeat;}
+.popPrintNone{background:url(../images/prodconf_sel_cata/print_bg_none.png) no-repeat;}
+.ticketPri .middle ul li span {position:relative;display:block;width:66px;height:70px;margin: 5px 0 0 10px;}
+.ticketPri .bottom {background:url(../images/prodconf_sel_cata/pop_bottom.png) 0 0 no-repeat;width:374px;height:9px;}
+.ticketPri .top p.close{float:right;width:16px;height:16px;margin:5px 5px 0px 0;cursor:pointer;background:url(../images/popUpLayer/smallClose.gif) no-repeat;}
+.billsShow{width:81px;height:23px;}
+.billsShow tbody tr td {padding:0;}
+.printOut{margin-left:25px;float:left;}
+
+.ticketPri_c .errorStep{ background: url("../images/order_detail_process/cancel.gif") no-repeat 3px 3px #FFEAEA;position:relative;_display:inline;
+    border: 1px solid #FF8080; color: #CC0000; float: left; height: 20px; padding: 3px 10px 0 25px;display:none;margin: 20px 0 0 30px;}
+.ticketPri_c .arrow02 {
+    background: url("../images/order_detail_process/arrow.png") no-repeat scroll -4px -30px transparent;
+    height: 10px; left: 20px; position: absolute; top: -10px; width: 14px;
+}
+.iconOlduser{width:16px;height:16px;display:inline-block;background: url(../images/olduser.png);margin:0 0 -4px 4px;position:relative;cursor:pointer;}
+.iconOlduser span{display:none;position:absolute;background:#FEFAF2;border: 1px solid #ccc;width:40px;top:-24px;left:-12px;text-align:center;}
+.iconOlduser:hover span{display:block;}
+.angle,.angleBg{width:0;height:0;border:5px solid #fff;position:absolute;left:14px;}
+.angle{border-color: #ccc transparent transparent transparent ;bottom:-10px ;}
+.angleBg{border-color: #FEFAF2 transparent transparent transparent ;bottom:-9px ;}
+
+.inforPosition{width:910px;overflow:auto;padding-left:31px;margin-bottom:10px;}
+.inforPosition label{margin-right:2px;}
+
+.mrgT10{margin-top:10px;}
+.billTypeTitle{font-weight:bold;margin-bottom:5px;}
+.billType{margin-bottom:5px;}
+.billType input{width:13px;height:13px;margin-right:5px;vertical-align:middle;}
+.billType label{vertical-align:middle;}
+.sendTips{float:left;margin:2px 0 0 10px;color:#999;}
+.deliveryTable tr td label{line-height:23px;}
+.noEdit{color:#999;text-decoration:none;cursor:default;}
+.noEdit:hover{color:#999;text-decoration:none;}
+
+.rejectionLayer .top h4{float:left;line-height:35px;font-weight:600;padding-left:20px;}
+.infoText{padding-top:10px;margin:0 15px 20px;}
+.btns{margin:0 0 30px;text-align:center;}
+.btns a{margin:0 10px;}
+.mrgR30{margin-right:30px;}
+
+.sendPop .top{background:url(../images/popUpLayer/rejectionLayerT1.png) no-repeat;}
+
+.selfFetch h4 {font-weight:bold;color: #666666;height:20px;padding-bottom: 5px;width: 500px;}
+.sfHeader{width:100%;border:1px solid #B2D1FF;border-width:1px 1px 0;background:#f6f8fd;height:30px;}
+.sfHeader td{border:1px solid #f6f8fd;border-width:0 1px 1px 0;padding:10px;text-align:center;}
+.sfBox{border:1px solid #B2D1FF;border-width:0 1px 1px;max-height:275px;_height:expression(this.scrollHeight>275?"275px":"auto");overflow-y:auto;overflow-x:hidden;}
+.sfBody tr{background:#fff;}
+.sfBody tr.trBlue{background:#f5faff;}
+.sfBody td{border:1px solid #eee;border-width:0 1px 1px 0;height:55px;padding:0 10px;word-wrap:break-word;word-break:break-all;}
+.radioBox{width:15px;text-align:center;}
+.radioBox input{float:none;width:13px;height:13px;}
+.thirdClientSelf .radioBox input{margin:0;}
+.sfName{width:100px;}
+.sfAddr,.traffic{width:260px;}
+.teleNum{width:95px;}
+.sfHeader td.teleNum,.sfBody td.teleNum{border-width:0 0 1px;}

@@ -1,0 +1,78 @@
+.w{width:980px;margin:0 auto;}
+.mainbBodyer{width:980px;margin:10px auto 0;}
+/*header begin*/
+.header{ background:#fff url(../images/order_query/header_bc.png) no-repeat; height:72px;border:1px solid #e3e3e3;}
+.header .returnToHome{float:right;margin:45px 10px 0 0;}
+.header .area{float:left;margin:30px 0 0 280px;font-size:14px;font-weight:600;}
+.simpleHeader{height:80px;}
+.simpleHeader img{margin:20px 0 0 20px;}
+.headerB{border-top:1px solid #cbcbcb;border-bottom:3px solid #eee;font-size:0;}
+/*header end*/
+
+/*topBar begin*/
+.topBar {background:url(../images/topBarBc.gif) repeat-x;border:1px solid #dfdfdf;border-bottom:0;height:30px;line-height:30px;}
+.topBar span {float:left;line-height:30px;padding-left:11px;}
+.topBar span a {line-height:30px;text-decoration:underline;}
+.topBar .help{float:right;padding-left:20px;margin-right:10px;line-height:30px;background:url(../images/question.gif) 0 7px no-repeat;}
+/*topBar end*/
+
+.navigation{width:798px;height:24px;padding:6px 0 0 10px;margin-bottom:10px;border:1px solid #dfdfdf;background:#f5f5f5;}
+.navigation .navigationLeft{float:left;}
+.navigation .navigationLeft a{color:#3366cc;}
+.navigation .navigationLeft a.c333{color:#333333;}
+.navigation .navigationLeft a:hover{color:#F60;text-decoration:none;}
+.navigation .navigationLeft span {padding:0 5px;}
+.navigation .navigationRight{float:right;margin-right:10px;}
+
+/*left begin*/
+.leftBar{ float:left; width:160px;overflow:hidden;margin-right:10px;}
+.quickEntrance{width:160px;overflow:hidden;margin-bottom:10px;}
+.quickEntrance h3{width:160px;height:32px;background:url(../images/menu_left/adminTitle.gif) no-repeat;}
+.quickEntrance h3 label{float:left;line-height:28px;color:#666;margin-left:10px;font-size:12px;font-weight:bold;text-shadow:1px 1px 1px #fff;}
+.quickEntrance h3 span{float:right;margin-right:10px;color:#3365CB;line-height:28px;}
+.quickList{width:158px;padding:10px 0;border-width:0 1px;border-color:#e3e3e3;border-style:solid;overflow:hidden;}
+.quickList a{color:#36c;}
+.quickList a:hover{text-decoration:underline;}
+.quickList li{width:123px;padding:3px 10px 3px 25px;overflow:hidden;}
+.quickList li.current{background:#bcd5ec;}
+.quickList li.currentOver{background:#ebf3f7;}
+.quickList li span{margin-left:10px;}
+.quickList b{display:block;width:0;height:20px;float:left;margin-right:0;}
+.quickEntranceContraction{width:160px;height:14px;background:url(../images/menu_left/quickEntranceContraction.gif) no-repeat;cursor:pointer;}
+.quickclose{background-position:0 0;}
+.quickopen{background-position:0 -14px;}
+.managementDistrict{width:160px;overflow:hidden;}
+.managementDistrict h3{width:160px;height:32px;background:url(../images/menu_left/adminTitle.gif) no-repeat;cursor:pointer;}
+.managementDistrict h3 label{float:left;line-height:28px;color:#666;margin-left:10px;font-size:12px;font-weight:bold;text-shadow:1px 1px 1px #fff;}
+.managementDistrict h3 b{display:block;width:15px;height:15px;float:right;margin:8px 10px 0 0;cursor:pointer;}
+.managementDistrict h3 b.open{background:url(../images/menu_left/open.gif) no-repeat;}
+.managementDistrict h3 b.close{background:url(../images/menu_left/close.gif) no-repeat;}
+.managementDistrict h3 b.contraction{background:url(../images/menu_left/contraction.gif) no-repeat;}
+.managementList{width:158px;overflow:hidden;padding:10px 0;border:1px solid #e3e3e3;border-top:0;}
+.managementList li{width:123px;padding:3px 10px 3px 25px;overflow:auto;}
+.managementList li.current{background:#bcd5ec;}
+.managementList li.currentOver{background:#ebf3f7;}
+.managementList li.current a{color:#fff;}
+.managementList li.current a:hover{color:#fff;}
+.managementList li.current span{color:#fff;}
+.managementList li b{display:block;width:0px;height:16px;float:left;margin:2px 0 0;}
+.managementList li label{display:block;width:117px;float:left;}
+.managementList li a{color:#36c;}
+.managementList li a:hover{text-decoration:underline;}
+.managementList li span{margin-left:10px;}
+/*left end*/
+
+/*right begin*/
+.rightBar{width:810px;float:left;}
+.layoutRight{width:810px;float:left;margin-bottom:20px;overflow:visible;}
+
+/*面包屑 begin*/
+.breadcrumbW{height:30px;padding-top:1px;border:1px solid #dfdfdf;}
+.breadcrumb{height:30px;padding:0 10px;background:#f5f5f5;}
+.breadcrumb span{height:30px;line-height:30px;}
+/*面包屑 end*/
+/*right end*/
+
+/*footer begin*/
+.footer{width:980px;clear:both;overflow:auto;padding:10px 0;text-align:center;border-top:1px solid #dde4e9;margin:20px auto 0;}
+/*footer end*/

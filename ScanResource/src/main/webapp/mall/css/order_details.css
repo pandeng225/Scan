@@ -1,0 +1,43 @@
+/*------------------------public---------------------*/
+.new_container{position:relative;}
+.top_line{height:36px; background:#f86207}
+.navList{position:absolute; top:-36px;}
+.list_area{display:none;}
+.navList h1{cursor:pointer;background:#d75100}
+.navList h1 span{/*background:url('../images/dir_d.png') no-repeat; width:14px; height:7px;*/ display:inline-block; margin-left:14px; }
+/*.navList h1 span.active{background:url('../images/dir_t.png')}*/
+#content{width:80%;}
+
+/*------------------------per_info---------------------*/
+
+.per_info{float:left; width:218px; border:1px solid #eee; margin-top:15px; padding-bottom:30px;}
+.per_account{ padding-right:60px; height:100px; }
+.per_img_area{line-height:100px; float:right;}
+.per_img_area img{-webkit-transition:all .5s ease;-ms-transition:all .5s ease;-o-transition:all .5s ease;-moz-transition:all .5s ease;}
+.per_img_area img:hover{-moz-transform: rotate(360deg);-webkit-transform: rotate(360deg);-o-transform: rotate(360deg);-ms-transform: rotate(360deg);transform: rotate(360deg);}
+.per_account h1{font-size:14px; font-weight: bold; float:right; padding-top:34px; text-align: right; padding-left:10px;}
+.per_account h1 span{/*font-family: '新宋体';*/font-size:12px; font-weight: normal}
+.per_info dt{border-top:1px dotted #eee; font-size:14px; font-weight: bold; line-height: 30px;}
+.per_info dd a{color:#999999; /*font-family: '新宋体';*/ line-height: 20px;}
+.per_info dd.active a{color:#ff6600}
+.per_info dd a:hover{text-decoration: none;color: red;}
+.per_info dt,.per_info dd{ text-align: right; padding-right:60px;}
+
+/*------------------------order_details---------------------*/
+
+.order_details{margin:15px 0 0 15px; float:left;width:77%;}
+.order_details h1{ height:40px; padding-left:10px; margin-top:10px; background: #eee; line-height:40px; font-size:16px;}
+.order_details_list{margin-top:22px;}
+.order_details_list dl dt{float:left; }
+.order_details_list dl dd{height:24px;}
+
+.order_details_table{width:100%;margin-top:22px;}
+.order_details_table th{height:25px; background: #eee;text-align:left;}
+.order_details_table td{ border-top:1px dotted #eee; height:100px;}
+.order_details_table img {float:left; border:1px solid #eee;}
+.order_details_table td ul{ float:left;padding-top:14px; padding-left:10px;}
+.order_table_col{padding-left:60px;}
+.order_details_mark{color:#ff6600}
+.order_details_pay,.order_details_freight,.order_details_realpay{color:#dd0000;}
+.order_details_realpay{font-size: 20px;}
+.order_details_total{ height:52px; margin:10px 0 10px 0; background: #effaff; width:100%; text-align: right; line-height: 52px; padding-right:10px;}

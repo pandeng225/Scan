@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+*{ margin:0; padding:0;font-family:Microsoft YaHei",Arial ";font-size:12px;}
+a{ text-decoration: none; color:#000000;cursor:pointer;}
+a:hover{text-decoration:none; cursor:pointer;}
+img{ border:0;}
+ul li{ list-style:none;}
+html,body{height:100%; width:100%;}
+table {border-collapse: collapse;border-spacing: 0; }
+
+span.red_zi{ color:#c40e25; font-size:16px;}
+span.hui_zi{ color:#969696;font-size:16px;}
+
+.bgtx{ width:800px;  height:auto;  margin:0 auto; }
+.title_text{ color:#c40e25; font-family:"Î¢ÈíÑÅºÚ"; font-size:26px;text-align:center; padding:16px; margin-top:20px; border-bottom:#ebbdc0 dashed 1px;}
+.title_text2{ color:#FF0000; font-family:"Î¢ÈíÑÅºÚ"; font-size:18px;text-align:left; padding:16px; margin-top:5px; border-bottom:#ebbdc0 dashed 1px;}
+.NO{ margin-top:28px;}
+.NO li{ font-size:16px; height:34px;}
+.NO li table td{ font-size:16px;}
+.select_a{ background:url(../images/smrz/bg_03.gif) no-repeat; width:150px; height:34px; overflow:hidden; position:relative;}
+.txk li{ float:left;}
+.txk li.a{ background:url(../images/smrz/bg_05.gif) no-repeat; width:7px; height:34px;}
+.txk li.b{ background:url(../images/smrz/bg_06.gif) repeat-x; width:273px; height:34px;}
+.txk li.c{ background:url(../images/smrz/bg_08.gif) no-repeat; width:7px; height:34px;}
+.txk li.b input{ width:270px; height:28px; line-height:28px; background:none; font-size:16px; border:none; outline:none; }
+.NO3{ margin-top:28px;}
+.NO3 li{ font-size:16px; height:62px;}
+.NO3 li table td{ font-size:16px;}
+.tj{ text-align:center; margin-top:20px;}
+.wxts{ width:800px; height:100px; background:#f9ecee; margin-top:20px; border-radius:5px; line-height:20px;}
+.wxts ul{ padding:20px;}
+.logo{width:800px; float:right;}
+
+
+.bgtck{ width:335px; height:135px;  background:#c30d23; padding:8px; position:relative;}
+.bgtck_whitebg{ width:335px; height:135px; background:#FFFFFF;border-radius:3px;}
+.xx{ position:absolute; right:0px; top:0px;}
+.bgtck_whitebg_redts{ text-align:center; padding:16px;}
+.bgtck_whitebg_text{ font-size:16px; font-weight:600; line-height:25px; text-align:center;}
