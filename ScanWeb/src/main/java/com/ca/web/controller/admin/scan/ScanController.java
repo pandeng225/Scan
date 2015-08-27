@@ -67,8 +67,8 @@ public class ScanController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String add(String recordList,String listSize) {
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public String add(@RequestParam("recordList") String recordList,@RequestParam("listSize")String listSize) {
         int insertNum=0,trueNum=0;
         HashMap<String,Object> resultMap=new HashMap<>();
         resultMap.put("result",false);

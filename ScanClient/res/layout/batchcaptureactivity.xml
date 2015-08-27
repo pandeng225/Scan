@@ -9,11 +9,11 @@
 			android:layout_height="wrap_content"
 			android:layout_gravity="top"/>
 
-	<com.zxing.view.ViewfinderView
-			android:id="@+id/viewfinder_view"
-			android:layout_width="fill_parent"
-			android:layout_height="wrap_content">
-	</com.zxing.view.ViewfinderView>
+	<!--<com.zxing.view.ViewfinderView-->
+			<!--android:id="@+id/viewfinder_view"-->
+			<!--android:layout_width="fill_parent"-->
+			<!--android:layout_height="wrap_content">-->
+	<!--</com.zxing.view.ViewfinderView>-->
 
 	<LinearLayout
 			android:id="@+id/showLayout"
@@ -36,7 +36,7 @@
 				android:layout_height="wrap_content">
 		</ListView>
 	</LinearLayout>
-	<RelativeLayout
+	<LinearLayout
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_gravity="bottom"
@@ -44,23 +44,33 @@
 			android:padding="@dimen/activity_margin_half">
 
 		<Button
-				android:id="@+id/startUpload"
-				android:layout_width="100dp"
+				android:id="@+id/upload"
+				android:layout_width="0dp"
+				android:layout_weight="1"
 				android:layout_height="@dimen/activity_button_height"
 				android:layout_alignParentLeft="true"
-				android:text="上传"
+				android:text="@string/upload"
 				style="@style/whiteText"
 				android:textStyle="bold"/>
-
+		<Button
+				android:id="@+id/export"
+				android:layout_width="0dp"
+				android:layout_weight="1"
+				android:layout_height="@dimen/activity_button_height"
+				android:layout_alignParentLeft="true"
+				android:text="@string/export"
+				style="@style/whiteText"
+				android:textStyle="bold"/>
 		<Button
 				android:id="@+id/cancelScanButton"
-				android:layout_width="100dp"
+				android:layout_width="0dp"
+				android:layout_weight="1"
 				android:layout_height="@dimen/activity_button_height"
 				android:layout_alignParentRight="true"
 				android:text="@string/quit"
 				android:textStyle="bold"
 				style="@style/whiteText"/>
-	</RelativeLayout>
+	</LinearLayout>
 </FrameLayout>
 
 

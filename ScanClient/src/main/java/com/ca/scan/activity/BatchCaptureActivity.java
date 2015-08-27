@@ -39,13 +39,16 @@ public class BatchCaptureActivity extends CaptureActivity {
     LinearLayout showLayout;
     @InjectView(R.id.scanedList)
     ListView scanedList;
-    @InjectView(R.id.startUpload)
+    @InjectView(R.id.upload)
     Button startUpload;
+    @InjectView(R.id.export)
+    Button export;
     Profile profile = null;
     List<ScanHistory> scanHistories;
     HistoryAdapter historyAdapter;
     ScanHistoryDao scanHistoryDao;
     String desc;
+    QueryBuilder queryBuilder;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,9 +72,18 @@ public class BatchCaptureActivity extends CaptureActivity {
     }
 
 
-    @OnClick(R.id.startUpload)
+    @OnClick(R.id.upload)
     public void startUpload(View v) {
-        Toast.makeText(BatchCaptureActivity.this, getString(R.string.upload_success), Toast.LENGTH_LONG).show();
+        checkScanHistoryDao();
+        QueryBuilder unUploadRerord=scanHistoryDao.queryBuilder();
+        unUploadRerord.where(Properties.Name.eq(profile.getName())).and(Properties.Department.eq(profile.getDepartment()),Properties.Desc.eq(desc),Properties.Ifupload.notEq("0"));
+        List<ScanHistory> temp=unUploadRerord.list();
+        if(temp!=null&&temp.size()>0){
+
+        }else{
+            Toast.makeText(BatchCaptureActivity.this, getString(R.string.upload_success), Toast.LENGTH_LONG).show();
+
+        }
     }
     @OnClick(R.id.cancelScanButton)
     public void cancelScan(View v) {
@@ -86,20 +98,22 @@ public class BatchCaptureActivity extends CaptureActivity {
             profile = null;
         }
 
-        if (scanHistoryDao != null) {
-        } else {
-            scanHistoryDao = MyApplication.getDaoSession(mContext).getScanHistoryDao();
-        }
+        checkScanHistoryDao();
         desc = this.getIntent().getStringExtra("desc");
             //FIXME
-        QueryBuilder queryBuilder=scanHistoryDao.queryBuilder();
-        queryBuilder.where(Properties.Name.eq(profile.getName()));
-//        queryBuilder.and(Properties.Department.eq(profile.getDepartment()));
+        queryBuilder=scanHistoryDao.queryBuilder();
+        queryBuilder.where(Properties.Name.eq(profile.getName())).and(Properties.Department.eq(profile.getDepartment()),Properties.Desc.eq(desc),null);
+
         scanHistories=queryBuilder.list();
         historyAdapter = new HistoryAdapter(BatchCaptureActivity.this, scanHistories, Constants.HistoryRequestType.ScanHistory.value);
         scanedList.setAdapter(historyAdapter);
     }
-
+    private void checkScanHistoryDao() {
+        if (scanHistoryDao != null) {
+        } else {
+            scanHistoryDao = MyApplication.getDaoSession(mContext).getScanHistoryDao();
+        }
+    }
     @Override
     protected void onDestroy() {
         inactivityTimer.shutdown();

@@ -20,6 +20,8 @@
     <string name="confirm">确认</string>
     <!--扫描页-->
     <string name="scaned_list">已扫入记录</string>
+    <string name="upload">上传</string>
+    <string name="export">导出</string>
     <!--异常处理-->
     <string name="insert_error">未成功录入，请再试一下下~</string>
     <string name="update_error">未成功更新，请再试一下下~</string>

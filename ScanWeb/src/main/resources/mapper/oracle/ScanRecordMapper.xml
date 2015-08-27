@@ -169,7 +169,7 @@
     <if test="employeeid != null and employeeid != ''" >
       AND EMPLOYEEID = #{employeeid,jdbcType=INTEGER}
     </if>
-    <if test="department != null and employeeid != ''" >
+    <if test="department != null and department != ''" >
       AND DEPARTMENT = #{department,jdbcType=VARCHAR}
     </if>
     <if test="employeename != null and employeename != ''" >

@@ -25,7 +25,7 @@ public class BaseTest {
             scanRecord.setScantime(new Date());
             scanRecords.add(scanRecord);
         }
-        String a=JSONObject.toJSONString(scanRecords);
+        String a=JSONObject.toJSONString(scanRecords,true);
         List<ScanRecord>  scanRecords2= JSONObject.parseArray(a, ScanRecord.class);
     }
 

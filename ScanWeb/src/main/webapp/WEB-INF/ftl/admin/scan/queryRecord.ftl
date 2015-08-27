@@ -14,7 +14,7 @@
             <@form.form method="post" action="${rc.contextPath}/admin/am/scan/findAllRecord">
                 <li>
                     <label>姓&nbsp;&nbsp;名:</label>
-                    <input type="text" class="inputStyle w180" name="name" value="${record.name}"/>
+                    <input type="text" class="inputStyle w180" name="employeename" value="${record.employeename}"/>
                 </li>
                 <li>
                     <label>部&nbsp;&nbsp;门:</label>
@@ -29,7 +29,8 @@
                 <li>
                 </li>
                 <li style="text-align: right">
-                    <a  class="cBlue" style="cursor: pointer;margin-right: 10px" href="${rc.contextPath}/admin/am/scan/add" >导出记录</a>
+                    <#--href="${rc.contextPath}/admin/am/scan/add"-->
+                    <a  class="cBlue" style="cursor: pointer;margin-right: 10px" onclick="updateStatusByID()">导出记录</a>
                     <input type="submit" value="查 询" id="submit" style="margin-right: 30px" class="shortBtn  mrgL60"/>
                 </li>
 
@@ -76,7 +77,7 @@
         </div>
         <!--end right content-->
         <#import "/admin/layout/common/pager.ftl" as q>
-        <@q.pager pageNo=pager.curPage pageSize=pager.pageSize recordCount=pager.total toURL="${rc.contextPath}/admin/am/number/findAllNum"/>
+        <@q.pager pageNo=pager.curPage pageSize=pager.pageSize recordCount=pager.total toURL="${rc.contextPath}/admin/am/scan/findAllRecord"/>
     </div>
     <!--end main content-->
     <!--popup -->
@@ -96,14 +97,14 @@
     <#--var refresh = function () {-->
         <#--$("#submit").trigger('click');-->
     <#--};-->
-    <#--var success = function (result) {-->
-        <#--$.endLoading();-->
-        <#--$.smile(result.mesg, refresh);-->
-    <#--}-->
-    <#--var error = function (result) {-->
-        <#--$.endLoading();-->
-        <#--$.alert("失败", refresh);-->
-    <#--};-->
+    var success = function (result) {
+        $.endLoading();
+        $.smile(result.mesg, refresh);
+    }
+    var error = function (result) {
+        $.endLoading();
+        $.alert("失败", refresh);
+    };
     <#--function closeWindow() {-->
         <#--$.overLayOff();-->
         <#--$("#operate").hide();-->
@@ -140,20 +141,14 @@
         <#--$("#operate").center().show();-->
         <#--$.overLayOn();-->
     <#--}-->
-    <#--function updateStatusByID() {-->
-        <#--var status = $("input[name='chooseStatus']:checked").val();-->
-        <#--var serialNumber = $("#serialNumber").val();-->
-        <#--var provinceCode = $("#provinceCode").val();-->
-        <#--$.overLayOff();-->
-        <#--$("#operate").hide();-->
-        <#--var url = '${rc.contextPath}/admin/am/number/updateStatusByID';-->
-        <#--var data = {-->
-            <#--provinceCode: provinceCode,-->
-            <#--codeState: status,-->
-            <#--serialNumber: serialNumber,-->
-            <#--CSRFToken: $("input[name='CSRFToken']").val()-->
-        <#--};-->
-        <#--$.phwAjax3(url, data, success, error);-->
-    <#--}-->
+    function updateStatusByID() {
+
+        var url = '${rc.contextPath}/admin/am/scan/add';
+        var data = {
+            recordList: '[{"department":"测试0","employeename":"测试0","expressno":"0","scantime":1440691924553},{"department":"测试1","employeename":"测试1","expressno":"1","scantime":1440691924553},{"department":"测试2","employeename":"测试2","expressno":"2","scantime":1440691924553},{"department":"测试3","employeename":"测试3","expressno":"3","scantime":1440691924553},{"department":"测试4","employeename":"测试4","expressno":"4","scantime":1440691924553}]',
+            listSize: "1"
+        };
+        $.phwAjax3(url, data, success, error);
+    }
 </script>
 </@layout>
