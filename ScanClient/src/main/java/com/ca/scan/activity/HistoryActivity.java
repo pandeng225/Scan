@@ -128,7 +128,7 @@ public class HistoryActivity extends Activity {
                     descHistory.setDesc(newDesc);
                     descHistory.setEmployeeid(profile.getEmployeeid());
                     descHistory.setDepartment(profile.getDepartment());
-                    descHistory.setName(profile.getName());
+                    descHistory.setEmployeename(profile.getEmployeename());
                     if (descHistoryDao != null) {
                     } else {
                         descHistoryDao = MyApplication.getDaoSession(mContext).getDescHistoryDao();

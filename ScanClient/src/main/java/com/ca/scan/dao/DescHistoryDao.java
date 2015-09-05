@@ -24,7 +24,7 @@ public class DescHistoryDao extends AbstractDao<DescHistory, Long> {
     */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property Name = new Property(1, String.class, "name", false, "NAME");
+        public final static Property EmployeeName = new Property(1, String.class, "employeename", false, "EMPLOYEENAME");
         public final static Property Department = new Property(2, String.class, "department", false, "DEPARTMENT");
         public final static Property Employeeid = new Property(3, String.class, "employeeid", false, "EMPLOYEEID");
         public final static Property Desc = new Property(4, String.class, "desc", false, "DESC");
@@ -44,7 +44,7 @@ public class DescHistoryDao extends AbstractDao<DescHistory, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "'DESC_HISTORY' (" + //
                 "'_id' INTEGER PRIMARY KEY ," + // 0: id
-                "'NAME' TEXT NOT NULL ," + // 1: name
+                "'EMPLOYEENAME' TEXT NOT NULL ," + // 1: employeename
                 "'DEPARTMENT' TEXT NOT NULL ," + // 2: department
                 "'EMPLOYEEID' TEXT," + // 3: employeeid
                 "'DESC' TEXT);"); // 4: desc
@@ -65,7 +65,7 @@ public class DescHistoryDao extends AbstractDao<DescHistory, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
-        stmt.bindString(2, entity.getName());
+        stmt.bindString(2, entity.getEmployeename());
         stmt.bindString(3, entity.getDepartment());
  
         String employeeid = entity.getEmployeeid();
@@ -90,7 +90,7 @@ public class DescHistoryDao extends AbstractDao<DescHistory, Long> {
     public DescHistory readEntity(Cursor cursor, int offset) {
         DescHistory entity = new DescHistory( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getString(offset + 1), // name
+            cursor.getString(offset + 1), // employeename
             cursor.getString(offset + 2), // department
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // employeeid
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4) // desc
@@ -102,7 +102,7 @@ public class DescHistoryDao extends AbstractDao<DescHistory, Long> {
     @Override
     public void readEntity(Cursor cursor, DescHistory entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setName(cursor.getString(offset + 1));
+        entity.setEmployeename(cursor.getString(offset + 1));
         entity.setDepartment(cursor.getString(offset + 2));
         entity.setEmployeeid(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setDesc(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));

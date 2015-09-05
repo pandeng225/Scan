@@ -59,20 +59,20 @@ public class MyProfileActivity extends Activity {
         ButterKnife.inject(this);
         profile = (Profile) this.getIntent().getSerializableExtra("profile");
         if (profile != null) {
-            //各控件赋值
-            nameText.setText(profile.getName());
+            //锟斤拷锟截硷拷锟斤拷值
+            nameText.setText(profile.getEmployeename());
             departmentText.setText(profile.getDepartment());
             employeeidText.setText(profile.getEmployeeid());
-            nameEdit.setText(profile.getName());
+            nameEdit.setText(profile.getEmployeename());
             departmentEdit.setText(profile.getDepartment());
             employeeidEdit.setText(profile.getEmployeeid());
-            //各控件展现
+            //锟斤拷锟截硷拷展锟斤拷
             ButterKnife.apply(textViews, ButterKnifeAction.VISIBLE);
             ButterKnife.apply(editViews, ButterKnifeAction.GONE);
             edit.setVisibility(View.VISIBLE);
             submitProgress= SubmitProgress.Modified.value;
         } else {
-            //各控件展现
+            //锟斤拷锟截硷拷展锟斤拷
             nameEdit.setVisibility(View.VISIBLE);
             departmentEdit.setVisibility(View.VISIBLE);
             employeeidEdit.setVisibility(View.VISIBLE);
@@ -90,7 +90,6 @@ public class MyProfileActivity extends Activity {
         Intent intent=new Intent();
         intent.setClass(mContext,MainMenuActivity.class);
         if(view.getId()==R.id.edit){
-            //编辑按钮
             nameEdit.setText(nameText.getText());
             departmentEdit.setText(departmentText.getText());
             employeeidEdit.setText(employeeidText.getText());
@@ -103,11 +102,9 @@ public class MyProfileActivity extends Activity {
             submitProgress= SubmitProgress.Modify.toString();
             edit.setVisibility(View.INVISIBLE);
         }else if(view.getId()==R.id.submit){
-            //完成按钮
-            //第一次输入，直接跳入主菜单
             if(submitProgress.equals(SubmitProgress.Creat.value)){
                 Profile newProfile=new Profile();
-                newProfile.setName(nameEdit.getText().toString());
+                newProfile.setEmployeename(nameEdit.getText().toString());
                 newProfile.setDepartment(departmentEdit.getText().toString());
                 newProfile.setEmployeeid(employeeidEdit.getText().toString());
                 newProfile.setDate(new Date());
@@ -120,7 +117,7 @@ public class MyProfileActivity extends Activity {
             }else if(submitProgress.equals(SubmitProgress.Modify.value)){
                 Profile newProfile=new Profile();
                 newProfile.setId(profile.getId());
-                newProfile.setName(nameEdit.getText().toString());
+                newProfile.setEmployeename(nameEdit.getText().toString());
                 newProfile.setDepartment(departmentEdit.getText().toString());
                 newProfile.setEmployeeid(employeeidEdit.getText().toString());
                 newProfile.setDate(new Date());

@@ -2,6 +2,8 @@ package com.ca.scan.application;
 
 import android.app.Application;
 import android.content.Context;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.ca.scan.common.Constants;
 import com.ca.scan.dao.DaoMaster;
 import com.ca.scan.dao.DaoSession;
@@ -13,6 +15,14 @@ public class MyApplication extends Application {
     private static MyApplication mInstance;
     private static DaoMaster daoMaster;
     private static DaoSession daoSession;
+    private static RequestQueue requestQueue;
+
+    public static RequestQueue getRequestQueue(Context context) {
+        if(requestQueue==null){
+            requestQueue=Volley.newRequestQueue(context);
+        }
+        return requestQueue;
+    }
 
     @Override
     public void onCreate() {

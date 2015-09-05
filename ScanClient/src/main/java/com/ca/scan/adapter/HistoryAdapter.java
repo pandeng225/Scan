@@ -6,9 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.ca.scan.R;
+import com.ca.scan.application.MyApplication;
 import com.ca.scan.common.Constants.HistoryRequestType;
 import com.ca.scan.dao.DescHistory;
 import com.ca.scan.dao.ScanHistory;
+import com.ca.scan.dao.ScanHistoryDao;
 
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class HistoryAdapter extends BaseAdapter {
     private List<?> histories;
     private Boolean ifDescHisory=true;
     private LayoutInflater mInflater;
+    private Context mContext;
 
 
 
@@ -27,6 +30,7 @@ public class HistoryAdapter extends BaseAdapter {
         this.mInflater = LayoutInflater.from(context);
         this.ifDescHisory = historyType.equals(HistoryRequestType.DescHistory.value);
         this.histories = Histories;
+        this.mContext=context;
     }
 
     @Override
@@ -80,6 +84,8 @@ public class HistoryAdapter extends BaseAdapter {
             holder.deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    ScanHistoryDao scanHistoryDao = MyApplication.getDaoSession(mContext).getScanHistoryDao();
+                    scanHistoryDao.delete((ScanHistory)histories.get(position));
                     histories.remove(position);
                     notifyDataSetChanged();
                 }

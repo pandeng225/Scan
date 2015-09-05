@@ -7,8 +7,17 @@ package com.ca.scan.dao;
 public class DescHistory {
 
     private Long id;
+
+    public String getEmployeename() {
+        return employeename;
+    }
+
+    public void setEmployeename(String employeename) {
+        this.employeename = employeename;
+    }
+
     /** Not-null value. */
-    private String name;
+    private String employeename;
     /** Not-null value. */
     private String department;
     private String employeeid;
@@ -21,9 +30,9 @@ public class DescHistory {
         this.id = id;
     }
 
-    public DescHistory(Long id, String name, String department, String employeeid, String desc) {
+    public DescHistory(Long id, String employeename, String department, String employeeid, String desc) {
         this.id = id;
-        this.name = name;
+        this.employeename = employeename;
         this.department = department;
         this.employeeid = employeeid;
         this.desc = desc;
@@ -37,15 +46,7 @@ public class DescHistory {
         this.id = id;
     }
 
-    /** Not-null value. */
-    public String getName() {
-        return name;
-    }
 
-    /** Not-null value; ensure this value is available before it is saved to the database. */
-    public void setName(String name) {
-        this.name = name;
-    }
 
     /** Not-null value. */
     public String getDepartment() {

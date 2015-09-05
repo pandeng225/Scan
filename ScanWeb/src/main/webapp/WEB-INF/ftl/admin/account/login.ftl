@@ -169,7 +169,7 @@
 <body>
 
 <div class="logobox">
-    <div ><span>贵州联通电子商务营销服务平台</span></div>
+    <div ><span>电子商务营销服务平台</span></div>
 </div>
 <div class="login-cont">
     <div class="form">

@@ -4,6 +4,13 @@ package com.ca.scan.common;
  * Created by pandeng on 2015/7/27.
  */
 public class Constants {
+
+    public static String getHttpurl() {
+        return httpurl;
+    }
+
+    private static final String httpurl="http://192.168.1.100:8080/admin/am/";
+
     public static final String DB_NAME="local_db";
     //CameraManager”√
     private static final int MIN_FRAME_WIDTH = 240;

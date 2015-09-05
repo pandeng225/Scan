@@ -50,8 +50,8 @@ public class MainMenuActivity extends Activity {
     @OnClick(R.id.startScan)
     public void startScan() {
         intent = new Intent(mContext, CaptureActivity.class);        //CaptureActivity是扫描的Activity类
-        startActivityForResult(intent, 0);
-
+        intent.putExtra("profile", profile);
+        startActivity(intent);
 		/*
          *注意: 要以startActivityForResult方法转跳,(不明白查android API)
 		 *第一个参数为一个Intent对象,可以用来传递很多数值,

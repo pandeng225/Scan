@@ -7,8 +7,17 @@ package com.ca.scan.dao;
 public class ScanHistory {
 
     private Long id;
+
+    public String getEmployeename() {
+        return employeename;
+    }
+
+    public void setEmployeename(String employeename) {
+        this.employeename = employeename;
+    }
+
     /** Not-null value. */
-    private String name;
+    private String employeename;
     /** Not-null value. */
     private String department;
     private String employeeid;
@@ -27,9 +36,9 @@ public class ScanHistory {
         this.id = id;
     }
 
-    public ScanHistory(Long id, String name, String department, String employeeid, String expressno, String filename, String ifupload, String desc, java.util.Date date) {
+    public ScanHistory(Long id, String employeename, String department, String employeeid, String expressno, String filename, String ifupload, String desc, java.util.Date date) {
         this.id = id;
-        this.name = name;
+        this.employeename = employeename;
         this.department = department;
         this.employeeid = employeeid;
         this.expressno = expressno;
@@ -47,15 +56,7 @@ public class ScanHistory {
         this.id = id;
     }
 
-    /** Not-null value. */
-    public String getName() {
-        return name;
-    }
 
-    /** Not-null value; ensure this value is available before it is saved to the database. */
-    public void setName(String name) {
-        this.name = name;
-    }
 
     /** Not-null value. */
     public String getDepartment() {

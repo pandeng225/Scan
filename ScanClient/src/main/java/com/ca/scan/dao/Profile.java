@@ -10,8 +10,17 @@ import java.io.Serializable;
 public class Profile implements Serializable{
 
     private Long id;
+
+    public String getEmployeename() {
+        return employeename;
+    }
+
+    public void setEmployeename(String employeename) {
+        this.employeename = employeename;
+    }
+
     /** Not-null value. */
-    private String name;
+    private String employeename;
     /** Not-null value. */
     private String department;
     private String employeeid;
@@ -24,9 +33,9 @@ public class Profile implements Serializable{
         this.id = id;
     }
 
-    public Profile(Long id, String name, String department, String employeeid, java.util.Date date) {
+    public Profile(Long id, String employeename, String department, String employeeid, java.util.Date date) {
         this.id = id;
-        this.name = name;
+        this.employeename = employeename;
         this.department = department;
         this.employeeid = employeeid;
         this.date = date;
@@ -40,15 +49,7 @@ public class Profile implements Serializable{
         this.id = id;
     }
 
-    /** Not-null value. */
-    public String getName() {
-        return name;
-    }
 
-    /** Not-null value; ensure this value is available before it is saved to the database. */
-    public void setName(String name) {
-        this.name = name;
-    }
 
     /** Not-null value. */
     public String getDepartment() {

@@ -63,7 +63,7 @@
                             <td class="tFourth">${record.DEPARTMENT}</td>
                             <td class="tFourth">${record.EXPRESSNO}</td>
                             <td class="tFourth">${record.EXPRESSCOMPANY}</td>
-                            <td class="tFourth">${record.TIME_IN?date}</td>
+                            <td class="tFourth">${record.SCANTIME?date}</td>
                             <td class="tFourth">${record.INFO}</td>
                         </tr>
                         </#list>
